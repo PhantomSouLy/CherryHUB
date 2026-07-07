@@ -47,39 +47,48 @@
     },
     {
       "label": "Stream",
-      "target": "#stream"
+      "target": "#stream",
+      "open": "stream"
     },
     {
       "label": "Parancsok",
-      "target": "#commands"
+      "target": "#commands",
+      "open": "commands"
     },
     {
       "label": "Sub",
-      "target": "#sub"
+      "target": "#sub",
+      "open": "sub"
     },
     {
       "label": "Twitch Gacha",
-      "target": "#gacha"
+      "target": "#gacha",
+      "open": "gacha"
     },
     {
       "label": "Csatornapontok",
-      "target": "#points"
+      "target": "#points",
+      "open": "points"
     },
     {
       "label": "TITS",
-      "target": "#tits"
+      "target": "#tits",
+      "open": "tits"
     },
     {
       "label": "Bunny Pass",
-      "target": "#pass"
+      "target": "#pass",
+      "open": "pass"
     },
     {
       "label": "Cherry Zenéi",
-      "target": "#music"
+      "target": "#music",
+      "open": "music"
     },
     {
       "label": "Közösség",
-      "target": "#community"
+      "target": "#community",
+      "open": "community"
     },
     {
       "label": "Támogatás",
@@ -120,39 +129,75 @@
       "icon": "▷",
       "title": "Stream",
       "short": "Menetrend, játékok, szabályok, VOD-ok és klipek.",
-      "floatingTitle": "Minden a streamekről egy helyen!",
-      "floatingText": "Menetrend, játékok, VOD archívum és kiemelt pillanatok.",
+      "floatingTitle": "Stream központ",
+      "floatingText": "Menetrend és stream infók egy helyen. Alapból a menetrendet látod.",
       "floatingItems": [
         [
-          "Heti menetrend",
-          "A Twitch ütemezés alapján később automatizálható."
+          "Menetrend",
+          "Kézzel szerkeszthető a content.json-ban."
         ],
         [
-          "Játékok",
-          "Mikkel játszik Cherry?"
+          "Információ",
+          "Játékok, VOD, klipek és szabályok."
         ],
         [
-          "VOD / klipek",
-          "Visszanézhető tartalmak."
+          "Később",
+          "Twitch ütemezés API-val automatizálható."
         ]
       ],
       "details": {
         "text": "Itt találod a streamhez kapcsolódó alapinfókat.",
-        "blocks": [
+        "defaultTab": "schedule",
+        "tabs": [
           {
-            "heading": "Heti menetrend",
-            "items": [
-              "Twitch ütemezés alapján később automatikusan is megoldható.",
-              "Addig kézzel szerkeszthető JSON-ból."
-            ]
+            "id": "schedule",
+            "label": "📅 Menetrend",
+            "text": "Egyelőre kézzel szerkeszthető heti menetrend. Később Twitch ütemezésből automatikus lehet.",
+            "schedule": [
+              {
+                "day": "Hétfő",
+                "time": "—",
+                "title": "Pihenő / nincs fix stream"
+              },
+              {
+                "day": "Kedd",
+                "time": "18:00",
+                "title": "Wuthering Waves / aktuális játék"
+              },
+              {
+                "day": "Péntek",
+                "time": "18:00",
+                "title": "Community / Variety stream"
+              },
+              {
+                "day": "Vasárnap",
+                "time": "19:00",
+                "title": "Cozy stream / beszélgetés"
+              }
+            ],
+            "note": "A menetrend változhat. A legfrissebb infóért nézd Cherry Twitch oldalát vagy Discordját."
           },
           {
-            "heading": "Tartalom",
-            "items": [
-              "Játékok",
-              "Beszélgetős streamek",
-              "Közösségi estek",
-              "VOD-ok és klipek"
+            "id": "info",
+            "label": "🌸 Információ",
+            "text": "Minden fontos stream információ röviden.",
+            "blocks": [
+              {
+                "heading": "Tartalom",
+                "items": [
+                  "Játékok",
+                  "Beszélgetős streamek",
+                  "Közösségi estek",
+                  "VOD-ok és klipek"
+                ]
+              },
+              {
+                "heading": "Hasznos",
+                "items": [
+                  "A Twitch menetrend később automatikus is lehet.",
+                  "A stream link mindig a főoldali Nézd élőben gombon van."
+                ]
+              }
             ]
           }
         ]
