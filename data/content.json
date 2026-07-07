@@ -125,7 +125,7 @@
       "floatingItems": [
         [
           "Heti menetrend",
-          "Twitch ütemezés alapján később automatizálható."
+          "A Twitch ütemezés alapján később automatizálható."
         ],
         [
           "Játékok",
@@ -137,13 +137,13 @@
         ]
       ],
       "details": {
-        "text": "Itt találod a streamhez kapcsolódó alapinfókat. A cél, hogy az új nézők gyorsan megértsék, mikor van adás és mire számíthatnak.",
+        "text": "Itt találod a streamhez kapcsolódó alapinfókat.",
         "blocks": [
           {
             "heading": "Heti menetrend",
             "items": [
               "Twitch ütemezés alapján később automatikusan is megoldható.",
-              "Addig kézzel szerkeszthető szövegként vagy JSON-ból működik."
+              "Addig kézzel szerkeszthető JSON-ból."
             ]
           },
           {
@@ -185,7 +185,7 @@
           {
             "heading": "Általános parancsok",
             "items": [
-              "!links - Cherry link gyűjtő",
+              "!links - Cherry Carrd / link gyűjtő",
               "!dc - Discord meghívó",
               "!yt - YouTube",
               "!tiktok - TikTok",
@@ -233,7 +233,7 @@
         ]
       ],
       "details": {
-        "text": "A sub közvetlen támogatás Cherrynek, és több rendszerben is szerepet kaphat, például Bunny Pass szintekben.",
+        "text": "A sub közvetlen támogatás Cherrynek, és több rendszerben is szerepet kaphat.",
         "blocks": [
           {
             "heading": "Sub előnyök",
@@ -325,7 +325,7 @@
         ]
       ],
       "details": {
-        "text": "A Csavar egy közösségi valuta / pont rendszer, amit különböző interakciókra lehet használni.",
+        "text": "A Csavar egy közösségi valuta / pont rendszer.",
         "blocks": [
           {
             "heading": "Csavarok szerzése",
@@ -429,7 +429,7 @@
         ]
       ],
       "details": {
-        "text": "A Bunny Pass egy battle passhoz hasonló progression rendszer, ami a közösségnek és Cherrynek is élményt ad.",
+        "text": "A Bunny Pass egy battle passhoz hasonló progression rendszer.",
         "blocks": [
           {
             "heading": "Hogyan működik?",
