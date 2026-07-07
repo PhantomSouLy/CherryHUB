@@ -1,19 +1,24 @@
 # CherryHUB
 
-Statikus GitHub Pages oldal Cherry stream információkhoz.
+Statikus, GitHub Pages kompatibilis CherryHUB oldal.
+
+## Fájlok
+- `index.html` – oldal váza
+- `style.css` – kinézet
+- `script.js` – dinamikus betöltés, virágmenü, modalok
+- `data/content.json` – szinte minden szöveg, link, kártya és részletes leírás itt szerkeszthető
 
 ## Feltöltés GitHubra
+A ZIP-et csomagold ki, majd a fájlokat tedd a repository gyökerébe:
 
-A repository gyökerébe tedd ezeket:
-
-- index.html
-- style.css
-- script.js
+```text
+CherryHUB/
+├─ index.html
+├─ style.css
+├─ script.js
+└─ data/
+   └─ content.json
+```
 
 GitHub Pages:
 Settings → Pages → Deploy from branch → main → /(root)
-
-## Szerkesztés
-
-A linkeket az `index.html` alján és a gomboknál tudod cserélni.
-A lebegő információs kártya szövegeit a `script.js` fájlban tudod módosítani.

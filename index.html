@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#15061f" />
   <title>CherryHUB</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="petals-bg"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="petal-noise" aria-hidden="true"></div>
 
   <header class="topbar">
-    <a class="brand" href="#home"><span class="brand-icon">✿</span><span>CherryHUB</span></a>
-    <nav class="nav">
-      <a href="#home">Főoldal</a><a href="#stream">Stream</a><a href="#commands">Parancsok</a><a href="#sub">Sub</a><a href="#gacha">Twitch Gacha</a><a href="#points">Csatornapontok</a><a href="#tits">TITS</a><a href="#pass">Bunny Pass</a><a href="#music">Cherry Zenéi</a><a href="#vtuber">VTuber</a>
-    </nav>
+    <a class="brand" href="#home" aria-label="CherryHUB főoldal"><span class="brand-icon">✿</span><span>CherryHUB</span></a>
+    <button class="menu-toggle" type="button" aria-label="Menü megnyitása">☰</button>
+    <nav class="nav" id="mainNav" aria-label="Fő navigáció"></nav>
     <a class="contact-btn" href="#links">Kapcsolat</a>
   </header>
 
@@ -23,58 +23,41 @@
     <section class="hero-copy">
       <p class="eyebrow">Üdv a</p>
       <h1>CherryHUB<span>✿</span></h1>
-      <p class="lead">Minden fontos infó Cherry streamjeiről egy helyen: parancsok, sub előnyök, Twitch Gacha, csatornapontok, TITS, Bunny Pass, zenék és VTuber cuccok.</p>
-      <div class="hero-actions">
-        <a class="primary" href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Nézd élőben!</a>
-        <a class="secondary" href="#links">Közösségi linkek</a>
-      </div>
+      <p class="lead" id="heroLead">Minden fontos infó Cherry streamjeiről egy helyen.</p>
+      <div class="hero-actions" id="heroActions"></div>
       <p class="thanks">❤ Köszönöm, hogy részese vagy a közösségnek! 🐰</p>
     </section>
 
-    <section class="flower-wrap" aria-label="CherryHUB főmenü">
-      <div class="flower">
-        <button class="petal p1 active" data-card="stream"><span class="icon">▷</span><strong>Stream</strong><small>Menetrend, VOD, játékok</small></button>
-        <button class="petal p2" data-card="commands"><span class="icon">&gt;_</span><strong>Parancsok</strong><small>Chat, bot, infók</small></button>
-        <button class="petal p3" data-card="gacha"><span class="icon">◇</span><strong>Twitch Gacha</strong><small>Rövid infó + link</small></button>
-        <button class="petal p4" data-card="points"><span class="icon">Ⓟ</span><strong>Csatornapontok</strong><small>Jutalmak és árak</small></button>
-        <button class="petal p5" data-card="pass"><span class="icon">🐰</span><strong>Bunny Pass</strong><small>Mi ez + link</small></button>
-        <button class="petal p6" data-card="music"><span class="icon">♪</span><strong>Cherry Zenéi</strong><small>Stream zenei lista</small></button>
-        <button class="petal p7" data-card="tits"><span class="icon">●</span><strong>TITS</strong><small>Dobható tárgyak</small></button>
-        <button class="petal p8" data-card="sub"><span class="icon">◆</span><strong>Sub</strong><small>Előnyök</small></button>
-        <div class="core"><span>Cherry</span><strong>HUB</strong></div>
-      </div>
-    </section>
+    <section class="flower-wrap" aria-label="CherryHUB virág menü"><div class="flower" id="flowerMenu"></div></section>
 
-    <aside class="info-card" id="floatingCard">
-      <button class="close-card" aria-label="Bezárás">×</button>
+    <aside class="info-card" id="floatingCard" aria-live="polite">
+      <button class="close-card" type="button" aria-label="Információs kártya elrejtése">×</button>
       <div class="card-kicker">✿ Stream</div>
-      <h2>Minden a streamekről egy helyen!</h2>
-      <p>Menetrend, játékok, VOD archívum és kiemelt pillanatok.</p>
-      <ul><li><b>Menetrend</b><span>Mikor lesz élő adás?</span></li><li><b>Játékok</b><span>Mikkel játszik Cherry?</span></li><li><b>VOD / klipek</b><span>Visszanézhető tartalmak.</span></li></ul>
+      <h2>Betöltés...</h2>
+      <p>Kis türelmet.</p>
+      <ul></ul>
       <a class="card-link" href="#stream">Részletek megnyitása →</a>
     </aside>
   </main>
 
-  <section class="news-strip">
-    <article><b>Aktuális hírek</b><span>Friss stream infók és bejelentések.</span></article>
-    <article><b>Bunny Pass frissítés</b><span>Új jutalmak és szintek érkezhetnek.</span></article>
-    <article><b>TITS frissítés</b><span>Dobható tárgyak, árak és cooldownok.</span></article>
-    <article><b>Cherry Zenéi</b><span>Stream alatt használt vagy Cherryhez kapcsolódó zenék.</span></article>
-  </section>
+  <section class="social-strip" id="socialStrip" aria-label="Közösségi linkek"></section>
+  <section class="news-strip" id="newsStrip" aria-label="Gyors hírek"></section>
+  <section class="cards" id="cardsGrid" aria-label="CherryHUB témák"></section>
+  <section class="wide-sections" id="wideSections" aria-label="Kiemelt szekciók"></section>
+  <section id="links" class="links"></section>
 
-  <section class="cards">
-    <article id="stream" class="section-card"><div class="big-icon">▷</div><h2>Stream</h2><p>Menetrend, stream szabályok, játékok, VOD-ok és highlightok.</p><ul><li>Heti menetrend</li><li>Stream szabályok</li><li>VOD és klipek</li></ul></article>
-    <article id="commands" class="section-card"><div class="big-icon">&gt;_</div><h2>Parancsok</h2><p>Minden fontos Twitch chat parancs egy helyen.</p><ul><li>Általános parancsok</li><li>Szórakoztató parancsok</li><li>Moderátor parancsok</li></ul></article>
-    <article id="sub" class="section-card"><div class="big-icon">◆</div><h2>Sub előnyök</h2><p>Mit ad a támogatás, milyen extrák vannak, és miért jó subnak lenni.</p><ul><li>Tier 1 / Tier 2 / Tier 3</li><li>Emote-ok</li><li>Sub badge-ek</li></ul></article>
-    <article id="gacha" class="section-card"><div class="big-icon">◇</div><h2>Twitch Gacha</h2><p>Rövid infó a GaCherry/Twitch Gacha rendszerről. A részletes oldal külön nyílik.</p><a href="#" class="mini-btn">GaCherry oldal megnyitása</a></article>
-    <article id="points" class="section-card"><div class="big-icon">Ⓟ</div><h2>Csatornapontok</h2><p>Mire költhetők, hogyan működnek, milyen cooldownok vannak.</p><ul><li>Jutalom lista</li><li>Árak</li><li>Cooldownok</li></ul></article>
-    <article id="tits" class="section-card"><div class="big-icon">●</div><h2>TITS</h2><p>Twitch Integrated Throwing System: dobható tárgyak Cherryre.</p><ul><li>Dobható tárgyak</li><li>Árak</li><li>Példák és tippek</li></ul></article>
-    <article id="pass" class="section-card"><div class="big-icon">🐰</div><h2>Bunny Pass</h2><p>Mi az a Bunny Pass, mire való, és hol lehet megnézni a részletes passt.</p><a href="#" class="mini-btn">Bunny Pass megnyitása</a></article>
-    <article id="music" class="section-card"><div class="big-icon">♪</div><h2>Cherry Zenéi</h2><p>Cherryhez kapcsolódó zenék, stream alatt használt hangulatzenék és playlist linkek.</p><ul><li>Stream playlist</li><li>Cherry theme</li><li>Ajánlott zenék</li></ul></article>
-    <article id="vtuber" class="section-card"><div class="big-icon">♡</div><h2>VTuber</h2><p>Cherry karaktere, modellje, outfitjei és streamen használt VTuber cuccok.</p><ul><li>Cherry lore</li><li>Modell és outfit</li><li>Kiegészítők</li></ul></article>
-  </section>
-
-  <section id="links" class="links"><h2>Közösségi linkek</h2><div><a href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Twitch</a><a href="#">Discord</a><a href="#">YouTube</a><a href="#">TikTok</a><a href="https://github.com/PhantomSouLy" target="_blank" rel="noreferrer">GitHub</a></div></section>
   <footer>© 2026 CherryHUB • Készült szeretettel Cherry közösségének 💕</footer>
+
+  <div class="modal" id="infoModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-panel">
+      <button class="modal-close" type="button" data-close-modal aria-label="Ablak bezárása">×</button>
+      <div class="modal-kicker" id="modalKicker"></div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+      <div class="modal-content" id="modalContent"></div>
+      <div class="modal-actions" id="modalActions"></div>
+    </article>
+  </div>
 </body>
 </html>
