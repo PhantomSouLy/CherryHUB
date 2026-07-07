@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,10 +13,18 @@
   <div class="petal-noise" aria-hidden="true"></div>
 
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="CherryHUB főoldal"><span class="brand-icon">✿</span><span>CherryHUB</span></a>
-    <button class="menu-toggle" type="button" aria-label="Menü megnyitása">☰</button>
+    <a class="brand" href="#home" aria-label="CherryHUB főoldal">
+      <span class="brand-icon">✿</span>
+      <span>CherryHUB</span>
+    </a>
+
+    <div class="top-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Téma váltása">☾</button>
+      <button class="menu-toggle" type="button" aria-label="Menü megnyitása">☰</button>
+      <a class="contact-btn" href="#links">Kapcsolat</a>
+    </div>
+
     <nav class="nav" id="mainNav" aria-label="Fő navigáció"></nav>
-    <a class="contact-btn" href="#links">Kapcsolat</a>
   </header>
 
   <main id="home" class="hero">
@@ -28,7 +36,9 @@
       <p class="thanks">❤ Köszönöm, hogy részese vagy a közösségnek! 🐰</p>
     </section>
 
-    <section class="flower-wrap" aria-label="CherryHUB virág menü"><div class="flower" id="flowerMenu"></div></section>
+    <section class="flower-wrap" aria-label="CherryHUB virág menü">
+      <div class="flower" id="flowerMenu"></div>
+    </section>
 
     <aside class="info-card" id="floatingCard" aria-live="polite">
       <button class="close-card" type="button" aria-label="Információs kártya elrejtése">×</button>
