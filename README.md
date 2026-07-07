@@ -1,26 +1,19 @@
-# Cherry HUB
+# CherryHUB
 
-Statikus Cherry HUB információs oldal Twitch infókhoz.
+Statikus GitHub Pages oldal Cherry stream információkhoz.
 
-## Tartalom
-- Stream infók
-- Parancsok
-- Sub előnyök
-- Twitch Gacha rövid bemutató
-- Csatornapontok
-- TITS
-- Bunny Pass
-- Cherry Zenéi
-- VTuber infók
-- Közösségi linkek
+## Feltöltés GitHubra
 
-## GitHub Pages használat
-1. Töltsd fel a fájlokat egy GitHub repositoryba.
-2. Repository Settings → Pages.
-3. Source: Deploy from a branch.
-4. Branch: main / root.
-5. Mentsd el, pár perc múlva működik az oldal.
+A repository gyökerébe tedd ezeket:
+
+- index.html
+- style.css
+- script.js
+
+GitHub Pages:
+Settings → Pages → Deploy from branch → main → /(root)
 
 ## Szerkesztés
-Az `index.html` fájlban cseréld ki a `#` linkeket a valódi oldalakra.
-A színek és kinézet a `style.css` fájlban módosítható.
+
+A linkeket az `index.html` alján és a gomboknál tudod cserélni.
+A lebegő információs kártya szövegeit a `script.js` fájlban tudod módosítani.

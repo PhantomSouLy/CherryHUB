@@ -3,102 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cherry HUB</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>CherryHUB</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="page-bg"></div>
+  <div class="bg-grid"></div>
+  <div class="petals-bg"></div>
+
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="Cherry HUB főoldal"><span class="brand-icon">✿</span><span>CherryHUB</span></a>
-    <nav class="nav-links" aria-label="Fő navigáció">
-      <a href="#home">Főoldal</a>
-      <a href="#stream">Stream</a>
-      <a href="#commands">Parancsok</a>
-      <a href="#sub">Sub</a>
-      <a href="#gacha">Twitch Gacha</a>
-      <a href="#points">Csatornapontok</a>
-      <a href="#tits">TITS</a>
-      <a href="#bunnypass">Bunny Pass</a>
-      <a href="#music">Cherry Zenéi</a>
-      <a href="#vtuber">VTuber</a>
+    <a class="brand" href="#home"><span class="brand-icon">✿</span><span>CherryHUB</span></a>
+    <nav class="nav">
+      <a href="#home">Főoldal</a><a href="#stream">Stream</a><a href="#commands">Parancsok</a><a href="#sub">Sub</a><a href="#gacha">Twitch Gacha</a><a href="#points">Csatornapontok</a><a href="#tits">TITS</a><a href="#pass">Bunny Pass</a><a href="#music">Cherry Zenéi</a><a href="#vtuber">VTuber</a>
     </nav>
     <a class="contact-btn" href="#links">Kapcsolat</a>
   </header>
 
-  <main>
-    <section id="home" class="hero section">
-      <div class="hero-copy">
-        <p class="eyebrow">Üdv a</p>
-        <h1>CherryHUB<span>✿</span></h1>
-        <p class="hero-text">Minden fontos infó Cherry streamjeiről egy helyen: parancsok, sub előnyök, Twitch Gacha, csatornapontok, TITS, Bunny Pass, zenék és VTuber cuccok.</p>
-        <div class="hero-actions">
-          <a class="primary-btn" href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Nézd élőben!</a>
-          <a class="secondary-btn" href="#links">Közösségi linkek</a>
-        </div>
-        <p class="mini-note">❤ Köszönöm, hogy részese vagy a közösségnek! 🐰</p>
+  <main id="home" class="hero">
+    <section class="hero-copy">
+      <p class="eyebrow">Üdv a</p>
+      <h1>CherryHUB<span>✿</span></h1>
+      <p class="lead">Minden fontos infó Cherry streamjeiről egy helyen: parancsok, sub előnyök, Twitch Gacha, csatornapontok, TITS, Bunny Pass, zenék és VTuber cuccok.</p>
+      <div class="hero-actions">
+        <a class="primary" href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Nézd élőben!</a>
+        <a class="secondary" href="#links">Közösségi linkek</a>
       </div>
+      <p class="thanks">❤ Köszönöm, hogy részese vagy a közösségnek! 🐰</p>
+    </section>
 
-      <div class="flower-menu" aria-label="Cherry HUB virág menü">
-        <button class="petal petal-1" data-target="stream"><span>▻</span><b>Stream</b></button>
-        <button class="petal petal-2" data-target="commands"><span>&gt;_</span><b>Parancsok</b></button>
-        <button class="petal petal-3" data-target="sub"><span>◆</span><b>Sub</b></button>
-        <button class="petal petal-4" data-target="gacha"><span>▱</span><b>Twitch Gacha</b></button>
-        <button class="petal petal-5" data-target="points"><span>Ⓟ</span><b>Csatornapontok</b></button>
-        <button class="petal petal-6" data-target="tits"><span>●</span><b>TITS</b></button>
-        <button class="petal petal-7" data-target="bunnypass"><span>🐰</span><b>Bunny Pass</b></button>
-        <button class="petal petal-8" data-target="music"><span>♪</span><b>Cherry Zenéi</b></button>
-        <button class="petal petal-9" data-target="vtuber"><span>♡</span><b>VTuber</b></button>
-        <div class="flower-core"><span>Cherry</span><strong>HUB</strong></div>
+    <section class="flower-wrap" aria-label="CherryHUB főmenü">
+      <div class="flower">
+        <button class="petal p1 active" data-card="stream"><span class="icon">▷</span><strong>Stream</strong><small>Menetrend, VOD, játékok</small></button>
+        <button class="petal p2" data-card="commands"><span class="icon">&gt;_</span><strong>Parancsok</strong><small>Chat, bot, infók</small></button>
+        <button class="petal p3" data-card="gacha"><span class="icon">◇</span><strong>Twitch Gacha</strong><small>Rövid infó + link</small></button>
+        <button class="petal p4" data-card="points"><span class="icon">Ⓟ</span><strong>Csatornapontok</strong><small>Jutalmak és árak</small></button>
+        <button class="petal p5" data-card="pass"><span class="icon">🐰</span><strong>Bunny Pass</strong><small>Mi ez + link</small></button>
+        <button class="petal p6" data-card="music"><span class="icon">♪</span><strong>Cherry Zenéi</strong><small>Stream zenei lista</small></button>
+        <button class="petal p7" data-card="tits"><span class="icon">●</span><strong>TITS</strong><small>Dobható tárgyak</small></button>
+        <button class="petal p8" data-card="sub"><span class="icon">◆</span><strong>Sub</strong><small>Előnyök</small></button>
+        <div class="core"><span>Cherry</span><strong>HUB</strong></div>
       </div>
-
-      <aside class="next-stream card-glass">
-        <button class="close-card" aria-label="bezárás">×</button>
-        <h3>Következő stream</h3>
-        <p class="date">Péntek</p>
-        <strong>18:00</strong>
-        <p>Játék: Wuthering Waves / közösségi program</p>
-        <a href="#schedule">Menetrend megtekintése</a>
-      </aside>
     </section>
 
-    <section class="news-strip" aria-label="Aktuális hírek">
-      <article><b>Aktuális hírek</b><span>Friss stream infók és bejelentések.</span></article>
-      <article><b>Bunny Pass frissítés</b><span>Új jutalmak és szintek érkezhetnek.</span></article>
-      <article><b>TITS frissítés</b><span>Dobható tárgyak, árak és cooldownok.</span></article>
-      <article><b>Cherry Zenéi</b><span>Stream alatt használt vagy Cherryhez kapcsolódó zenék.</span></article>
-    </section>
-
-    <section class="grid section" id="info-cards">
-      <article id="stream" class="info-card stream"><div class="icon">▻</div><h2>Stream</h2><p>Menetrend, szabályok, gyakori játékok és minden fontos infó az élőkről.</p><ul><li>Menetrend</li><li>Stream szabályok</li><li>Gyakran játszott játékok</li><li>VOD és highlight infók</li></ul><a href="#schedule">Többet róla</a></article>
-      <article id="commands" class="info-card commands"><div class="icon">&gt;_</div><h2>Parancsok</h2><p>Minden elérhető Twitch chat parancs egy helyen, kategóriákra bontva.</p><ul><li>Általános parancsok</li><li>Szórakoztató parancsok</li><li>Információs parancsok</li><li>Mod / VIP parancsok</li></ul><a href="#commands-list">Parancslista</a></article>
-      <article id="sub" class="info-card sub"><div class="icon">◆</div><h2>Sub előnyök</h2><p>Támogasd a csatornát és élvezd az exkluzív sub előnyöket.</p><ul><li>Tier 1 / 2 / 3</li><li>Sub badge-ek</li><li>Emote-ok</li><li>Sub only extrák</li></ul><a href="https://www.twitch.tv/happycherrychan/subscribe" target="_blank" rel="noreferrer">Sub oldal</a></article>
-      <article id="gacha" class="info-card gacha"><div class="icon">▱</div><h2>Twitch Gacha</h2><p>Rövid bemutató arról, hogyan működik a Cherry stream gacha rendszere.</p><ul><li>Mi ez?</li><li>Rarity-k és eventek</li><li>Hogyan kapcsolódik Twitchhez?</li><li>Link a teljes GaCherry oldalhoz</li></ul><a href="#">GaCherry oldal linkje</a></article>
-      <article id="points" class="info-card points"><div class="icon">Ⓟ</div><h2>Csatornapontok</h2><p>Gyűjts pontokat és váltsd be őket menő jutalmakra.</p><ul><li>Pontszerzés módjai</li><li>Jutalom lista</li><li>Árak</li><li>Cooldown információk</li></ul><a href="#points-list">Pont jutalmak</a></article>
-      <article id="tits" class="info-card tits"><div class="icon">●</div><h2>TITS</h2><p>Twitch Integrated Throwing System: dobálható tárgyak Cherryre a stream alatt.</p><ul><li>Hogyan működik?</li><li>Dobható tárgyak</li><li>Árak és cooldownok</li><li>Példák és tippek</li></ul><a href="#tits-list">TITS infók</a></article>
-      <article id="bunnypass" class="info-card bunny"><div class="icon">🐰</div><h2>Bunny Pass</h2><p>A közösségi pass rövid magyarázata, jutalmak és link a külön Bunny Pass oldalra.</p><ul><li>Mi az a Bunny Pass?</li><li>Hogyan halad?</li><li>Jutalom példák</li><li>Külön oldal linkje</li></ul><a href="#">Bunny Pass linkje</a></article>
-      <article id="music" class="info-card music"><div class="icon">♪</div><h2>Cherry Zenéi</h2><p>Cherryhez kapcsolódó zenék, stream playlist, intro/outro és hangulati dalok.</p><ul><li>Stream playlist</li><li>Intro / outro zenék</li><li>Cherry dalok</li><li>YouTube / Spotify linkek</li></ul><a href="#music-section">Zenék megnyitása</a></article>
-      <article id="vtuber" class="info-card vtuber"><div class="icon">♡</div><h2>VTuber</h2><p>Ismerd meg Cherry karakterét, modelljét és lore-ját.</p><ul><li>Cherry lore</li><li>Modell és outfit infók</li><li>Kiegészítők</li><li>Kulisszatitkok</li></ul><a href="#vtuber-section">VTuber infók</a></article>
-    </section>
-
-    <section id="schedule" class="wide-section section card-glass"><h2>Menetrend</h2><p>Ide jöhet Cherry heti stream menetrendje, például péntek este, hétvégi stream vagy különleges event napok.</p><div class="placeholder-row"><span>Péntek 18:00</span><span>Szombat / vasárnap változó</span><span>Eventek külön bejelentve</span></div></section>
-
-    <section id="commands-list" class="wide-section section card-glass"><h2>Parancsok</h2><p>Ide kerülhet a teljes Twitch parancslista. Példák: <code>!discord</code>, <code>!gacha</code>, <code>!bunnypass</code>, <code>!social</code>, <code>!uptime</code>.</p></section>
-
-    <section id="points-list" class="wide-section section card-glass"><h2>Csatornapont jutalmak</h2><p>Ide írd majd a pontjutalmak nevét, árát, cooldownját és rövid magyarázatát.</p></section>
-
-    <section id="tits-list" class="wide-section section card-glass"><h2>TITS dobható tárgyak</h2><p>Ide kerülhet a dobható tárgyak listája, például kis tárgyak, vicces effektek, hangosabb reakciók és limitált event dobások.</p></section>
-
-    <section id="music-section" class="wide-section section card-glass"><h2>Cherry Zenéi</h2><p>Ide kerülhetnek Cherry stream zenéi, saját dalok, intro/outro, playlist linkek vagy hangulat szerinti csoportosítás.</p><div class="link-grid"><a href="#">YouTube playlist</a><a href="#">Spotify playlist</a><a href="#">Intro / Outro</a><a href="#">Cherry dalok</a></div></section>
-
-    <section id="vtuber-section" class="wide-section section card-glass"><h2>VTuber infók</h2><p>Rövid bemutató Cherry modelljéről, outfitjeiről, lore-járól és a streamben használt VTuber extrákról.</p></section>
-
-    <section id="links" class="community section card-glass"><h2>Közösségi linkek</h2><div class="social-links"><a href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Twitch</a><a href="#">Discord</a><a href="#">YouTube</a><a href="#">TikTok</a><a href="#">Instagram</a><a href="#">GitHub</a></div></section>
+    <aside class="info-card" id="floatingCard">
+      <button class="close-card" aria-label="Bezárás">×</button>
+      <div class="card-kicker">✿ Stream</div>
+      <h2>Minden a streamekről egy helyen!</h2>
+      <p>Menetrend, játékok, VOD archívum és kiemelt pillanatok.</p>
+      <ul><li><b>Menetrend</b><span>Mikor lesz élő adás?</span></li><li><b>Játékok</b><span>Mikkel játszik Cherry?</span></li><li><b>VOD / klipek</b><span>Visszanézhető tartalmak.</span></li></ul>
+      <a class="card-link" href="#stream">Részletek megnyitása →</a>
+    </aside>
   </main>
 
-  <footer><span>CherryHUB © 2026</span><span>Minden jog fenntartva ❤</span></footer>
-  <script src="script.js"></script>
+  <section class="news-strip">
+    <article><b>Aktuális hírek</b><span>Friss stream infók és bejelentések.</span></article>
+    <article><b>Bunny Pass frissítés</b><span>Új jutalmak és szintek érkezhetnek.</span></article>
+    <article><b>TITS frissítés</b><span>Dobható tárgyak, árak és cooldownok.</span></article>
+    <article><b>Cherry Zenéi</b><span>Stream alatt használt vagy Cherryhez kapcsolódó zenék.</span></article>
+  </section>
+
+  <section class="cards">
+    <article id="stream" class="section-card"><div class="big-icon">▷</div><h2>Stream</h2><p>Menetrend, stream szabályok, játékok, VOD-ok és highlightok.</p><ul><li>Heti menetrend</li><li>Stream szabályok</li><li>VOD és klipek</li></ul></article>
+    <article id="commands" class="section-card"><div class="big-icon">&gt;_</div><h2>Parancsok</h2><p>Minden fontos Twitch chat parancs egy helyen.</p><ul><li>Általános parancsok</li><li>Szórakoztató parancsok</li><li>Moderátor parancsok</li></ul></article>
+    <article id="sub" class="section-card"><div class="big-icon">◆</div><h2>Sub előnyök</h2><p>Mit ad a támogatás, milyen extrák vannak, és miért jó subnak lenni.</p><ul><li>Tier 1 / Tier 2 / Tier 3</li><li>Emote-ok</li><li>Sub badge-ek</li></ul></article>
+    <article id="gacha" class="section-card"><div class="big-icon">◇</div><h2>Twitch Gacha</h2><p>Rövid infó a GaCherry/Twitch Gacha rendszerről. A részletes oldal külön nyílik.</p><a href="#" class="mini-btn">GaCherry oldal megnyitása</a></article>
+    <article id="points" class="section-card"><div class="big-icon">Ⓟ</div><h2>Csatornapontok</h2><p>Mire költhetők, hogyan működnek, milyen cooldownok vannak.</p><ul><li>Jutalom lista</li><li>Árak</li><li>Cooldownok</li></ul></article>
+    <article id="tits" class="section-card"><div class="big-icon">●</div><h2>TITS</h2><p>Twitch Integrated Throwing System: dobható tárgyak Cherryre.</p><ul><li>Dobható tárgyak</li><li>Árak</li><li>Példák és tippek</li></ul></article>
+    <article id="pass" class="section-card"><div class="big-icon">🐰</div><h2>Bunny Pass</h2><p>Mi az a Bunny Pass, mire való, és hol lehet megnézni a részletes passt.</p><a href="#" class="mini-btn">Bunny Pass megnyitása</a></article>
+    <article id="music" class="section-card"><div class="big-icon">♪</div><h2>Cherry Zenéi</h2><p>Cherryhez kapcsolódó zenék, stream alatt használt hangulatzenék és playlist linkek.</p><ul><li>Stream playlist</li><li>Cherry theme</li><li>Ajánlott zenék</li></ul></article>
+    <article id="vtuber" class="section-card"><div class="big-icon">♡</div><h2>VTuber</h2><p>Cherry karaktere, modellje, outfitjei és streamen használt VTuber cuccok.</p><ul><li>Cherry lore</li><li>Modell és outfit</li><li>Kiegészítők</li></ul></article>
+  </section>
+
+  <section id="links" class="links"><h2>Közösségi linkek</h2><div><a href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Twitch</a><a href="#">Discord</a><a href="#">YouTube</a><a href="#">TikTok</a><a href="https://github.com/PhantomSouLy" target="_blank" rel="noreferrer">GitHub</a></div></section>
+  <footer>© 2026 CherryHUB • Készült szeretettel Cherry közösségének 💕</footer>
 </body>
 </html>
