@@ -1,2 +1,0 @@
-# CherryHUB
-HappyCherryChan HUB
