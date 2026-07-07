@@ -8,6 +8,11 @@
         "style": "primary"
       },
       {
+        "label": "Discord szerver",
+        "url": "https://discord.gg/A8qZjkaFCy",
+        "style": "secondary"
+      },
+      {
         "label": "Közösségi linkek",
         "url": "#links",
         "style": "secondary"
@@ -20,6 +25,12 @@
       "handle": "twitch.tv/happycherrychan",
       "url": "https://www.twitch.tv/happycherrychan",
       "icon": "https://cdn.simpleicons.org/twitch/ffffff"
+    },
+    {
+      "name": "Discord",
+      "handle": "discord.gg/A8qZjkaFCy",
+      "url": "https://discord.gg/A8qZjkaFCy",
+      "icon": "https://cdn.simpleicons.org/discord/ffffff"
     },
     {
       "name": "TikTok",
@@ -648,7 +659,7 @@
         "buttons": [
           {
             "label": "Discord megnyitása",
-            "url": "#"
+            "url": "https://discord.gg/A8qZjkaFCy"
           }
         ]
       }
