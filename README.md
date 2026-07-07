@@ -1,25 +1,12 @@
-# CherryHUB v3 ready base
+# CherryHUB v3.1 fixes
 
-Kész alapverzió GitHub Pageshez.
+Változások:
+- Virág szirmok már nem görgetnek és nem nyitnak modalt, csak a lebegő infó panelt váltják.
+- A lebegő panel „Részletek megnyitása” gombja nyitja a részletes ablakot.
+- A felső menü továbbra is odagörget + megnyitja az adott részleteket.
+- Hero gombokhoz bekerült a Discord szerver.
+- Social sorhoz bekerült Discord.
+- Dark/Light mode gombon már szöveg van: Dark mód / Light mód.
 
-## Újdonságok
-
-- Mobil social sor vízszintesen görgethető
-- Social sor két oldalán fade effekt
-- Dark / Light mode
-- Stream modal fülekkel
-  - alapból Menetrend
-  - második fül Információ
-- Felső menü kattintásra odagörget + megnyitja a részletes ablakot
-- Virág szirom kattintásra odagörget + megnyitja a részletes ablakot
-- A legtöbb tartalom a `data/content.json` fájlban van
-
-## Feltöltés GitHubra
-
-A ZIP-et csomagold ki, majd ezeket töltsd fel a repo gyökerébe:
-
-- index.html
-- style.css
-- script.js
+Tartalom szerkesztése:
 - data/content.json
-- README.md
