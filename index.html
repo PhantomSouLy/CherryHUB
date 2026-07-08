@@ -1,1 +1,88 @@
-<!DOCTYPE html><html lang="hu" data-theme="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="theme-color" content="#15061f"><title>CherryHUB</title><link rel="icon" type="image/png" href="./assets/profileico.png?v=3"><link rel="apple-touch-icon" href="./assets/profileico.png?v=3"><link rel="stylesheet" href="style.css"><script defer src="script.js"></script></head><body class="is-loading"><div class="bg-grid"></div><div class="petal-noise"></div><div class="soft-float-layer" id="softFloatLayer"></div><header class="topbar"><a class="brand" href="#home"><span class="brand-icon-wrap"><img src="./assets/profileico.png" alt="CherryHUB"></span><span>CherryHUB</span></a><nav class="nav" id="mainNav"></nav><div class="top-actions"><button class="theme-toggle" id="themeToggle" type="button">🌙 Dark mode</button><button class="menu-toggle" type="button">☰</button><a class="contact-btn" href="#links">Kapcsolat</a></div></header><main id="home" class="hero"><section class="hero-copy"><p class="eyebrow"></p><h1>CherryHUB<span>✿</span></h1><p class="lead" id="heroLead">Minden fontos infót megtalálsz Cherryről egy helyen.</p><div class="hero-actions" id="heroActions"></div><section class="live-panel" id="livePanel"><div class="live-status offline" id="liveStatusDot">●</div><div class="live-main"><strong id="liveStatusText">Cherry státusz betöltése...</strong><span id="liveSubText">Következő stream keresése...</span></div><a class="live-link" href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Twitch megnyitása</a></section><p class="thanks">❤ Köszönöm, hogy részese vagy a közösségnek! 🐰</p></section><section class="flower-wrap"><div class="flower" id="flowerMenu"></div></section><aside class="info-card" id="floatingCard"><button class="close-card" type="button">×</button><div class="card-kicker">✿ Stream</div><h2>Betöltés...</h2><p>Kis türelmet.</p><ul></ul><a class="card-link" href="#stream">Részletek megnyitása →</a></aside></main><section class="social-strip-wrap"><section class="social-strip" id="socialStrip"></section></section><div class="section-divider news-divider"><span>Rövid hírek</span></div><section class="news-strip" id="newsStrip"></section><section class="featured-panels" id="featuredPanels"></section><section class="cards" id="cardsGrid"></section><section class="wide-sections" id="wideSections"></section><section id="links" class="links"></section><footer>© 2026 CherryHUB • Készült szeretettel Cherry közösségének. 💕 | Created by SouLy</footer><div class="modal" id="infoModal"><div class="modal-backdrop" data-close-modal></div><article class="modal-panel"><button class="modal-close" type="button" data-close-modal>×</button><div class="modal-kicker" id="modalKicker"></div><h2 id="modalTitle"></h2><p id="modalText"></p><div class="modal-content" id="modalContent"></div><div class="modal-actions" id="modalActions"></div></article></div></body></html>
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#15061f" />
+  <title>CherryHUB</title>
+  <link rel="icon" type="image/png" href="./assets/profileico.png?v=4" />
+  <link rel="apple-touch-icon" href="./assets/profileico.png?v=4" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="is-loading">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="petal-noise" aria-hidden="true"></div>
+  <div class="soft-float-layer" id="softFloatLayer" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="CherryHUB főoldal">
+      <span class="brand-icon-wrap"><img src="./assets/profileico.png?v=4" alt="CherryHUB" /></span>
+      <span>CherryHUB</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Fő navigáció"></nav>
+
+    <div class="top-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Téma váltása">🌙 Dark mode</button>
+      <button class="menu-toggle" type="button" aria-label="Menü megnyitása">☰</button>
+      <a class="contact-btn" href="#links">Kapcsolat</a>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <section class="hero-copy">
+      <p class="eyebrow"></p>
+      <h1>CherryHUB<span>✿</span></h1>
+      <p class="lead" id="heroLead">Minden fontos infót megtalálsz Cherryről egy helyen.</p>
+      <div class="hero-actions" id="heroActions"></div>
+
+      <section class="live-panel" id="livePanel" aria-live="polite">
+        <div class="live-status offline" id="liveStatusDot">●</div>
+        <div class="live-main">
+          <strong id="liveStatusText">Cherry státusz betöltése...</strong>
+          <span id="liveSubText">Következő stream keresése...</span>
+        </div>
+        <a class="live-link" href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Twitch megnyitása</a>
+      </section>
+
+      <p class="thanks">❤ Köszönöm, hogy részese vagy a közösségnek! 🐰</p>
+    </section>
+
+    <section class="flower-wrap" aria-label="CherryHUB virág menü">
+      <div class="flower" id="flowerMenu"></div>
+    </section>
+
+    <aside class="info-card" id="floatingCard" aria-live="polite">
+      <button class="close-card" type="button" aria-label="Információs kártya elrejtése">×</button>
+      <div class="card-kicker">✿ Stream</div>
+      <h2>Betöltés...</h2>
+      <p>Kis türelmet.</p>
+      <ul></ul>
+      <a class="card-link" href="#stream">Részletek megnyitása →</a>
+    </aside>
+  </main>
+
+  <section class="social-strip-wrap" aria-label="Közösségi linkek"><section class="social-strip" id="socialStrip"></section></section>
+  <div class="section-divider news-divider"><span>Rövid hírek</span></div>
+  <section class="news-strip" id="newsStrip" aria-label="Gyors hírek"></section>
+  <section class="featured-panels" id="featuredPanels" aria-label="Kiemelt Cherry tartalmak"></section>
+  <section class="cards" id="cardsGrid" aria-label="CherryHUB témák"></section>
+  <section class="wide-sections" id="wideSections" aria-label="Kiemelt szekciók"></section>
+  <section id="links" class="links"></section>
+
+  <footer>© 2026 CherryHUB • Készült szeretettel Cherry közösségének. 💕 | Created by SouLy</footer>
+
+  <div class="modal" id="infoModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-panel">
+      <button class="modal-close" type="button" data-close-modal aria-label="Ablak bezárása">×</button>
+      <div class="modal-kicker" id="modalKicker"></div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+      <div class="modal-content" id="modalContent"></div>
+      <div class="modal-actions" id="modalActions"></div>
+    </article>
+  </div>
+</body>
+</html>

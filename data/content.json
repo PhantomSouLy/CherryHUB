@@ -1,6 +1,6 @@
 {
   "hero": {
-    "lead": "Minden fontos infót megtalálsz Cherryről egy helyen.",
+    "lead": "Minden fontos infó Cherry streamjeiről egy helyen: parancsok, sub előnyök, Twitch Gacha, csatornapontok, TITS, Bunny Pass, zenék, közösség és támogatás.",
     "actions": [
       {
         "label": "📅 Menetrend",
@@ -69,7 +69,7 @@
       "open": "commands"
     },
     {
-      "label": "Sub előnyök",
+      "label": "Sub",
       "target": "#sub",
       "open": "sub"
     },
@@ -79,7 +79,7 @@
       "open": "gacha"
     },
     {
-      "label": "Csatornapontok / Csavarok",
+      "label": "Csatornapontok",
       "target": "#points",
       "open": "points"
     },
@@ -97,11 +97,6 @@
       "label": "Cherry Zenéi",
       "target": "#music",
       "open": "music"
-    },
-    {
-      "label": "VTuber",
-      "target": "#vtuber",
-      "open": "vtuber"
     },
     {
       "label": "Közösség",
@@ -134,7 +129,7 @@
     },
     {
       "title": "Menetrend",
-      "text": "Automatikus Twitch menetrend, kézi tartalékkal."
+      "text": "Automatikus Twitch menetrend."
     },
     {
       "title": "Cherry Zenéi",
@@ -222,12 +217,16 @@
       "icon": "▷",
       "title": "Stream",
       "short": "Menetrend, játékok, szabályok, VOD-ok és klipek.",
-      "floatingTitle": "Stream",
-      "floatingText": "Menetrend, játékok, szabályok, VOD-ok és klipek.",
+      "floatingTitle": "Stream központ",
+      "floatingText": "Menetrend és stream infók egy helyen.",
       "floatingItems": [
         [
-          "Stream",
-          "Menetrend, játékok, szabályok, VOD-ok és klipek."
+          "Menetrend",
+          "Twitch heti menetrend."
+        ],
+        [
+          "Információ",
+          "Játékok, VOD-ok, klipek és szabályok."
         ]
       ],
       "details": {
@@ -290,6 +289,12 @@
                   "Közösségi estek",
                   "VOD-ok és klipek"
                 ]
+              },
+              {
+                "heading": "Hasznos",
+                "items": [
+                  "Heti menetrendet itt megtalálod mindig."
+                ]
               }
             ]
           }
@@ -301,12 +306,20 @@
       "icon": ">_",
       "title": "Parancsok",
       "short": "Twitch chat parancsok röviden, kategóriákba szedve.",
-      "floatingTitle": "Parancsok",
-      "floatingText": "Twitch chat parancsok röviden, kategóriákba szedve.",
+      "floatingTitle": "Twitch parancsok",
+      "floatingText": "Általános, fun, sub, cheer, VIP és gacha parancsok egy helyen.",
       "floatingItems": [
         [
-          "Parancsok",
-          "Twitch chat parancsok röviden, kategóriákba szedve."
+          "Általános",
+          "!links, !dc, !yt, !tiktok, !music"
+        ],
+        [
+          "Stream",
+          "!game, !stream"
+        ],
+        [
+          "Gacha",
+          "!collection, !battle, !accept"
         ]
       ],
       "details": {
@@ -315,29 +328,29 @@
           {
             "heading": "Általános parancsok",
             "items": [
-              "!web",
-              "!links",
-              "!dc",
-              "!yt",
-              "!tiktok",
-              "!music",
-              "!lurk / !unlurk",
-              "!bp"
+              "!web - Hivatalos honlapja Cherrynek",
+              "!links - Cherry Carrd",
+              "!dc - Discord meghívó",
+              "!yt - YouTube",
+              "!tiktok - TikTok",
+              "!music - Cherry zenéi",
+              "!lurk / !unlurk - Lurk mód",
+              "!bp - Bunny Pass linkje"
             ]
           },
           {
             "heading": "Stream parancsok",
             "items": [
-              "!game",
-              "!stream"
+              "!game - Jelenlegi játék cím kiírása",
+              "!stream - Stream cím kiírása"
             ]
           },
           {
             "heading": "Gacha parancsok",
             "items": [
-              "!collection",
-              "!battle",
-              "!accept"
+              "!collection - Kártyáid megmutatása",
+              "!battle - Harc kihívás",
+              "!accept - Aktuális kihívás elfogadása"
             ]
           }
         ]
@@ -348,21 +361,40 @@
       "icon": "◆",
       "title": "Sub előnyök",
       "short": "Sub, badge-ek, emote-ok és támogatói extrák.",
-      "floatingTitle": "Sub előnyök",
-      "floatingText": "Sub, badge-ek, emote-ok és támogatói extrák.",
+      "floatingTitle": "Sub előnyök és támogatás",
+      "floatingText": "Röviden arról, mit ad a sub és miért segíti a csatornát.",
       "floatingItems": [
         [
-          "Sub előnyök",
-          "Sub, badge-ek, emote-ok és támogatói extrák."
+          "Tier szintek",
+          "Tier 1 / Tier 2 / Tier 3."
+        ],
+        [
+          "Emote-ok",
+          "Egyedi Cherry emote-ok használata."
+        ],
+        [
+          "Bunny Pass",
+          "Subokkal fejlődik."
         ]
       ],
       "details": {
-        "text": "Sub, badge-ek, emote-ok és támogatói extrák.",
+        "text": "A sub közvetlen támogatás Cherrynek, és több rendszerben is szerepet kaphat.",
         "blocks": [
           {
-            "heading": "Infó",
+            "heading": "Sub előnyök",
             "items": [
-              "Sub, badge-ek, emote-ok és támogatói extrák."
+              "Egyedi emote-ok",
+              "Sub badge",
+              "Közösségi támogatás",
+              "Bunny Pass fejlődés",
+              "Discord egyedi role"
+            ]
+          },
+          {
+            "heading": "Fontos",
+            "items": [
+              "A pontos előnyök idővel változhatnak.",
+              "A támogatás mindig önkéntes."
             ]
           }
         ]
@@ -373,22 +405,41 @@
       "icon": "◇",
       "title": "Twitch Gacha",
       "short": "Twitch Gacha rendszerhez alap infók.",
-      "floatingTitle": "Twitch Gacha",
-      "floatingText": "Twitch Gacha rendszerhez alap infók.",
+      "floatingTitle": "Rövid infó a rendszerről",
+      "floatingText": "Ez a gacha kizárólag Cherry Twitch streamje alatt elérhető.",
       "floatingItems": [
         [
-          "Twitch Gacha",
-          "Twitch Gacha rendszerhez alap infók."
+          "Nyitás",
+          "Csatornapontból nyitható."
+        ],
+        [
+          "Season",
+          "Szezon rendszer, resetekkel."
         ]
       ],
       "details": {
-        "text": "Twitch Gacha rendszerhez alap infók.",
+        "text": "Csatornapontból nyithatsz Cherry kártyákat. A kártyákkal harcolhatsz vagy gyűjtheted őket.",
         "blocks": [
           {
-            "heading": "Infó",
+            "heading": "Alap adatok",
             "items": [
-              "Twitch Gacha rendszerhez alap infók."
+              "Nyitás ára: x",
+              "Cooldown: x perc",
+              "Season név: -",
+              "Season időtartam: 4 hónap"
             ]
+          },
+          {
+            "heading": "Fontos infók",
+            "items": [
+              "A kártyák szezononként változnak."
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "label": "Discordon a 4 és az 5 csillagos nyitott kártyákat kiírja!",
+            "url": "#"
           }
         ]
       }
@@ -399,20 +450,56 @@
       "title": "Csatornapontok / Csavarok",
       "short": "Pontok, csavarok, interakciók és dobálható tárgyak.",
       "floatingTitle": "Csatornapontok / Csavarok",
-      "floatingText": "Pontok, csavarok, interakciók és dobálható tárgyak.",
+      "floatingText": "A stream nézésével és támogatással gyűjthető interakciós rendszer.",
       "floatingItems": [
         [
-          "Csatornapontok / Csavarok",
-          "Pontok, csavarok, interakciók és dobálható tárgyak."
+          "Szerzés",
+          "Stream nézés, sub, follow, bit, Ko-fi."
+        ],
+        [
+          "Csatornapont",
+          "Interakciók és vicces effektek."
+        ],
+        [
+          "Dobálható tárgyak",
+          "TITS interakciók."
         ]
       ],
       "details": {
-        "text": "Pontok, csavarok, interakciók és dobálható tárgyak.",
+        "text": "A Csavar egy közösségi valuta / pont rendszer.",
         "blocks": [
           {
-            "heading": "Infó",
+            "heading": "Csavarok szerzése",
             "items": [
-              "Pontok, csavarok, interakciók és dobálható tárgyak."
+              "Sub nélkül stream nézés",
+              "Subbal stream nézés",
+              "Follow",
+              "Subolás",
+              "Raid",
+              "Bit",
+              "Ko-fi támogatás"
+            ]
+          },
+          {
+            "heading": "Parancsok",
+            "items": [
+              "!hydrate",
+              "!cookie",
+              "!headpatears",
+              "!csoki",
+              "!monster",
+              "!bonk",
+              "!hug",
+              "!buff",
+              "!blink",
+              "!thanksmod"
+            ]
+          },
+          {
+            "heading": "Fontos",
+            "items": [
+              "Az árak idővel változhatnak.",
+              "A teljes lista külön Discord posztban is megtalálható."
             ]
           }
         ]
@@ -423,21 +510,32 @@
       "icon": "●",
       "title": "TITS",
       "short": "Twitch Integrated Throwing System: dobható tárgyak Cherryre.",
-      "floatingTitle": "TITS",
-      "floatingText": "Twitch Integrated Throwing System: dobható tárgyak Cherryre.",
+      "floatingTitle": "Twitch Integrated Throwing System",
+      "floatingText": "Dobható tárgyak, árak, cooldownok és interakciók.",
       "floatingItems": [
         [
-          "TITS",
-          "Twitch Integrated Throwing System: dobható tárgyak Cherryre."
+          "Dobható tárgyak",
+          "Tárgyak Cherryre."
+        ],
+        [
+          "Árak",
+          "Pont / reward költségek."
+        ],
+        [
+          "Cooldown",
+          "Később részletezhető."
         ]
       ],
       "details": {
-        "text": "Twitch Integrated Throwing System: dobható tárgyak Cherryre.",
+        "text": "A TITS olyan stream interakció, ahol a nézők különböző tárgyakat dobhatnak be Cherryre.",
         "blocks": [
           {
-            "heading": "Infó",
+            "heading": "Mit tartalmaz?",
             "items": [
-              "Twitch Integrated Throwing System: dobható tárgyak Cherryre."
+              "Dobható tárgyak listája",
+              "Árak",
+              "Cooldownok",
+              "Példák és szabályok"
             ]
           }
         ]
@@ -448,22 +546,56 @@
       "icon": "🐰",
       "title": "Bunny Pass",
       "short": "Battle Pass jellegű közösségi progression Cherry csatornájához.",
-      "floatingTitle": "Bunny Pass",
-      "floatingText": "Battle Pass jellegű közösségi progression Cherry csatornájához.",
+      "floatingTitle": "Mi az a Bunny Pass?",
+      "floatingText": "Subokkal fejlődő szintrendszer, ahol minden szint után Cherry kihívást kap.",
       "floatingItems": [
         [
-          "Bunny Pass",
-          "Battle Pass jellegű közösségi progression Cherry csatornájához."
+          "Működés",
+          "15 Sub = +1 szint."
+        ],
+        [
+          "Kihívás",
+          "Minden szint után egy challenge vár."
+        ],
+        [
+          "Várólista",
+          "A feloldott kihívások később teljesülnek."
         ]
       ],
       "details": {
-        "text": "Battle Pass jellegű közösségi progression Cherry csatornájához.",
+        "text": "A Bunny Pass egy Battle Passhoz hasonló progression rendszer.",
         "blocks": [
           {
-            "heading": "Infó",
+            "heading": "Hogyan működik?",
             "items": [
-              "Battle Pass jellegű közösségi progression Cherry csatornájához."
+              "1 Sub = 1 XP",
+              "15 XP = 1 Bunny Pass Level",
+              "Gift sub is számít",
+              "Minden szint után Cherry kap egy kihívást"
             ]
+          },
+          {
+            "heading": "Kihívás típusok",
+            "items": [
+              "Sima - általános vagy community szintű",
+              "Gameplay - adott játék stream",
+              "Community Gameplay - közösségi játék",
+              "Milestone - 10 szintenként komolyabb mérföldkő"
+            ]
+          },
+          {
+            "heading": "Fontos",
+            "items": [
+              "A kihívások várólistára kerülnek.",
+              "Cherry később teljesíti őket.",
+              "A szinteket külön oldalon találod meg."
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "label": "Bunny Pass oldal",
+            "url": "#"
           }
         ]
       }
@@ -477,8 +609,8 @@
       "floatingText": "Cherry saját zenéit a YouTube csatornáján találod.",
       "floatingItems": [
         [
-          "Cherry Zenéi",
-          "Cherry saját zenéit a YouTube csatornáján találod."
+          "Cherry Zenék",
+          "Rock, Jazz, Pop, Anime Opening Theme stb..."
         ]
       ],
       "details": {
@@ -509,21 +641,39 @@
       "icon": "♡",
       "title": "VTuber",
       "short": "Cherryről, a modelljéről és a VTuber setupjáról szóló információk.",
-      "floatingTitle": "VTuber",
-      "floatingText": "Cherryről, a modelljéről és a VTuber setupjáról szóló információk.",
+      "floatingTitle": "VTuber infók",
+      "floatingText": "Cherry karaktere, modellje, outfitje.",
       "floatingItems": [
         [
-          "VTuber",
-          "Cherryről, a modelljéről és a VTuber setupjáról szóló információk."
+          "Karakter",
+          "Ki Cherry?"
+        ],
+        [
+          "Model",
+          "Outfit és kiegészítők."
+        ],
+        [
+          "Outfitek",
+          "-"
         ]
       ],
       "details": {
-        "text": "Cherryről, a modelljéről és a VTuber setupjáról szóló információk.",
+        "text": "Cherry egy magyar gamer nyuszi VTuber, aki szeret játszani, nevetni és közösséget építeni.",
         "blocks": [
           {
-            "heading": "Infó",
+            "heading": "Tartalom",
             "items": [
-              "Cherryről, a modelljéről és a VTuber setupjáról szóló információk."
+              "Cherry infók",
+              "Modell",
+              "Outfit",
+              "PC setup / VTuber setup"
+            ]
+          },
+          {
+            "heading": "Setup ötlet",
+            "items": [
+              "PC setup",
+              "VTuber app / kamera / OBS"
             ]
           }
         ]
@@ -534,28 +684,78 @@
       "icon": "👥",
       "title": "Közösség",
       "short": "Fanart beküldés, Discord, közösségi események és szabályok.",
-      "floatingTitle": "Közösség",
-      "floatingText": "Fanart beküldés, Discord, közösségi események és szabályok.",
+      "floatingTitle": "Cherry közösség",
+      "floatingText": "Fanart, Discord, közösségi események és beküldhető tartalmak.",
       "floatingItems": [
         [
-          "Közösség",
-          "Fanart beküldés, Discord, közösségi események és szabályok."
+          "Fanart",
+          "Discordra beküldhető."
+        ],
+        [
+          "Események",
+          "Közösségi programok a Discordon részletesebben."
+        ],
+        [
+          "Szabályok",
+          "Discordon elolvasható."
         ]
       ],
       "details": {
-        "text": "Fanart beküldés, Discord, közösségi események és szabályok.",
+        "text": "Közösségi rész: Pince",
         "blocks": [
           {
-            "heading": "Infó",
+            "heading": "Mit lehet beküldeni?",
             "items": [
-              "Fanart beküldés, Discord, közösségi események és szabályok."
+              "Fanart",
+              "Screenshot",
+              "Clip",
+              "Ötletek",
+              "AI tartalmak"
             ]
+          },
+          {
+            "heading": "Discord",
+            "items": [
+              "Fanart",
+              "AI art",
+              "Közösségi részleg",
+              "Szabályzat",
+              "Értesítések",
+              "GaCherry - Gacha Game",
+              "Sok minden más"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "label": "Csatlakozás Discord szerverre",
+            "url": "https://discord.gg/A8qZjkaFCy"
           }
         ]
       }
     }
   ],
   "wideSections": [
+    {
+      "id": "rankone",
+      "icon": "🏆",
+      "title": "RankOne.global",
+      "text": "Cherry játszott játékai és kívánságlistája egy helyen. Az oldalhoz Twitch bejelentkezés szükséges!",
+      "items": [
+        {
+          "title": "Játszott játékok",
+          "text": "Milyen játékokkal játszott Cherry?",
+          "button": "Megnézem",
+          "url": "#"
+        },
+        {
+          "title": "Kívánságlista",
+          "text": "Milyen játékokat szeretne Cherry?",
+          "button": "Megnézem",
+          "url": "#"
+        }
+      ]
+    },
     {
       "id": "support",
       "icon": "❤",
@@ -564,12 +764,18 @@
       "items": [
         {
           "title": "Ko-fi",
-          "text": "Egy csoki mindig jól jön!",
+          "text": "Egy csoki mindig jól jön! A támogatás önkéntes.",
           "button": "Ko-fi megnyitása",
           "url": "https://ko-fi.com/happycherrychan"
+        },
+        {
+          "title": "Throne",
+          "text": "Ajándékok és wishlist Cherrynek.",
+          "button": "Throne megnyitása",
+          "url": "#"
         }
       ],
-      "note": "A támogatás önkéntes."
+      "note": "Fontos: csak akkor támogass, ha ezt megengedheted magadnak. A támogatás önkéntes, nem visszatéríthető, és nem jár extra jogokkal."
     },
     {
       "id": "wiki",
@@ -579,9 +785,15 @@
       "items": [
         {
           "title": "Mi az a Pince?",
-          "text": "A pince az a hely, ahol Cherry uralkodik.",
+          "text": "A pince az a hely, ahol Cherry uralkodik, miközben boldogan és vígan el vannak a pincelakók.",
           "button": "Lemegyek a pincébe!",
           "url": "https://discord.gg/A8qZjkaFCy"
+        },
+        {
+          "title": "Bővül.",
+          "text": "Hamarosan...",
+          "button": "Megnézem",
+          "url": "#"
         }
       ]
     }

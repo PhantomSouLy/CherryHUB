@@ -1,0 +1,1 @@
+CherryHUB clean fixed. Fontos: a ZIP nem tartalmaz profileico.png-t és gacherry-banner.png-t. Tartsd meg a meglévő assets fájlokat, vagy másold be őket assets/profileico.png és assets/gacherry-banner.png néven.
