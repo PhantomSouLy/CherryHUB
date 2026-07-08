@@ -9,3 +9,8 @@ Javítva:
 - valid content.json
 
 A saját profileico.png fájlodat másold az assets/profileico.png helyére.
+
+
+## Hotfix
+
+Javítva: script.js syntax hiba, ami megállította az oldal betöltését.
