@@ -35,15 +35,15 @@ function renderSoftFloats() {
   const layer = $("#softFloatLayer");
   if (!layer || layer.childElementCount) return;
   const symbols = ["✿", "❤", "✦", "✧", "❀", "♡"];
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < 24; i++) {
     const el = document.createElement("span");
     el.textContent = symbols[i % symbols.length];
     el.style.left = `${Math.random() * 100}%`;
     el.style.top = `${Math.random() * 100}%`;
-    el.style.animationDuration = `${24 + Math.random() * 22}s`;
+    el.style.animationDuration = `${18 + Math.random() * 18}s`;
     el.style.animationDelay = `${Math.random() * -30}s`;
-    el.style.fontSize = `${14 + Math.random() * 18}px`;
-    el.style.opacity = `${0.045 + Math.random() * 0.055}`;
+    el.style.fontSize = `${18 + Math.random() * 24}px`;
+    el.style.opacity = `${0.10 + Math.random() * 0.10}`;
     layer.appendChild(el);
   }
 }

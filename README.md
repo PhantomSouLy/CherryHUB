@@ -48,3 +48,13 @@ Ha megvannak a konkrét videók, csak cseréld ki az URL-eket.
   - music hangjegy finom lebegés
 
 Nincs benne token, Client Secret, Bearer token vagy privát API kulcs.
+
+
+## Visible soft animation tuning
+
+Ebben a verzióban az animációk már jobban láthatók:
+- több háttérjel
+- erősebb, de még soft glow
+- CherryHUB és középső mag látványosabb lélegzése
+- gombok láthatóbb fénylése
+- GaCherry keret erősebb, de nem vakító glow
