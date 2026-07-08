@@ -551,6 +551,8 @@
               "Lagg, Crash, Bug",
               "Zombiebugi",
               "Letsgo stb"
+            ]
+          }
         ]
       }
     },
@@ -558,8 +560,7 @@
       "id": "vtuber",
       "icon": "♡",
       "title": "VTuber",
-      "short": "Cherryről információk és a modelljéről
-",
+      "short": "Cherryről információk és a modelljéről",
       "floatingTitle": "VTuber infók",
       "floatingText": "Cherry karaktere, modellje, outfitje.",
       "floatingItems": [
