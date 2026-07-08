@@ -124,16 +124,15 @@
       "text": "Megjelent a Cherry HUB!"
     },
     {
-      "title": "GaCherry",
-      "text": "Gacha panel és zenei lista egy helyen."
+      "title": "-",
+      "text": "-"
     },
     {
-      "title": "Menetrend",
-      "text": "Automatikus Twitch menetrend."
-    },
+      "title": "-",
+-    },
     {
-      "title": "Cherry Zenéi",
-      "text": "12 zene YouTube linkkel."
+      "title": "-",
+      "text": "-"
     }
   ],
   "gacherryPanel": {
