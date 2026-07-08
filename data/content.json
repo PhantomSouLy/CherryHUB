@@ -538,11 +538,11 @@
       "floatingItems": [ 
         [
           "Cherry Zenék",
-          "Rock,Jazz,Pop,Anime Opening Theme stb..."
+          "Rock, Jazz, Pop, Anime Opening Theme stb..."
         ]
       ],
       "details": {
-        "text": "Cherry sajátCherry saját zenéit a YouTube csatornáján találod.",
+        "text": "Cherry saját zenéit a YouTube csatornáján találod.",
         "blocks": [
           {
             "heading": "Zene lista",
@@ -660,7 +660,7 @@
       "id": "rankone",
       "icon": "🏆",
       "title": "RankOne.global",
-      "text": "Cherry játszott játékai és kívánságlistája egy helyen. Az oldalhoz Twitch bejelentkezés szüksége!",
+      "text": "Cherry játszott játékai és kívánságlistája egy helyen. Az oldalhoz Twitch bejelentkezés szükséges!",
       "items": [
         {
           "title": "Játszott játékok",
@@ -705,7 +705,7 @@
       "items": [
         {
           "title": "Mi az a Pince?",
-          "text": "A pince az a hely, ahol Cherry uralkodik, miközben boldogan és vígan el vannak a pince lakók.",
+          "text": "A pince az a hely, ahol Cherry uralkodik, miközben boldogan és vígan el vannak a pincelakók.",
           "button": "Lemegyek a pincébe!",
           "url": "https://discord.gg/A8qZjkaFCy"
         },
