@@ -1,6 +1,9 @@
 let hubData = null;
 const TWITCH_BROADCASTER_ID = "611526048";
 const TWITCH_SCHEDULE_ICS_URL = `https://api.twitch.tv/helix/schedule/icalendar?broadcaster_id=${TWITCH_BROADCASTER_ID}`;
+// Token nélküli, egyszerű live státusz próbálkozás.
+// Ha később saját proxy lesz, ezt az URL-t érdemes arra cserélni.
+const TWITCH_UPTIME_URL = "https://decapi.me/twitch/uptime/happycherrychan";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -38,6 +41,7 @@ function renderAll() {
 
   renderNav();
   renderHero();
+  renderLivePanel();
   renderSocials();
   renderFlower();
   renderNews();
@@ -70,6 +74,76 @@ function renderHero() {
   $("#heroLead").textContent = hubData.hero.lead;
   $("#heroActions").innerHTML = hubData.hero.actions.map(a => `<a class="${a.style}" href="${a.url}" target="${a.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${a.label}</a>`).join("");
 }
+
+
+function renderLivePanel() {
+  loadLiveStatus();
+  loadHomeSchedulePreview();
+}
+
+async function loadLiveStatus() {
+  const dot = $("#liveStatusDot");
+  const text = $("#liveStatusText");
+  const sub = $("#liveSubText");
+  if (!dot || !text || !sub) return;
+
+  try {
+    const res = await fetch(TWITCH_UPTIME_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error("Live státusz nem elérhető.");
+
+    const uptime = (await res.text()).trim();
+    const isOffline = /offline|not live|not currently live/i.test(uptime);
+
+    dot.classList.toggle("online", !isOffline);
+    dot.classList.toggle("offline", isOffline);
+
+    if (isOffline) {
+      text.textContent = "Cherry most offline";
+      // A subtextet a menetrend preview külön frissíti.
+    } else {
+      text.textContent = "Cherry most élőben van!";
+      sub.textContent = `Stream fut: ${uptime}`;
+    }
+  } catch (err) {
+    console.warn(err);
+    dot.classList.remove("online");
+    dot.classList.add("offline");
+    text.textContent = "Live státusz nem ellenőrizhető";
+    // A subtextet a menetrend preview ettől még frissítheti.
+  }
+}
+
+async function loadHomeSchedulePreview() {
+  const sub = $("#liveSubText");
+  if (!sub) return;
+
+  try {
+    const res = await fetch(TWITCH_SCHEDULE_ICS_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error("Twitch menetrend nem elérhető.");
+
+    const ics = await res.text();
+    const next = parseTwitchIcs(ics)
+      .filter(event => event.start && event.start >= new Date())
+      .sort((a, b) => a.start - b.start)[0];
+
+    if (!next) {
+      if (!sub.textContent || sub.textContent.includes("keresése")) {
+        sub.textContent = "Nincs kiírt közelgő stream a Twitch menetrendben.";
+      }
+      return;
+    }
+
+    const day = next.start.toLocaleDateString("hu-HU", { weekday: "long", month: "short", day: "numeric" });
+    const time = next.start.toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit" });
+    sub.textContent = `Következő stream: ${day}, ${time} — ${next.title || "Cherry stream"}`;
+  } catch (err) {
+    console.warn(err);
+    if (!sub.textContent || sub.textContent.includes("keresése")) {
+      sub.textContent = "A Twitch menetrend most nem tölthető be.";
+    }
+  }
+}
+
 
 function renderSocials() {
   $("#socialStrip").innerHTML = hubData.socials.map(s => `<a class="social-link" href="${s.url}" target="_blank" rel="noreferrer"><img src="${s.icon}" alt="" loading="lazy"><span><b>${s.name}</b><span>${s.handle}</span></span></a>`).join("");
@@ -246,7 +320,7 @@ async function loadTwitchSchedule() {
 
     const ics = await res.text();
     const events = parseTwitchIcs(ics)
-      .filter(event => event.start && event.start >= startOfToday())
+      .filter(event => event.start && event.start >= new Date())
       .slice(0, 6);
 
     if (!events.length) {
