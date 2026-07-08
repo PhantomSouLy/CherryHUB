@@ -1,14 +1,32 @@
-# CherryHUB - Twitch Schedule verzió
+# CherryHUB - GaCherry + Music verzió
 
-Ebben a verzióban a Stream / Menetrend tab automatikusan megpróbálja betölteni Cherry Twitch ütemezését.
+Tartalom:
+- Online/Offline panel
+- Főoldali következő stream preview
+- Twitch schedule modal Cherry ID-val
+- GaCherry nagy panel
+- Cherry Music panel
 
-Cherry Twitch broadcaster ID:
-611526048
+## GaCherry banner
 
-Automatikus iCalendar endpoint:
-https://api.twitch.tv/helix/schedule/icalendar?broadcaster_id=611526048
+A panel ezt a fájlt használja:
 
-Fontos:
-- Ha a Twitch schedule nem töltődik be, az oldal nem törik el.
-- Ilyenkor a data/content.json kézi menetrendje jelenik meg tartalékként.
-- GitHub Pages alatt a működés függhet attól, hogy a Twitch iCalendar endpoint engedi-e a böngészős lekérést.
+assets/gacherry-banner.png
+
+Most egy könnyű, webre optimalizált placeholder van benne.
+Ha megvan az eredeti `banner.png`, egyszerűen cseréld le ezt a fájlt ugyanarra a névre.
+
+A CSS aránytartva jeleníti meg:
+- nem vágja le
+- `object-fit: contain`
+- max-height korlátozás
+- keretes képmegjelenítés
+
+## Cherry Music
+
+A zene lista itt szerkeszthető:
+
+data/content.json → musicTracks
+
+Most a pontos videólinkek helyén a YouTube csatorna van.
+Ha megvannak a konkrét videók, csak cseréld ki az URL-eket.
