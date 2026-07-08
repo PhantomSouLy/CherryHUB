@@ -464,7 +464,6 @@
               "Árak",
               "Cooldownok",
               "Példák és szabályok"
-          
             ]
           }
         ]
@@ -474,7 +473,7 @@
       "id": "pass",
       "icon": "🐰",
       "title": "Bunny Pass",
-      "short": "Battle pass jellegű közösségi progression Cherry streamjeihez.",
+      "short": "Battle Pass jellegű közösségi progression Cherry csatornájához.",
       "floatingTitle": "Mi az a Bunny Pass?",
       "floatingText": "Subokkal fejlődő szintrendszer, ahol minden szint után Cherry kihívást kap.",
       "floatingItems": [
@@ -484,7 +483,7 @@
         ],
         [
           "Kihívás",
-          "Minden szint után egy challenge."
+          "Minden szint után egy challenge vár."
         ],
         [
           "Várólista",
@@ -492,7 +491,7 @@
         ]
       ],
       "details": {
-        "text": "A Bunny Pass egy battle passhoz hasonló progression rendszer.",
+        "text": "A Bunny Pass egy Battle Passhoz hasonló progression rendszer.",
         "blocks": [
           {
             "heading": "Hogyan működik?",
@@ -517,17 +516,13 @@
             "items": [
               "A kihívások várólistára kerülnek.",
               "Cherry később teljesíti őket.",
-              "A pass linkje külön gombbal nyílhat."
+              "A szinteket külön oldalon találod meg."
             ]
           }
         ],
         "buttons": [
           {
             "label": "Bunny Pass oldal",
-            "url": "#"
-          },
-          {
-            "label": "Kihívások listája",
             "url": "#"
           }
         ]
@@ -537,42 +532,25 @@
       "id": "music",
       "icon": "♪",
       "title": "Cherry Zenéi",
-      "short": "Stream zenék, playlist, Cherry theme és kedvencek.",
+      "short": "Cherry saját zenéit a YouTube csatornáján találod.",
       "floatingTitle": "Cherry Zenéi",
-      "floatingText": "A stream alatt használt vagy Cherryhez kapcsolódó zenék gyűjtőhelye.",
-      "floatingItems": [
+      "floatingText": "Cherry saját zenéit a YouTube csatornáján találod.",
+      "floatingItems": [ 
         [
-          "Playlist",
-          "Stream zenei lista."
-        ],
-        [
-          "Cherry Theme",
-          "Saját vagy kiemelt zene."
-        ],
-        [
-          "Kedvencek",
-          "Hangulatzenék."
+          "Cherry Zenék",
+          "Rock,Jazz,Pop,Anime Opening Theme stb..."
         ]
       ],
       "details": {
-        "text": "Ide kerülhetnek Cherry stream alatt használt zenéi, playlist linkek, saját theme vagy ajánlott hangulatzenék.",
+        "text": "Cherry sajátCherry saját zenéit a YouTube csatornáján találod.",
         "blocks": [
           {
-            "heading": "Tartalom",
+            "heading": "Zene lista",
             "items": [
-              "Stream playlist",
-              "Cherry theme",
-              "Opening / ending",
-              "Ajánlott zenék"
-            ]
-          },
-          {
-            "heading": "Megjelenítés",
-            "items": [
-              "Külön link gombokkal",
-              "Akár YouTube / Spotify playlist linkkel"
-            ]
-          }
+              "Üdv a pincében",
+              "Lagg, Crash, Bug",
+              "Zombiebugi",
+              "Letsgo stb"
         ]
       }
     },
