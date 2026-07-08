@@ -3,9 +3,11 @@
     "lead": "Minden fontos infó Cherry streamjeiről egy helyen: parancsok, sub előnyök, Twitch Gacha, csatornapontok, TITS, Bunny Pass, zenék, közösség és támogatás.",
     "actions": [
       {
-        "label": "Nézd élőben!",
-        "url": "https://www.twitch.tv/happycherrychan",
-        "style": "primary"
+        "label": "📅 Menetrend",
+        "url": "#stream",
+        "style": "primary",
+        "open": "stream",
+        "tab": "schedule"
       },
       {
         "label": "Discord",
