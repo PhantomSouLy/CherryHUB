@@ -137,8 +137,8 @@
     }
   ],
   "gacherryPanel": {
-    "title": "GaCherry",
-    "text": "Nyiss Cherry kártyákat, gyűjts ritkaságokat, harcolj és építsd a collectionöd.",
+    "title": "GaCherry - Gacha Game",
+    "text": "Nyiss Cherry kártyákat, gyűjtsd ki az összeset és legyél te a gacha királya!",
     "button": "GaCherry megnyitása",
     "url": "https://phantomsouly.github.io/GaCherry/",
     "image": "assets/gacherry-banner.png",
