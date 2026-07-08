@@ -581,13 +581,57 @@
       "details": {
         "text": "Cherry saját zenéit a YouTube csatornáján találod.",
         "blocks": [
-          {
-            "heading": "Zene lista",
-            "items": [
-              "Üdv a pincében",
-              "Lagg, Crash, Bug",
-              "Zombiebugi",
-              "Letsgo stb"
+      {
+        "heading": "Zene lista",
+        "items": [
+              {
+                "title": "Katt — indul a stream",
+                "url": "https://www.youtube.com/watch?v=YjW7lWx_fP8&pp=ygUjaGFwcHljaGVycnljaGFuIGthdHQgaW5kdWwgYSBzdHJlYW0%3D"
+              },
+              {
+                "title": "Üdv a pincében",
+                "url": "https://www.youtube.com/watch?v=quyWqtsdWLM&pp=ygUfaGFwcHljaGVycnljaGFuIMO8ZHYgYSBwaW5jw6liZdIHCQlMCwGHKiGM7w%3D%3D"
+              },
+              {
+                "title": "Give us a brain [Halloween Edition]",
+                "url": "https://www.youtube.com/watch?v=XQDO1meiUWk&pp=ygUfaGFwcHljaGVycnljaGFuIGdpdmUgdXMgYSBicmFpbg%3D%3D"
+              },
+              {
+                "title": "Mosolyt rajzol rám a fény",
+                "url": "https://www.youtube.com/watch?v=Srf1pIvPGcU&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+              },
+              {
+                "title": "Lagg, Crash, Bug",
+                "url": "https://www.youtube.com/watch?v=eNVI8K9DmLg&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+              },
+              {
+                "title": "Let's gooo!",
+                "url": "https://www.youtube.com/watch?v=qZPbKOcClMY&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+              },
+              {
+                "title": "VTuberek világa",
+                "url": "https://www.youtube.com/watch?v=WM3Wflj2xgM&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpa9IHCQlMCwGHKiGM7w%3D%3D"
+              },
+              {
+                "title": "Dobozba zárt érzések",
+                "url": "https://www.youtube.com/watch?v=LoByDMl6R_o&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+              },
+              {
+                "title": "Ez lett a content",
+                "url": "https://www.youtube.com/watch?v=H1R-F0lpoDo&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpa9IHCQlMCwGHKiGM7w%3D%3D"
+              },
+              {
+                "title": "Nem vagyok elég jó",
+                "url": "https://www.youtube.com/watch?v=9dYdEy7vyQs&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+              },
+              {
+                "title": "Love Love Love [Valentine's Day]",
+                "url": "https://www.youtube.com/watch?v=sbvQ_v5j4o8&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+              },
+              {
+                "title": "Cherry Kávézó [Valentine's Day]",
+                "url": "https://www.youtube.com/watch?v=YrG02YVQiTE&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+              }
             ]
           }
         ]
