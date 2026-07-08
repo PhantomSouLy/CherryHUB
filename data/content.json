@@ -145,15 +145,15 @@
       "floatingItems": [
         [
           "Menetrend",
-          "Kézzel szerkeszthető a content.json-ban."
+          "Automatikus Twitch ütemezés Cherry ID alapján."
         ],
         [
           "Információ",
           "Játékok, VOD-ok, klipek és szabályok."
         ],
         [
-          "Később",
-          "Twitch ütemezés API-val."
+          "Fallback",
+          "Ha a Twitch nem elérhető, kézi menetrend látszik."
         ]
       ],
       "details": {
@@ -163,7 +163,7 @@
           {
             "id": "schedule",
             "label": "📅 Menetrend",
-            "text": "Heti menetrend.",
+            "text": "Heti menetrend. Az oldal először a Twitch ütemezést próbálja betölteni, utána a kézi tartalékot mutatja.",
             "schedule": [
               {
                 "day": "Hétfő",
@@ -220,7 +220,7 @@
               {
                 "heading": "Hasznos",
                 "items": [
-                  "A Twitch menetrend később automatikus is lehet.",
+                  "A Twitch menetrend automatikusan is megjelenhet.",
                   "A stream link mindig a főoldali Nézd élőben gombon van."
                 ]
               }
@@ -251,7 +251,7 @@
         ]
       ],
       "details": {
-        "text": "A parancsokhoz beírásához mindig ! jelet írunk az elejére!",
+        "text": "A parancsok beírásához mindig ! jelet írunk az elejére!",
         "blocks": [
           {
             "heading": "Általános parancsok",
@@ -311,7 +311,7 @@
           {
             "heading": "Sub előnyök",
             "items": [
-              "Egyedi Emote-ok",
+              "Egyedi emote-ok",
               "Sub badge",
               "Közösségi támogatás",
               "Bunny Pass fejlődés",
@@ -334,7 +334,7 @@
       "title": "Twitch Gacha",
       "short": "Twitch Gacha rendszerhez alap infók.",
       "floatingTitle": "Rövid infó a rendszerről",
-      "floatingText": "Ez a gacha csak is kizárólag Cherry Twitch előadása alatt elérhető.",
+      "floatingText": "Ez a gacha kizárólag Cherry Twitch streamje alatt elérhető.",
       "floatingItems": [
         [
           "Nyitás",
@@ -366,7 +366,7 @@
         ],
         "buttons": [
           {
-            "label": "Discordon 4 és az 5 csillagos nyitott kártyákat ki írja!",
+            "label": "Discordon a 4 és az 5 csillagos nyitott kártyákat kiírja!",
             "url": "#"
           }
         ]
@@ -382,7 +382,7 @@
       "floatingItems": [
         [
           "Szerzés",
-          "Stream nézés, sub, follow, bit(cheer), Ko-fi."
+          "Stream nézés, sub, follow, bit, Ko-fi."
         ],
         [
           "Csatornapont",
@@ -390,7 +390,7 @@
         ],
         [
           "Dobálható tárgyak",
-          "...."
+          "TITS interakciók."
         ]
       ],
       "details": {
@@ -451,7 +451,7 @@
         ],
         [
           "Cooldown",
-          "..."
+          "Később részletezhető."
         ]
       ],
       "details": {
@@ -535,7 +535,7 @@
       "short": "Cherry saját zenéit a YouTube csatornáján találod.",
       "floatingTitle": "Cherry Zenéi",
       "floatingText": "Cherry saját zenéit a YouTube csatornáján találod.",
-      "floatingItems": [ 
+      "floatingItems": [
         [
           "Cherry Zenék",
           "Rock, Jazz, Pop, Anime Opening Theme stb..."
@@ -560,7 +560,7 @@
       "id": "vtuber",
       "icon": "♡",
       "title": "VTuber",
-      "short": "Cherryről információk és a modelljéről",
+      "short": "Cherryről, a modelljéről és a VTuber setupjáról szóló információk.",
       "floatingTitle": "VTuber infók",
       "floatingText": "Cherry karaktere, modellje, outfitje.",
       "floatingItems": [
@@ -583,7 +583,7 @@
           {
             "heading": "Tartalom",
             "items": [
-              "Cherry Infók",
+              "Cherry infók",
               "Modell",
               "Outfit",
               "PC setup / VTuber setup"
@@ -613,7 +613,7 @@
         ],
         [
           "Események",
-          "Közösségi programok a discordon részletesebben."
+          "Közösségi programok a Discordon részletesebben."
         ],
         [
           "Szabályok",
@@ -630,7 +630,7 @@
               "Screenshot",
               "Clip",
               "Ötletek",
-              "AI tartalmakat"
+              "AI tartalmak"
             ]
           },
           {
@@ -648,7 +648,7 @@
         ],
         "buttons": [
           {
-            "label": "Csatlakozás Discord Szerverre",
+            "label": "Csatlakozás Discord szerverre",
             "url": "https://discord.gg/A8qZjkaFCy"
           }
         ]
