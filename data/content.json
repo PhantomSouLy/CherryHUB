@@ -558,9 +558,10 @@
       "id": "vtuber",
       "icon": "♡",
       "title": "VTuber",
-      "short": "Cherry karaktere, modellje, outfitjei és lore.",
+      "short": "Cherryről információk és a modelljéről
+",
       "floatingTitle": "VTuber infók",
-      "floatingText": "Cherry karaktere, modellje, outfitjei és kulisszatitkok.",
+      "floatingText": "Cherry karaktere, modellje, outfitje.",
       "floatingItems": [
         [
           "Karakter",
@@ -571,8 +572,8 @@
           "Outfit és kiegészítők."
         ],
         [
-          "Lore",
-          "Cherry világa."
+          "Outfitek",
+          "-"
         ]
       ],
       "details": {
@@ -581,17 +582,17 @@
           {
             "heading": "Tartalom",
             "items": [
-              "Cherry lore",
-              "Modell és outfit",
-              "Kiegészítők",
+              "Cherry Infók",
+              "Modell",
+              "Outfit",
               "PC setup / VTuber setup"
             ]
           },
           {
             "heading": "Setup ötlet",
             "items": [
-              "PC setup külön kis blokkban",
-              "VTuber appok / kamera / OBS röviden"
+              "PC setup",
+              "VTuber app / kamera / OBS"
             ]
           }
         ]
@@ -611,15 +612,15 @@
         ],
         [
           "Események",
-          "Közösségi programok."
+          "Közösségi programok a discordon részletesebben."
         ],
         [
           "Szabályok",
-          "Barátságos közeg."
+          "Discordon elolvasható."
         ]
       ],
       "details": {
-        "text": "A közösségi rész arról szól, hogyan tudnak a nézők bekapcsolódni Cherry világába.",
+        "text": "Közösségi rész: Pince",
         "blocks": [
           {
             "heading": "Mit lehet beküldeni?",
@@ -628,22 +629,25 @@
               "Screenshot",
               "Clip",
               "Ötletek",
-              "Közösségi event javaslat"
+              "AI tartalmakat"
             ]
           },
           {
             "heading": "Discord",
             "items": [
-              "Fanart csatorna",
-              "Közösségi beszélgetés",
+              "Fanart",
+              "AI art",
+              "Közösségi részleg",
               "Szabályzat",
-              "Partner / ajánlott szerverek"
+              "Értesítések",
+              "GaCherry - Gacha Game",
+              "Sok minden más"
             ]
           }
         ],
         "buttons": [
           {
-            "label": "Discord megnyitása",
+            "label": "Csatlakozás Discord Szerverre",
             "url": "https://discord.gg/A8qZjkaFCy"
           }
         ]
@@ -655,7 +659,7 @@
       "id": "rankone",
       "icon": "🏆",
       "title": "RankOne.global",
-      "text": "Cherry játszott játékai és kívánságlistája egy helyen.",
+      "text": "Cherry játszott játékai és kívánságlistája egy helyen. Az oldalhoz Twitch bejelentkezés szüksége!",
       "items": [
         {
           "title": "Játszott játékok",
@@ -675,11 +679,11 @@
       "id": "support",
       "icon": "❤",
       "title": "Támogatás",
-      "text": "Támogasd Cherryt, ha szeretnéd segíteni a csatorna fejlődését.",
+      "text": "Támogasd Cherryt, ha szeretnéd segíteni a csatorna és közösség fejlődését.",
       "items": [
         {
           "title": "Ko-fi",
-          "text": "Egy kávé mindig jól jön! A támogatás önkéntes.",
+          "text": "Egy csoki mindig jól jön! A támogatás önkéntes.",
           "button": "Ko-fi megnyitása",
           "url": "https://ko-fi.com/happycherrychan"
         },
@@ -699,14 +703,14 @@
       "text": "Minden tudás Cherry világáról egy helyen.",
       "items": [
         {
-          "title": "Cherry története",
-          "text": "Lore, karakter és érdekességek.",
-          "button": "Részletek",
-          "url": "#"
+          "title": "Mi az a Pince?",
+          "text": "A pince az a hely, ahol Cherry uralkodik, miközben boldogan és vígan el vannak a pince lakók.",
+          "button": "Lemegyek a pincébe!",
+          "url": "https://discord.gg/A8qZjkaFCy"
         },
         {
-          "title": "Fogalmak",
-          "text": "TITS, Csavar, Nyucc, Bunny Pass és más kifejezések.",
+          "title": "Bővül.",
+          "text": "Hamarosan...",
           "button": "Megnézem",
           "url": "#"
         }
