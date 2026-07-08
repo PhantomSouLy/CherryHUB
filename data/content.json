@@ -134,6 +134,41 @@
       "text": "Cherry által készített zenék."
     }
   ],
+  "gacherryPanel": {
+    "title": "GaCherry",
+    "text": "Nyiss Cherry kártyákat, gyűjts ritkaságokat, harcolj és építsd a collectionöd.",
+    "button": "GaCherry megnyitása",
+    "url": "https://phantomsouly.github.io/GaCherry/",
+    "image": "assets/gacherry-banner.png",
+    "badges": [
+      "Collection",
+      "Battle",
+      "Rarity",
+      "Season"
+    ]
+  },
+  "musicTracks": [
+    {
+      "title": "Üdv a pincében",
+      "type": "Cherry song",
+      "url": "https://www.youtube.com/@happycherrychan"
+    },
+    {
+      "title": "Lagg, Crash, Bug",
+      "type": "Gaming song",
+      "url": "https://www.youtube.com/@happycherrychan"
+    },
+    {
+      "title": "Zombiebugi",
+      "type": "Cherry song",
+      "url": "https://www.youtube.com/@happycherrychan"
+    },
+    {
+      "title": "Letsgo stb",
+      "type": "Music list",
+      "url": "https://www.youtube.com/@happycherrychan"
+    }
+  ],
   "cards": [
     {
       "id": "stream",
