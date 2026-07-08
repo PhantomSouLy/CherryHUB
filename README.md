@@ -58,3 +58,8 @@ Ebben a verzióban az animációk már jobban láthatók:
 - CherryHUB és középső mag látványosabb lélegzése
 - gombok láthatóbb fénylése
 - GaCherry keret erősebb, de nem vakító glow
+
+
+## AAA intro polish
+
+Nyitáskor beúszás, virágmenü kibomlás, prémium hover shine, GaCherry aura és finom háttérmozgás.

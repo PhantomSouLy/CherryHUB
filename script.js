@@ -9,9 +9,10 @@ const root = document.documentElement;
 const savedTheme = localStorage.getItem("cherryhub-theme");
 if (savedTheme) root.dataset.theme = savedTheme;
 
+function activateIntroPolish(){requestAnimationFrame(()=>{document.body.classList.remove("is-loading");document.body.classList.add("is-loaded")})}
 function setThemeButton(){const btn=$("#themeToggle");if(!btn)return;btn.textContent=root.dataset.theme==="light"?"Light mód":"Dark mód";btn.setAttribute("aria-label",root.dataset.theme==="light"?"Light mód aktív, váltás dark módra":"Dark mód aktív, váltás light módra")}
 async function loadData(){try{const res=await fetch("data/content.json",{cache:"no-store"});if(!res.ok)throw new Error("content.json nem tölthető be");hubData=await res.json();renderAll()}catch(err){console.error(err);$("#heroLead").textContent="Nem sikerült betölteni a data/content.json fájlt."}}
-function renderAll(){setThemeButton();$("#themeToggle").addEventListener("click",()=>{root.dataset.theme=root.dataset.theme==="light"?"dark":"light";localStorage.setItem("cherryhub-theme",root.dataset.theme);setThemeButton()});renderNav();renderHero();renderLivePanel();renderSoftFloats();renderSocials();renderNews();renderFeaturedPanels();renderCards();renderWideSections();renderLinks();renderFlower();bindModal();const first=hubData.cards.find(c=>c.id===hubData.petals[0])||hubData.cards[0];if(first)renderFloatingCard(first.id)}
+function renderAll(){setThemeButton();$("#themeToggle").addEventListener("click",()=>{root.dataset.theme=root.dataset.theme==="light"?"dark":"light";localStorage.setItem("cherryhub-theme",root.dataset.theme);setThemeButton()});renderNav();renderHero();renderLivePanel();renderSoftFloats();renderSocials();renderNews();renderFeaturedPanels();renderCards();renderWideSections();renderLinks();renderFlower();bindModal();const first=hubData.cards.find(c=>c.id===hubData.petals[0])||hubData.cards[0];if(first)renderFloatingCard(first.id);activateIntroPolish()}
 function renderNav(){const nav=$("#mainNav");nav.innerHTML=hubData.nav.map(i=>`<a href="${i.target}" ${i.open?`data-nav-open="${i.open}"`:""}>${i.label}</a>`).join("");$(".menu-toggle").addEventListener("click",()=>nav.classList.toggle("open"));nav.addEventListener("click",e=>{const link=e.target.closest("a");if(!link)return;nav.classList.remove("open");const openId=link.dataset.navOpen;if(openId){e.preventDefault();goToAndOpen(openId)}})}
 function renderHero() {
   $("#heroLead").textContent = hubData.hero.lead;
@@ -35,15 +36,15 @@ function renderSoftFloats() {
   const layer = $("#softFloatLayer");
   if (!layer || layer.childElementCount) return;
   const symbols = ["✿", "❤", "✦", "✧", "❀", "♡"];
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < 18; i++) {
     const el = document.createElement("span");
     el.textContent = symbols[i % symbols.length];
     el.style.left = `${Math.random() * 100}%`;
     el.style.top = `${Math.random() * 100}%`;
-    el.style.animationDuration = `${18 + Math.random() * 18}s`;
+    el.style.animationDuration = `${28 + Math.random() * 26}s`;
     el.style.animationDelay = `${Math.random() * -30}s`;
-    el.style.fontSize = `${18 + Math.random() * 24}px`;
-    el.style.opacity = `${0.10 + Math.random() * 0.10}`;
+    el.style.fontSize = `${16 + Math.random() * 20}px`;
+    el.style.opacity = `${0.08 + Math.random() * 0.08}`;
     layer.appendChild(el);
   }
 }

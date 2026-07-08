@@ -166,3 +166,45 @@ html[data-theme="light"]{--bg:#fff1f8;--panel:rgba(255,255,255,.68);--panel2:rgb
   0%,100%{box-shadow:0 0 18px rgba(255,90,167,.18)}
   50%{box-shadow:0 0 30px rgba(255,125,205,.36)}
 }
+
+
+/* AAA intro polish */
+body.is-loading .hero-copy,body.is-loading .flower-wrap,body.is-loading .info-card,body.is-loading .social-strip-wrap,body.is-loading .section-divider,body.is-loading .news-strip,body.is-loading .featured-panels,body.is-loading .cards,body.is-loading .wide-sections,body.is-loading .links{opacity:0}
+body.is-loaded .hero-copy{animation:introSlideUp .85s cubic-bezier(.2,.8,.2,1) both}
+body.is-loaded .flower-wrap{animation:introBloom .95s cubic-bezier(.16,1,.3,1) .12s both}
+body.is-loaded .info-card{animation:introSlideLeft .85s cubic-bezier(.2,.8,.2,1) .22s both}
+body.is-loaded .social-strip-wrap{animation:introSlideUp .75s cubic-bezier(.2,.8,.2,1) .34s both}
+body.is-loaded .section-divider,body.is-loaded .news-strip{animation:introFadeSoft .75s ease .42s both}
+body.is-loaded .featured-panels{animation:introSlideUp .8s cubic-bezier(.2,.8,.2,1) .52s both}
+body.is-loaded .cards{animation:introSlideUp .8s cubic-bezier(.2,.8,.2,1) .62s both}
+body.is-loaded .wide-sections,body.is-loaded .links{animation:introFadeSoft .8s ease .72s both}
+@keyframes introSlideUp{from{opacity:0;transform:translateY(26px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes introSlideLeft{from{opacity:0;transform:translateX(28px);filter:blur(8px)}to{opacity:1;transform:translateX(0);filter:blur(0)}}
+@keyframes introFadeSoft{from{opacity:0;filter:blur(7px)}to{opacity:1;filter:blur(0)}}
+@keyframes introBloom{0%{opacity:0;transform:scale(.88) rotate(-3deg);filter:blur(8px)}65%{opacity:1;transform:scale(1.025) rotate(.6deg);filter:blur(0)}100%{opacity:1;transform:scale(1) rotate(0deg);filter:blur(0)}}
+body.is-loaded .petal{animation:petalUnfold .7s cubic-bezier(.16,1,.3,1) both}
+body.is-loaded .p1{animation-delay:.24s}body.is-loaded .p2{animation-delay:.30s}body.is-loaded .p3{animation-delay:.36s}body.is-loaded .p4{animation-delay:.42s}body.is-loaded .p5{animation-delay:.48s}body.is-loaded .p6{animation-delay:.54s}body.is-loaded .p7{animation-delay:.60s}body.is-loaded .p8{animation-delay:.66s}
+@keyframes petalUnfold{from{opacity:0;filter:blur(8px);transform:translate(50%,50%) scale(.72) rotate(0deg)}to{opacity:1;filter:blur(0);transform:var(--pos)}}
+.soft-float-layer span{color:#ffd4ee;text-shadow:0 0 16px rgba(255,125,205,.38);filter:drop-shadow(0 0 8px rgba(255,125,205,.18))}
+@keyframes softFloat{0%{transform:translate3d(0,0,0) rotate(0deg)}33%{transform:translate3d(16px,-18px,0) rotate(6deg)}66%{transform:translate3d(-12px,14px,0) rotate(-5deg)}100%{transform:translate3d(0,0,0) rotate(0deg)}}
+.brand span:last-child{display:inline-block;transform-origin:center}.brand span:last-child,h1{animation:titleBreathPremium 7s ease-in-out infinite}
+@keyframes titleBreathPremium{0%,100%{text-shadow:0 0 24px rgba(255,90,167,.42);filter:brightness(1);transform:scale(1)}50%{text-shadow:0 0 42px rgba(255,145,210,.64),0 0 10px rgba(255,255,255,.12);filter:brightness(1.05);transform:scale(1.022)}}
+.core{animation:coreBreathPremium 7.5s ease-in-out infinite}
+@keyframes coreBreathPremium{0%,100%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 42px rgba(255,93,171,.65),inset 0 0 35px rgba(255,255,255,.72);filter:brightness(1)}50%{transform:translate(-50%,-50%) scale(1.025);box-shadow:0 0 60px rgba(255,120,195,.78),inset 0 0 44px rgba(255,255,255,.86);filter:brightness(1.055)}}
+.primary,.secondary,.panel-button,.live-link,.card-link,.open-modal,.wide-link,.music-track,.social-link{position:relative;overflow:hidden}
+.primary::after,.secondary::after,.panel-button::after,.live-link::after,.card-link::after,.open-modal::after,.wide-link::after,.music-track::after,.social-link::after{content:"";position:absolute;inset:-40% auto -40% -65%;width:42%;transform:skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);opacity:0;pointer-events:none}
+.primary:hover::after,.secondary:hover::after,.panel-button:hover::after,.live-link:hover::after,.card-link:hover::after,.open-modal:hover::after,.wide-link:hover::after,.music-track:hover::after,.social-link:hover::after{animation:shineSweep .75s ease both}
+@keyframes shineSweep{0%{left:-65%;opacity:0}25%{opacity:.9}100%{left:125%;opacity:0}}
+.primary,.panel-button,.live-link,.card-link{animation:buttonGlowPremium 6s ease-in-out infinite}
+@keyframes buttonGlowPremium{0%,100%{box-shadow:0 10px 28px rgba(255,90,167,.30)}50%{box-shadow:0 13px 38px rgba(255,130,205,.45),0 0 16px rgba(255,145,210,.16)}}
+.gacherry-panel::before{content:"";position:absolute;inset:-35%;background:radial-gradient(circle at 70% 45%,rgba(255,90,167,.22),transparent 35%),radial-gradient(circle at 40% 70%,rgba(169,115,255,.18),transparent 34%);opacity:.55;animation:auraDrift 14s ease-in-out infinite;pointer-events:none}.gacherry-panel>*{position:relative;z-index:1}
+@keyframes auraDrift{0%,100%{transform:translate3d(-1%,0,0) rotate(0deg);opacity:.45}50%{transform:translate3d(2%,-1%,0) rotate(4deg);opacity:.68}}
+.gacherry-image-frame{animation:frameGlowPremium 7s ease-in-out infinite}
+@keyframes frameGlowPremium{0%,100%{box-shadow:0 18px 50px rgba(0,0,0,.22)}50%{box-shadow:0 24px 72px rgba(255,110,185,.25),0 0 22px rgba(255,120,200,.14)}}
+.music-head>span{animation:musicFloatPremium 5.2s ease-in-out infinite}
+@keyframes musicFloatPremium{0%,100%{transform:translateY(0) rotate(0deg);text-shadow:0 0 16px rgba(255,90,167,.50)}50%{transform:translateY(-4px) rotate(-2deg);text-shadow:0 0 26px rgba(255,145,210,.70)}}
+.section-card,.wide-card,.gacherry-panel,.music-panel,.info-card{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease}
+.section-card:hover,.wide-card:hover,.music-panel:hover,.info-card:hover{transform:translateY(-3px);border-color:rgba(255,147,205,.42);box-shadow:0 18px 50px rgba(255,90,167,.10),inset 0 0 36px rgba(255,255,255,.045);filter:brightness(1.025)}
+.section-divider span{animation:dividerGlowPremium 7s ease-in-out infinite}
+@keyframes dividerGlowPremium{0%,100%{box-shadow:0 0 18px rgba(255,90,167,.16)}50%{box-shadow:0 0 30px rgba(255,125,205,.30)}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}body.is-loading .hero-copy,body.is-loading .flower-wrap,body.is-loading .info-card,body.is-loading .social-strip-wrap,body.is-loading .section-divider,body.is-loading .news-strip,body.is-loading .featured-panels,body.is-loading .cards,body.is-loading .wide-sections,body.is-loading .links{opacity:1!important}}
