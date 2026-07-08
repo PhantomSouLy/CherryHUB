@@ -120,20 +120,20 @@
   ],
   "news": [
     {
-      "title": "Aktuális hírek",
-      "text": "Friss stream infók és bejelentések."
+      "title": "Cherry HUB",
+      "text": "Megjelent a Cherry HUB!"
     },
     {
-      "title": "Bunny Pass",
-      "text": "15 Sub után +1 szint, a kihívások várólistára kerülnek."
+      "title": "-",
+      "text": "-"
     },
     {
-      "title": "TITS / Csavar",
-      "text": "Dobható tárgyak, interakciók, árak és cooldownok."
+      "title": "*",
+      "text": "*"
     },
     {
-      "title": "Cherry Zenéi",
-      "text": "Cherry által készített zenék."
+      "title": "*",
+      "text": "*"
     }
   ],
   "gacherryPanel": {
@@ -182,15 +182,11 @@
       "floatingItems": [
         [
           "Menetrend",
-          "Automatikus Twitch ütemezés Cherry ID alapján."
+          "Twitch heti menetrend."
         ],
         [
           "Információ",
           "Játékok, VOD-ok, klipek és szabályok."
-        ],
-        [
-          "Fallback",
-          "Ha a Twitch nem elérhető, kézi menetrend látszik."
         ]
       ],
       "details": {
@@ -200,7 +196,7 @@
           {
             "id": "schedule",
             "label": "📅 Menetrend",
-            "text": "Heti menetrend. Az oldal először a Twitch ütemezést próbálja betölteni, utána a kézi tartalékot mutatja.",
+            "text": "Heti menetrend.",
             "schedule": [
               {
                 "day": "Hétfő",
@@ -238,7 +234,7 @@
                 "title": "-"
               }
             ],
-            "note": "A menetrend változhat. A legfrissebb infókért nézd Cherry Twitch oldalát vagy Discordját."
+              "note": "A menetrend változhat. A legfrissebb infókért nézd Cherry honlapját vagy Discordját."
           },
           {
             "id": "info",
@@ -257,8 +253,7 @@
               {
                 "heading": "Hasznos",
                 "items": [
-                  "A Twitch menetrend automatikusan is megjelenhet.",
-                  "A stream link mindig a főoldali Nézd élőben gombon van."
+                  "Heti menetrendet itt megtalálod mindig."
                 ]
               }
             ]
@@ -650,7 +645,7 @@
           "Ki Cherry?"
         ],
         [
-          "Modellek",
+          "Model",
           "Outfit és kiegészítők."
         ],
         [
