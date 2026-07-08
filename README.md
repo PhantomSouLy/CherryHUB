@@ -30,3 +30,21 @@ data/content.json → musicTracks
 
 Most a pontos videólinkek helyén a YouTube csatorna van.
 Ha megvannak a konkrét videók, csak cseréld ki az URL-eket.
+
+
+## Final módosítások
+
+- Hírek blokk fölött középre igazított `Hírek röviden` címke.
+- A fő hero gomb most `📅 Menetrend`, és közvetlenül a Stream / Menetrend modalt nyitja.
+- Cherry Music panelben két gomb:
+  - YouTube csatorna
+  - Lista megnyitása
+- A zene lista külön modalban nyílik, a `data/content.json` → `musicTracks` alapján.
+- Finom animációk:
+  - CherryHUB / cím enyhe pulzálás
+  - háttérben lassú szimbólummozgás
+  - gombok enyhe glow
+  - GaCherry banner keret enyhe fény
+  - music hangjegy finom lebegés
+
+Nincs benne token, Client Secret, Bearer token vagy privát API kulcs.
