@@ -738,21 +738,21 @@
   "wideSections": [
     {
       "id": "rankone",
-      "icon": "🏆",
-      "title": "RankOne.global",
+      "icon": "🎮",
+      "title": "Cherry Mikkel játszik?",
       "text": "Cherry játszott játékai és kívánságlistája egy helyen. Az oldalhoz Twitch bejelentkezés szükséges!",
       "items": [
         {
           "title": "Játszott játékok",
           "text": "Milyen játékokkal játszott Cherry?",
           "button": "Megnézem",
-          "url": "#"
+          "url": "https://www.rankone.global/happycherrychan"
         },
         {
           "title": "Kívánságlista",
           "text": "Milyen játékokat szeretne Cherry?",
           "button": "Megnézem",
-          "url": "#"
+          "url": "www.rankone.global/happycherrychan/suggestions"
         }
       ]
     },
