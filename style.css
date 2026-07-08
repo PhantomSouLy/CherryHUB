@@ -1244,6 +1244,7 @@ html[data-theme="light"] .modal-panel {
     place-items:center;
     flex:0 0 42px;
     overflow:hidden;
+    box-shadow:0 8px 24px rgba(255,90,167,.25);
   }
 
   .brand-icon-wrap img{
