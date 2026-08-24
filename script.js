@@ -5,20 +5,47 @@ const TWITCH_UPTIME_URL = "https://decapi.me/twitch/uptime/happycherrychan";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
-const savedTheme = localStorage.getItem("cherryhub-theme");
-if (savedTheme) root.dataset.theme = savedTheme;
+const THEME_KEY = "cherryhub-theme";
+
+function readStoredTheme() {
+  try { return localStorage.getItem(THEME_KEY); } catch { return null; }
+}
+
+function writeStoredTheme(theme) {
+  try { localStorage.setItem(THEME_KEY, theme); } catch {}
+}
+
+function getInitialTheme() {
+  const saved = readStoredTheme();
+  if (saved === "light" || saved === "dark") return saved;
+  return root.dataset.theme === "dark" ? "dark" : "light";
+}
+
+function applyTheme(theme, persist = false) {
+  const safeTheme = theme === "dark" ? "dark" : "light";
+  root.dataset.theme = safeTheme;
+  root.style.colorScheme = safeTheme;
+
+  if (persist) writeStoredTheme(safeTheme);
+
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  if (themeColor) themeColor.setAttribute("content", safeTheme === "dark" ? "#140811" : "#fff1f7");
+
+  const button = $("#themeToggle");
+  if (button) {
+    button.textContent = safeTheme === "light" ? "☀️ Light mode" : "🌙 Dark mode";
+    button.setAttribute("aria-pressed", safeTheme === "dark" ? "true" : "false");
+    button.setAttribute("aria-label", safeTheme === "light" ? "Dark mód bekapcsolása" : "Light mód bekapcsolása");
+  }
+}
+
+applyTheme(getInitialTheme());
 
 function activateIntroPolish() {
   requestAnimationFrame(() => {
     document.body.classList.remove("is-loading");
     document.body.classList.add("is-loaded");
   });
-}
-
-function setThemeButton() {
-  const b = $("#themeToggle");
-  if (!b) return;
-  b.textContent = root.dataset.theme === "light" ? "☀️ Light mode" : "🌙 Dark mode";
 }
 
 async function loadData() {
@@ -36,17 +63,15 @@ async function loadData() {
 }
 
 function renderAll() {
-  setThemeButton();
+  applyTheme(root.dataset.theme);
+
   $("#themeToggle")?.addEventListener("click", () => {
-    root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
-    localStorage.setItem("cherryhub-theme", root.dataset.theme);
-    setThemeButton();
+    applyTheme(root.dataset.theme === "light" ? "dark" : "light", true);
   });
 
   renderNav();
   renderHero();
   renderLivePanel();
-  renderSoftFloats();
   renderSocials();
   renderNews();
   renderFeaturedPanels();
@@ -59,20 +84,42 @@ function renderAll() {
 
 function renderNav() {
   const nav = $("#mainNav");
+  const menu = $(".menu-toggle");
   if (!nav) return;
+
   nav.innerHTML = (hubData.nav || [])
     .map(i => `<a href="${i.target}" ${i.open ? `data-nav-open="${i.open}"` : ""}>${i.label}</a>`)
     .join("");
 
-  $(".menu-toggle")?.addEventListener("click", () => nav.classList.toggle("open"));
+  const closeNav = () => {
+    nav.classList.remove("open");
+    menu?.setAttribute("aria-expanded", "false");
+  };
+
+  menu?.addEventListener("click", e => {
+    e.stopPropagation();
+    const open = nav.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
   nav.addEventListener("click", e => {
     const link = e.target.closest("a");
     if (!link) return;
-    nav.classList.remove("open");
+    closeNav();
     if (link.dataset.navOpen) {
       e.preventDefault();
       goToAndOpen(link.dataset.navOpen);
     }
+  });
+
+  document.addEventListener("click", e => {
+    if (!nav.classList.contains("open")) return;
+    if (e.target.closest("#mainNav") || e.target.closest(".menu-toggle")) return;
+    closeNav();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1180) closeNav();
   });
 }
 
@@ -174,25 +221,10 @@ function renderHomeScheduleItem(event) {
   return `<div class="home-schedule-item"><span>${date}</span><b>${event.title || "Cherry stream"}</b><time>${time}</time></div>`;
 }
 
-function renderSoftFloats() {
-  const layer = $("#softFloatLayer");
-  if (!layer || layer.childElementCount) return;
-  const symbols = ["✿", "❤", "✦", "✧", "❀", "♡"];
-  for (let i = 0; i < 18; i++) {
-    const el = document.createElement("span");
-    el.textContent = symbols[i % symbols.length];
-    el.style.left = `${Math.random() * 100}%`;
-    el.style.top = `${Math.random() * 100}%`;
-    el.style.animationDuration = `${28 + Math.random() * 26}s`;
-    el.style.animationDelay = `${Math.random() * -30}s`;
-    el.style.fontSize = `${16 + Math.random() * 20}px`;
-    el.style.opacity = `${.08 + Math.random() * .08}`;
-    layer.appendChild(el);
-  }
-}
-
 function renderSocials() {
-  $("#socialStrip").innerHTML = (hubData.socials || []).map(s =>
+  const strip = $("#socialStrip");
+  if (!strip) return;
+  strip.innerHTML = (hubData.socials || []).map(s =>
     `<a class="social-link" href="${s.url}" target="_blank" rel="noreferrer"><img src="${s.icon}" alt="" loading="lazy"><span><b>${s.name}</b><span>${s.handle}</span></span></a>`
   ).join("");
 }
@@ -224,19 +256,27 @@ function goToAndOpen(id, tab = null) {
 }
 
 function renderNews() {
-  $("#newsStrip").innerHTML = (hubData.news || []).map(i => `<article><b>${i.title}</b><span>${i.text}</span></article>`).join("");
+  const strip = $("#newsStrip");
+  if (!strip) return;
+  strip.innerHTML = (hubData.news || []).map(i => `<article><b>${i.title}</b><span>${i.text}</span></article>`).join("");
 }
 
 function renderCards() {
-  $("#cardsGrid").innerHTML = (hubData.cards || []).map(c => `<article id="${c.id}" class="section-card"><div class="big-icon">${c.icon}</div><h2>${c.title}</h2><p>${c.short}</p><button class="open-modal" type="button" data-open-modal="${c.id}">Több infó</button></article>`).join("");
+  const grid = $("#cardsGrid");
+  if (!grid) return;
+  grid.innerHTML = (hubData.cards || []).map(c => `<article id="${c.id}" class="section-card"><div class="big-icon">${c.icon}</div><h2>${c.title}</h2><p>${c.short}</p><button class="open-modal" type="button" data-open-modal="${c.id}">Több infó</button></article>`).join("");
 }
 
 function renderWideSections() {
-  $("#wideSections").innerHTML = (hubData.wideSections || []).map(s => `<article id="${s.id}" class="wide-card"><div class="wide-head"><span>${s.icon}</span><h2>${s.title}</h2></div><p>${s.text}</p>${(s.items || []).map(i => `<div class="wide-item"><b>${i.title}</b><p>${i.text}</p><a class="wide-link" href="${i.url}" target="${i.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${i.button} →</a></div>`).join("")}${s.note ? `<div class="wide-note">${s.note}</div>` : ""}</article>`).join("");
+  const wrap = $("#wideSections");
+  if (!wrap) return;
+  wrap.innerHTML = (hubData.wideSections || []).map(s => `<article id="${s.id}" class="wide-card"><div class="wide-head"><span>${s.icon}</span><h2>${s.title}</h2></div><p>${s.text}</p>${(s.items || []).map(i => `<div class="wide-item"><b>${i.title}</b><p>${i.text}</p><a class="wide-link" href="${i.url}" target="${i.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${i.button} →</a></div>`).join("")}${s.note ? `<div class="wide-note">${s.note}</div>` : ""}</article>`).join("");
 }
 
 function renderLinks() {
-  $("#links").innerHTML = `<h2>Közösségi linkek</h2><div class="links-row">${(hubData.socials || []).map(s => `<a href="${s.url}" target="_blank" rel="noreferrer"><img src="${s.icon}" alt="" loading="lazy">${s.name}</a>`).join("")}</div>`;
+  const links = $("#links");
+  if (!links) return;
+  links.innerHTML = `<h2>Közösségi linkek</h2><div class="links-row">${(hubData.socials || []).map(s => `<a href="${s.url}" target="_blank" rel="noreferrer"><img src="${s.icon}" alt="" loading="lazy">${s.name}</a>`).join("")}</div>`;
 }
 
 function bindModal() {
@@ -248,19 +288,24 @@ function bindModal() {
     if (tab) switchTab(tab.dataset.tab);
   });
   document.addEventListener("keydown", e => {
-    if (e.key === "Escape") closeModal();
+    if (e.key === "Escape") {
+      closeModal();
+      $("#mainNav")?.classList.remove("open");
+      $(".menu-toggle")?.setAttribute("aria-expanded", "false");
+    }
   });
 }
 
 function showModal() {
   const m = $("#infoModal");
+  if (!m) return;
   m.classList.add("show");
   m.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
 
 function openModal(id, forceTab = null) {
-  const d = hubData.cards.find(c => c.id === id);
+  const d = hubData?.cards?.find(c => c.id === id);
   if (!d) return;
   $("#modalKicker").textContent = `✿ ${d.title}`;
   $("#modalTitle").textContent = d.title;
@@ -386,6 +431,7 @@ function formatDuration(start, end) {
 
 function closeModal() {
   const m = $("#infoModal");
+  if (!m) return;
   m.classList.remove("show");
   m.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
