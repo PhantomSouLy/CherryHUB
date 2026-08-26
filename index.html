@@ -9,16 +9,12 @@
   <link rel="apple-touch-icon" href="./assets/profileico.png?v=4" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .hero-art-slot {
-      bottom: 78px;
-      border-radius: 28px;
-      background: url('./assets/blossom_background.png') center / cover no-repeat;
+    :root {
+      --hero-bg-image: url('./assets/blossom_background.png');
     }
-
-    .hero-art-slot::before,
-    .hero-art-slot::after,
-    .hero-art-bunny {
-      display: none;
+  
+    .hero-art-slot {
+      display: none !important;
     }
   </style>
   <script defer src="script.js"></script>
