@@ -1,6 +1,6 @@
 {
   "hero": {
-    "lead": "Minden fontos infó Cherry streamjeiről egy helyen: parancsok, sub előnyök, Twitch Gacha, csatornapontok, TITS, Bunny Pass, zenék, közösség és támogatás.",
+    "lead": "Minden ami Cherry.",
     "actions": [
       {
         "label": "📅 Menetrend",
@@ -69,7 +69,7 @@
       "open": "commands"
     },
     {
-      "label": "Sub",
+      "label": "Feliratkozás (Sub)",
       "target": "#sub",
       "open": "sub"
     },
@@ -84,7 +84,7 @@
       "open": "points"
     },
     {
-      "label": "TITS",
+      "label": "Tárgy dobálás (T.I.T.S.)",
       "target": "#tits",
       "open": "tits"
     },
@@ -94,7 +94,7 @@
       "open": "pass"
     },
     {
-      "label": "Cherry Zenéi",
+      "label": "Cherry Zenék",
       "target": "#music",
       "open": "music"
     },
@@ -274,7 +274,7 @@
                 "title": "-"
               }
             ],
-            "note": "A menetrend változhat. A legfrissebb infókért nézd Cherry honlapját vagy Discordját."
+            "note": "A menetrend változhat. A legfrissebb infókért nézd Cherry Discordját."
           },
           {
             "id": "info",
@@ -359,7 +359,7 @@
     {
       "id": "sub",
       "icon": "◆",
-      "title": "Sub előnyök",
+      "title": "Feliratkozás (Sub) előnyök",
       "short": "Sub, badge-ek, emote-ok és támogatói extrák.",
       "floatingTitle": "Sub előnyök és támogatás",
       "floatingText": "Röviden arról, mit ad a sub és miért segíti a csatornát.",
@@ -423,9 +423,9 @@
           {
             "heading": "Alap adatok",
             "items": [
-              "Nyitás ára: x",
-              "Cooldown: x perc",
-              "Season név: -",
+              "Nyitás ára: <Látható az ikon alatt>",
+              "Cooldown: 2 perc",
+              "Season név: Summer Edition",
               "Season időtartam: 4 hónap"
             ]
           },
