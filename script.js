@@ -198,7 +198,7 @@ async function loadHomeSchedulePreview() {
       .slice(0, 3);
 
     if (!events.length) {
-      sub.textContent = "Nincs kiírt közelgő stream a Twitch menetrendben.";
+      sub.textContent = "Nincs új menetrend kiírva.";
       list.innerHTML = `<div class="home-schedule-empty">Hamarosan érkezik az új menetrend ♡</div>`;
       return;
     }
@@ -209,7 +209,7 @@ async function loadHomeSchedulePreview() {
     sub.textContent = `Következő stream: ${day}, ${time} — ${next.title || "Cherry stream"}`;
     list.innerHTML = events.map(renderHomeScheduleItem).join("");
   } catch (e) {
-    console.warn("Főoldali Twitch menetrend nem tölthető be", e);
+    console.warn("Twitch menetrend nem tölthető be", e);
     sub.textContent = "A Twitch menetrend most nem tölthető be.";
     list.innerHTML = `<div class="home-schedule-empty">A menetrend átmenetileg nem elérhető.</div>`;
   }
@@ -244,7 +244,7 @@ function openMusicListModal() {
   const tracks = hubData.musicTracks || [];
   $("#modalKicker").textContent = "♪ Cherry Music";
   $("#modalTitle").textContent = "Cherry Zenéi – Lista";
-  $("#modalText").textContent = "Itt találod Cherry zenéit. A linkek YouTube-on nyílnak meg.";
+  $("#modalText").textContent = "Itt megtalálod Cherry zenéit.";
   $("#modalContent").innerHTML = `<div class="music-modal-list">${tracks.map(t => `<article class="music-modal-track"><div><b>${t.title}</b><span>${t.type || "YouTube"}</span></div><a href="${t.url}" target="_blank" rel="noreferrer">Lejátszás YouTube-on →</a></article>`).join("")}</div>`;
   $("#modalActions").innerHTML = `<a href="https://www.youtube.com/@happycherrychan" target="_blank" rel="noreferrer">YouTube csatorna →</a>`;
   showModal();
@@ -373,11 +373,11 @@ async function loadTwitchSchedule() {
       status.textContent = "Nincs heti stream kiírva. Hamarosan lesz...";
       return;
     }
-    status.textContent = `A héten ${events.length} kiírt stream látható.`;
+    status.textContent = `A héten ${events.length} stream lesz.`;
     list.innerHTML = events.map(renderTwitchScheduleItem).join("");
   } catch (e) {
     console.warn(e);
-    status.textContent = "Az automatikus Twitch menetrend nem töltődött be. A kézi tartalék menetrend látható lentebb.";
+    status.textContent = "Jelenleg nincs Twitch menetrend.";
   }
 }
 
