@@ -3,100 +3,184 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fff1f7" />
+  <meta name="theme-color" content="#fff7fb" />
   <title>CherryHUB</title>
+  <meta name="description" content="HappyCherryChan közösségi és tartalmi központja – streamek, rendszerek, zenék, projektek és minden ami Cherry." />
   <link rel="icon" type="image/png" href="./assets/profileico.png?v=4" />
   <link rel="apple-touch-icon" href="./assets/profileico.png?v=4" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    :root {
-      --hero-bg-image: url('./assets/blossom_background.png');
-    }
-    .hero-art-slot {
-      display: none !important;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css?v=20260911-neo" />
   <script defer src="script.js"></script>
 </head>
 <body class="is-loading">
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="ambient-glow ambient-glow-a" aria-hidden="true"></div>
-  <div class="ambient-glow ambient-glow-b" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="CherryHUB főoldal">
+      <span class="brand-icon-wrap"><img src="./assets/profileico.png?v=4" alt="" /></span>
+      <span class="brand-copy">
+        <strong>Cherry<span>HUB</span></strong>
+        <small>for HappyCherryChan ♡</small>
+      </span>
+    </a>
 
-  <div class="site-shell">
-    <header class="topbar">
-      <a class="brand" href="#home" aria-label="CherryHUB főoldal">
-        <span class="brand-icon-wrap"><img src="./assets/profileico.png?v=4" alt="CherryHUB" /></span>
-        <span>CherryHUB</span>
-      </a>
+    <nav class="nav" id="mainNav" aria-label="Fő navigáció"></nav>
 
-      <nav class="nav" id="mainNav" aria-label="Fő navigáció"></nav>
+    <div class="top-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Téma váltása">☀️ Light mode</button>
+      <a class="contact-btn" href="https://discord.gg/A8qZjkaFCy" target="_blank" rel="noreferrer">Csatlakozom ♡</a>
+      <button class="menu-toggle" type="button" aria-label="Menü megnyitása" aria-expanded="false">☰</button>
+    </div>
+  </header>
 
-      <div class="top-actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Téma váltása">☀️ Light mode</button>
-        <button class="menu-toggle" type="button" aria-label="Menü megnyitása" aria-expanded="false">☰</button>
-        <a class="contact-btn" href="#links">Kapcsolat</a>
-      </div>
-    </header>
-
-    <main id="home" class="hero hero-refresh">
-      <section class="hero-stage">
-        <div class="hero-art-slot" aria-hidden="true">
-          <span class="hero-art-bunny">♡</span>
-        </div>
-
+  <main>
+    <section id="home" class="hero" aria-label="CherryHUB bemutatkozás">
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-stage">
         <section class="hero-copy">
-          <p class="eyebrow">✿ Welcome to ✿</p>
-          <h1>CherryHUB<span>♡</span></h1>
-          <p class="lead" id="heroLead">Minden ami Cherry!</p>
+          <p class="eyebrow">HAPPY PEOPLE · BRIGHTER DAYS · ♡</p>
+          <h1><span>More</span><span>Smiles</span><em>Together.</em></h1>
+          <p class="lead" id="heroLead">Minden ami Cherry.</p>
+          <p class="hero-note">HappyCherryChan közösségi központja — streamek, projektek, zenék és minden, ami egy kicsit Cherry.</p>
           <div class="hero-actions" id="heroActions"></div>
-          <p class="thanks">❤ Köszönöm, hogy részese vagy a közösségnek! 🐰</p>
+          <p class="scribble">Same dreams. Brighter tomorrows. ♡</p>
         </section>
 
         <aside class="home-live-card" id="homeLiveCard" aria-live="polite">
           <div class="home-live-head">
-            <span class="live-status offline" id="liveStatusDot">●</span>
-            <strong id="liveStatusText">Betöltés...</strong>
+            <div class="live-title">
+              <span class="live-status offline" id="liveStatusDot">●</span>
+              <strong id="liveStatusText">Betöltés...</strong>
+            </div>
+            <span class="live-mini-label">TWITCH</span>
           </div>
 
-          <div class="home-live-thumb" aria-hidden="true">
+          <div class="home-live-thumb">
             <span class="live-badge offline" id="liveBadge">STATUS</span>
-            <span class="home-live-thumb-mark">Cherry ♡</span>
+            <span class="home-live-thumb-mark">HappyCherryChan ♡</span>
           </div>
 
           <div class="home-live-copy">
-            <span class="home-live-kicker">🐰 Cherry stream</span>
-            <h2>Live értesítés</h2>
+            <span class="home-live-kicker">Cherry stream</span>
+            <h2>Live most</h2>
             <p id="liveSubText">Következő stream keresése...</p>
           </div>
 
-          <a class="live-link home-live-cta" href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Twitch megnyitása →</a>
-
-          <div class="home-up-next">
-            <div class="home-up-next-head">
-              <strong>UP NEXT</strong>
-              <button type="button" data-open-modal="stream">Menetrend →</button>
-            </div>
-            <div class="home-schedule-list" id="homeScheduleList">
-              <div class="home-schedule-empty">Menetrend betöltése...</div>
-            </div>
+          <div class="live-actions">
+            <a class="live-link home-live-cta" href="https://www.twitch.tv/happycherrychan" target="_blank" rel="noreferrer">Megnyitás Twitchen →</a>
+            <button class="live-schedule-btn" type="button" data-open-modal="stream">Menetrend</button>
           </div>
         </aside>
-      </section>
-    </main>
+      </div>
+      <div class="hero-wave" aria-hidden="true"></div>
+    </section>
 
-    <div class="content-surface">
-      <section class="cards" id="cardsGrid" aria-label="CherryHUB témák"></section>
+    <section class="systems-flow flow-section" aria-labelledby="systemsTitle">
+      <div class="section-heading">
+        <div>
+          <span class="section-symbol">✦</span>
+          <div>
+            <p class="section-kicker">CHERRYHUB</p>
+            <h2 id="systemsTitle">Fedezd fel Cherry világát</h2>
+          </div>
+        </div>
+        <p>Nem dobozok egymás alatt — a fontos részek egy gyorsan görgethető sávban.</p>
+      </div>
+      <section class="cards systems-rail" id="cardsGrid" aria-label="CherryHUB témák"></section>
+    </section>
+
+    <section class="showcase-flow flow-section" aria-label="CherryHUB kiemelt tartalmak">
+      <div class="showcase-ribbon">
+        <div class="showcase-copy">
+          <span>COMMUNITY MOMENTS</span>
+          <strong>Különböző helyek. Ugyanaz a Cherry-közösség. ♡</strong>
+        </div>
+        <div class="showcase-tiles" aria-hidden="true">
+          <span class="tile tile-a">♡</span>
+          <span class="tile tile-b">CHERRY</span>
+          <span class="tile tile-c">✿</span>
+          <span class="tile tile-d">BUNNY</span>
+          <span class="tile tile-e">♡</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-mosaic flow-section" aria-label="Kiemelt CherryHUB tartalmak">
+      <article class="schedule-stage">
+        <div class="schedule-stage-head">
+          <div>
+            <span class="panel-kicker">LIVE CALENDAR</span>
+            <h2>Stream menetrend</h2>
+            <p>A Twitch menetrendből automatikusan frissül.</p>
+          </div>
+          <button class="schedule-open" type="button" data-open-modal="stream">Teljes menetrend →</button>
+        </div>
+        <div class="schedule-skyline" aria-hidden="true">
+          <span>Good streams.<br />Brighter people. ♡</span>
+        </div>
+        <div class="home-schedule-list" id="homeScheduleList">
+          <div class="home-schedule-empty">Menetrend betöltése...</div>
+        </div>
+      </article>
+
       <section class="featured-panels" id="featuredPanels" aria-label="Kiemelt Cherry tartalmak"></section>
-      <section class="wide-sections" id="wideSections" aria-label="Kiemelt szekciók"></section>
-      <section class="social-strip-wrap" aria-label="Közösségi linkek"><section class="social-strip" id="socialStrip"></section></section>
-      <div class="section-divider news-divider"><span>Rövid hírek</span></div>
-      <section class="news-strip" id="newsStrip" aria-label="Gyors hírek"></section>
-      <section id="links" class="links"></section>
-    </div>
 
-    <footer>© 2026 CherryHUB • Készült szeretettel Cherry közösségének. 💕 | Created by SouLy</footer>
-  </div>
+      <section class="news-zone">
+        <div class="news-zone-head">
+          <div>
+            <span class="panel-kicker">NEWS & EVENTS</span>
+            <h2>Rövid hírek</h2>
+          </div>
+          <span class="scribble scribble-small">Keep it sweet. Keep it Cherry. ♡</span>
+        </div>
+        <section class="news-strip" id="newsStrip" aria-label="Gyors hírek"></section>
+      </section>
+    </section>
+
+    <section class="extras-flow flow-section" aria-label="További CherryHUB oldalak">
+      <div class="section-heading compact-heading">
+        <div>
+          <span class="section-symbol">♡</span>
+          <div>
+            <p class="section-kicker">MORE CHERRY</p>
+            <h2>Még több minden egy helyen</h2>
+          </div>
+        </div>
+      </div>
+      <section class="wide-sections" id="wideSections" aria-label="Kiemelt szekciók"></section>
+    </section>
+
+    <section class="social-flow" aria-label="Közösségi linkek">
+      <div class="social-flow-inner">
+        <div class="social-copy">
+          <span class="panel-kicker">FIND CHERRY EVERYWHERE</span>
+          <h2>Találkozzunk máshol is ♡</h2>
+        </div>
+        <section class="social-strip" id="socialStrip"></section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-scene">
+      <div class="footer-message">
+        <span class="scribble">A brighter tomorrow, together. ♡</span>
+        <strong>CherryHUB</strong>
+        <small>Happy people. Brighter days. Together.</small>
+      </div>
+    </div>
+    <section id="links" class="links"></section>
+    <div class="footer-bottom">
+      <span>© 2026 CherryHUB</span>
+      <span>Készült szeretettel Cherry közösségének. ♡</span>
+      <span>Created by SouLy</span>
+    </div>
+  </footer>
+
+  <nav class="mobile-dock" aria-label="Mobil gyorsmenü">
+    <a href="#home"><span>⌂</span><small>Home</small></a>
+    <button type="button" data-open-modal="community"><span>♧</span><small>Közösség</small></button>
+    <button class="dock-main" type="button" data-open-modal="stream"><span>▷</span><small>Stream</small></button>
+    <button type="button" data-open-modal="music"><span>♪</span><small>Zene</small></button>
+    <button type="button" class="dock-menu-trigger"><span>☰</span><small>Menü</small></button>
+  </nav>
 
   <div class="modal" id="infoModal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-backdrop" data-close-modal></div>
