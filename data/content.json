@@ -230,7 +230,7 @@
         ]
       ],
       "details": {
-        "text": "Itt találod a streamhez kapcsolódó alapinfókat.",
+        "text": "Itt találod a streamhez kapcsolódó alap infókat.",
         "defaultTab": "schedule",
         "tabs": [
           {
@@ -359,7 +359,7 @@
     {
       "id": "sub",
       "icon": "◆",
-      "title": "Feliratkozás (Sub) előnyök",
+      "title": "Feliratkozás előnyök",
       "short": "Sub, badge-ek, emote-ok és támogatói extrák.",
       "floatingTitle": "Sub előnyök és támogatás",
       "floatingText": "Röviden arról, mit ad a sub és miért segíti a csatornát.",
@@ -418,7 +418,7 @@
         ]
       ],
       "details": {
-        "text": "Csatornapontból nyithatsz Cherry kártyákat. A kártyákkal harcolhatsz vagy gyűjtheted őket.",
+        "text": "Csatornapontból nyithatsz Cherry kártyákat.",
         "blocks": [
           {
             "heading": "Alap adatok",
@@ -450,7 +450,7 @@
       "title": "Csatornapontok / Csavarok",
       "short": "Pontok, csavarok, interakciók és dobálható tárgyak.",
       "floatingTitle": "Csatornapontok / Csavarok",
-      "floatingText": "A stream nézésével és támogatással gyűjthető interakciós rendszer.",
+      "floatingText": "A stream nézésével és támogatással gyűjthető. Ebbe beletartozik az aktív chatelés is.",
       "floatingItems": [
         [
           "Szerzés",
@@ -462,11 +462,11 @@
         ],
         [
           "Dobálható tárgyak",
-          "TITS interakciók."
+          "T.I.T.S. interakciók."
         ]
       ],
       "details": {
-        "text": "A Csavar egy közösségi valuta / pont rendszer.",
+        "text": "A Csavar egy közösségi fizetőeszköz.",
         "blocks": [
           {
             "heading": "Csavarok szerzése",
@@ -508,7 +508,7 @@
     {
       "id": "tits",
       "icon": "●",
-      "title": "TITS",
+      "title": "T.I.T.S.",
       "short": "Twitch Integrated Throwing System: dobható tárgyak Cherryre.",
       "floatingTitle": "Twitch Integrated Throwing System",
       "floatingText": "Dobható tárgyak, árak, cooldownok és interakciók.",
@@ -523,7 +523,7 @@
         ],
         [
           "Cooldown",
-          "Később részletezhető."
+          "-"
         ]
       ],
       "details": {
@@ -760,7 +760,7 @@
       "id": "support",
       "icon": "❤",
       "title": "Támogatás",
-      "text": "Támogasd Cherryt, ha szeretnéd segíteni a csatorna és közösség fejlődését.",
+      "text": "Támogasd Cherryt, ha szeretnéd segíteni a csatorna fejlődéét!.",
       "items": [
         {
           "title": "Ko-fi",
@@ -775,7 +775,7 @@
           "url": "#"
         }
       ],
-      "note": "Fontos: csak akkor támogass, ha ezt megengedheted magadnak. A támogatás önkéntes, nem visszatéríthető, és nem jár extra jogokkal."
+      "note": "Fontos: Csak akkor támogass, ha ezt megengedheted magadnak! A támogatás önkéntes, nem visszatéríthető, és nem jár extra jogokkal."
     },
     {
       "id": "wiki",
