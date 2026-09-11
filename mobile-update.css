@@ -232,3 +232,89 @@
     padding:22px 16px;
   }
 }
+
+
+/* Final phone containment + theme toggle placement */
+@media (max-width:760px){
+  .top-actions{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-shrink:0;
+  }
+
+  .menu-toggle{order:1}
+  .theme-toggle{
+    order:2;
+    display:inline-flex !important;
+    width:39px !important;
+    height:39px !important;
+    min-height:39px;
+    padding:0 !important;
+    flex:0 0 39px;
+    border-radius:50%;
+    font-size:0 !important;
+  }
+  .theme-toggle::first-letter{font-size:0 !important}
+  .theme-toggle::before{font-size:17px;line-height:1}
+  html[data-theme="light"] .theme-toggle::before{content:"☀️"}
+  html[data-theme="dark"] .theme-toggle::before{content:"🌙"}
+
+  .schedule-stage{
+    box-sizing:border-box;
+    width:calc(100% - 36px) !important;
+    max-width:calc(100% - 36px) !important;
+    min-width:0;
+    margin-left:18px !important;
+    margin-right:18px !important;
+    border-radius:34px !important;
+    overflow:hidden;
+  }
+
+  .schedule-stage-head,
+  .home-schedule-list{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+  }
+
+  .schedule-stage-head{
+    gap:10px;
+  }
+
+  .schedule-stage-head > div{min-width:0}
+  .schedule-open{flex:0 1 auto;max-width:48%;white-space:normal;text-align:center}
+
+  .home-schedule-list{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:8px;
+    overflow-x:hidden !important;
+  }
+
+  .home-schedule-item{
+    min-width:0;
+    width:100%;
+    overflow:hidden;
+  }
+
+  .home-schedule-item b,
+  .home-schedule-item span,
+  .home-schedule-item time{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+}
+
+@media (max-width:430px){
+  .schedule-stage{
+    width:calc(100% - 28px) !important;
+    max-width:calc(100% - 28px) !important;
+    margin-left:14px !important;
+    margin-right:14px !important;
+    padding-left:14px !important;
+    padding-right:14px !important;
+  }
+  .home-schedule-list{gap:6px}
+  .home-schedule-item{padding:11px 9px}
+}
