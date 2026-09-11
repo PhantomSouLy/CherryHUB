@@ -325,10 +325,95 @@ function goToAndOpen(id, tab = null) {
   setTimeout(() => openModal(id, tab), 360);
 }
 
+function escapeHtml(value = "") {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function safeNewsUrl(value = "") {
+  const url = String(value || "").trim();
+  if (!url) return "";
+  if (/^https?:\/\//i.test(url) || /^(?:\.\.?\/|\/)/.test(url)) return escapeHtml(url);
+  return "";
+}
+
+function getNewsText(item) {
+  return String(item?.description || item?.text || "").trim();
+}
+
+function getNewsImage(item) {
+  return safeNewsUrl(item?.image || item?.imageUrl || item?.image_url || "");
+}
+
+function getNewsDate(item) {
+  return String(item?.date || item?.publishedAt || item?.published_at || "").trim();
+}
+
+function isRealNewsItem(item) {
+  const title = String(item?.title || "").trim();
+  const text = getNewsText(item);
+  return Boolean((title && title !== "-") || (text && text !== "-"));
+}
+
 function renderNews() {
   const strip = $("#newsStrip");
   if (!strip) return;
-  strip.innerHTML = (hubData.news || []).map(i => `<article><b>${i.title}</b><span>${i.text}</span></article>`).join("");
+
+  const news = (hubData.news || []).filter(isRealNewsItem);
+  if (!news.length) {
+    strip.innerHTML = `<div class="news-empty"><strong>Még nincs új hír.</strong><span>Ha érkezik valami Cherry világából, itt fog megjelenni.</span></div>`;
+    return;
+  }
+
+  strip.innerHTML = news.map((item, index) => {
+    const title = escapeHtml(item.title || "Cherry hír");
+    const text = escapeHtml(getNewsText(item));
+    const date = escapeHtml(getNewsDate(item));
+    const image = getNewsImage(item);
+    const imageHtml = image
+      ? `<div class="news-card-image"><img src="${image}" alt="${title}" loading="lazy"></div>`
+      : `<div class="news-card-image news-card-placeholder" aria-hidden="true"><span>CHERRY NEWS</span></div>`;
+
+    return `<button class="news-card" type="button" data-news-index="${index}" aria-label="${title} hír megnyitása">${imageHtml}<div class="news-card-body">${date ? `<time>${date}</time>` : `<span class="news-card-label">HÍR</span>`}<h3>${title}</h3><p>${text || "Kattints a teljes hír megnyitásához."}</p><span class="news-card-more">Teljes hír →</span></div></button>`;
+  }).join("");
+
+  window.__visibleNews = news;
+}
+
+function openNewsModal(index) {
+  const item = (window.__visibleNews || [])[index];
+  if (!item) return;
+
+  const title = String(item.title || "Cherry hír");
+  const text = getNewsText(item);
+  const date = getNewsDate(item);
+  const image = getNewsImage(item);
+  const optionalText = String(item.optionalText || item.optional_text || item.extraText || item.extra_text || "").trim();
+  const optionalUrl = safeNewsUrl(item.optionalUrl || item.optional_url || item.extraUrl || item.extra_url || item.url || "");
+
+  $("#modalKicker").textContent = "✦ CHERRY NEWS";
+  $("#modalTitle").textContent = title;
+  $("#modalText").textContent = date || "Hírek";
+
+  const imageHtml = image
+    ? `<div class="news-modal-image"><img src="${image}" alt="${escapeHtml(title)}"></div>`
+    : "";
+  const textHtml = text
+    ? `<div class="news-modal-copy">${escapeHtml(text).replace(/\n/g, "<br>")}</div>`
+    : `<div class="news-modal-copy">Ehhez a hírhez még nincs részletes leírás.</div>`;
+  const extraHtml = optionalText
+    ? `<div class="news-modal-extra">${escapeHtml(optionalText)}</div>`
+    : "";
+
+  $("#modalContent").innerHTML = `<article class="news-modal-article">${imageHtml}${textHtml}${extraHtml}</article>`;
+  $("#modalActions").innerHTML = optionalUrl
+    ? `<a href="${optionalUrl}" target="_blank" rel="noreferrer">${escapeHtml(optionalText || "További információ")} →</a>`
+    : "";
+  showModal();
 }
 
 function renderCards() {
@@ -358,6 +443,12 @@ function bindModal() {
     if (musicList) {
       e.preventDefault();
       openMusicListModal();
+    }
+
+    const newsCard = e.target.closest("[data-news-index]");
+    if (newsCard) {
+      e.preventDefault();
+      openNewsModal(Number(newsCard.dataset.newsIndex));
     }
 
     if (e.target.closest("[data-close-modal]")) closeModal();
