@@ -1,0 +1,234 @@
+/* CherryHUB – mobile schedule + wallpaper gallery update
+   Loaded after style.css so these rules only override the parts changed here. */
+
+.wallpaper-gallery{
+  max-height:min(62vh,720px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:4px 8px 4px 2px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(232,48,118,.55) transparent;
+}
+
+.wallpaper-gallery::-webkit-scrollbar{width:7px}
+.wallpaper-gallery::-webkit-scrollbar-thumb{
+  background:rgba(232,48,118,.48);
+  border-radius:999px;
+}
+
+.wallpaper-entry{
+  min-width:0;
+  padding:4px 0 8px;
+}
+
+.wallpaper-entry h3{
+  margin:0 0 14px;
+  font-size:clamp(20px,3vw,28px);
+  line-height:1.15;
+}
+
+.wallpaper-preview-wrap{
+  width:100%;
+  min-height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-sizing:border-box;
+  border:1px solid var(--line-strong, rgba(91,54,72,.15));
+  border-radius:22px;
+  background:var(--bg-soft, #fff2f7);
+}
+
+.wallpaper-preview{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:460px;
+  object-fit:cover;
+}
+
+.wallpaper-preview-placeholder{
+  min-height:220px;
+  color:var(--muted, #83717a);
+  font-weight:700;
+}
+
+.wallpaper-downloads{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+
+.wallpaper-download-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:10px 16px;
+  box-sizing:border-box;
+  border-radius:999px;
+  background:var(--pink-strong, #ed347b);
+  color:#fff;
+  font-weight:800;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+.wallpaper-no-download{
+  margin-top:14px;
+  color:var(--muted, #83717a);
+  font-size:14px;
+}
+
+.wallpaper-divider{
+  height:1px;
+  margin:24px 0;
+  background:var(--line-strong, rgba(91,54,72,.15));
+}
+
+.wallpaper-empty{
+  display:flex;
+  min-height:220px;
+  padding:28px;
+  box-sizing:border-box;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:8px;
+  text-align:center;
+  border:1px dashed var(--line-strong, rgba(91,54,72,.18));
+  border-radius:22px;
+  background:var(--bg-soft, #fff2f7);
+}
+
+.wallpaper-empty strong{font-size:20px}
+.wallpaper-empty span{max-width:520px;color:var(--muted, #83717a);line-height:1.55}
+
+/* Keep the center Stream item visually identical when it becomes a Twitch link. */
+.mobile-dock .dock-main{
+  text-decoration:none;
+}
+
+/* Phone fixes */
+@media (max-width:760px){
+  html,
+  body{
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  .modal{
+    box-sizing:border-box;
+    padding:12px;
+    align-items:flex-start;
+    overflow:hidden;
+  }
+
+  .modal-panel{
+    box-sizing:border-box;
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+    max-height:calc(100dvh - 24px);
+    margin:0;
+    padding:28px 18px 24px;
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+
+  .modal-content,
+  .tab-content,
+  .detail-block,
+  .schedule-list,
+  .schedule-item{
+    box-sizing:border-box;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  .tab-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    width:100%;
+    max-width:100%;
+  }
+
+  .tab-btn{
+    flex:1 1 145px;
+    min-width:0;
+    max-width:100%;
+    white-space:normal;
+  }
+
+  .schedule-only-block{
+    overflow:hidden;
+  }
+
+  .schedule-item{
+    grid-template-columns:minmax(0,1fr) auto !important;
+    gap:7px 12px;
+    padding:16px 14px;
+  }
+
+  .schedule-day{
+    min-width:0;
+    overflow-wrap:anywhere;
+  }
+
+  .schedule-time{
+    min-width:0;
+    white-space:nowrap;
+    text-align:right;
+  }
+
+  .schedule-title{
+    grid-column:1 / -1 !important;
+    min-width:0;
+    max-width:100%;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+
+  .schedule-status{
+    max-width:100%;
+    box-sizing:border-box;
+    overflow-wrap:anywhere;
+  }
+
+  .wallpaper-gallery{
+    max-height:52dvh;
+    padding-right:2px;
+  }
+
+  .wallpaper-preview-wrap{
+    min-height:150px;
+    border-radius:18px;
+  }
+
+  .wallpaper-preview{
+    max-height:52dvh;
+    object-fit:contain;
+  }
+
+  .wallpaper-downloads{
+    gap:8px;
+  }
+
+  .wallpaper-download-link{
+    flex:1 1 calc(50% - 4px);
+    min-width:0;
+    padding:10px 12px;
+    white-space:normal;
+    text-align:center;
+    line-height:1.2;
+  }
+
+  .wallpaper-empty{
+    min-height:180px;
+    padding:22px 16px;
+  }
+}

@@ -2,6 +2,7 @@ let hubData = null;
 const TWITCH_BROADCASTER_ID = "611526048";
 const TWITCH_SCHEDULE_ICS_URL = `https://api.twitch.tv/helix/schedule/icalendar?broadcaster_id=${TWITCH_BROADCASTER_ID}`;
 const TWITCH_UPTIME_URL = "https://decapi.me/twitch/uptime/happycherrychan";
+const WALLPAPERS_DATA_URL = "data/wallpapers.json";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
@@ -53,12 +54,78 @@ async function loadData() {
     const r = await fetch("data/content.json", { cache: "no-store" });
     if (!r.ok) throw new Error("content.json");
     hubData = await r.json();
+    await loadWallpaperData();
+    ensureWallpaperHubData();
     renderAll();
   } catch (e) {
     console.error(e);
     const lead = $("#heroLead");
     if (lead) lead.textContent = "Nem sikerült betölteni a data/content.json fájlt.";
     activateIntroPolish();
+  }
+}
+
+async function loadWallpaperData() {
+  try {
+    const response = await fetch(WALLPAPERS_DATA_URL, { cache: "no-store" });
+    if (!response.ok) throw new Error("wallpapers.json");
+    const data = await response.json();
+    hubData.wallpapers = {
+      phone: Array.isArray(data.phone) ? data.phone : [],
+      pc: Array.isArray(data.pc) ? data.pc : []
+    };
+  } catch (error) {
+    console.warn("A Cherry hátterek adatai még nem érhetők el.", error);
+    hubData.wallpapers = { phone: [], pc: [] };
+  }
+}
+
+function ensureWallpaperHubData() {
+  if (!hubData) return;
+
+  const navItem = {
+    label: "Cherry Hátterek",
+    target: "#wallpapers",
+    open: "wallpapers"
+  };
+
+  hubData.nav = Array.isArray(hubData.nav) ? hubData.nav : [];
+  if (!hubData.nav.some(item => item.open === "wallpapers")) {
+    const communityIndex = hubData.nav.findIndex(item => item.open === "community");
+    if (communityIndex >= 0) hubData.nav.splice(communityIndex, 0, navItem);
+    else hubData.nav.push(navItem);
+  }
+
+  const wallpaperCard = {
+    id: "wallpapers",
+    icon: "▧",
+    title: "Cherry Hátterek",
+    short: "Telefonos és PC hátterek letölthető méretekben.",
+    details: {
+      text: "Válassz telefonos vagy PC hátteret.",
+      defaultTab: "wallpaper-phone",
+      tabs: [
+        {
+          id: "wallpaper-phone",
+          label: "📱 Telefon Hátterek",
+          type: "wallpapers",
+          wallpaperType: "phone"
+        },
+        {
+          id: "wallpaper-pc",
+          label: "🖥️ PC Hátterek",
+          type: "wallpapers",
+          wallpaperType: "pc"
+        }
+      ]
+    }
+  };
+
+  hubData.cards = Array.isArray(hubData.cards) ? hubData.cards : [];
+  if (!hubData.cards.some(card => card.id === "wallpapers")) {
+    const communityIndex = hubData.cards.findIndex(card => card.id === "community");
+    if (communityIndex >= 0) hubData.cards.splice(communityIndex, 0, wallpaperCard);
+    else hubData.cards.push(wallpaperCard);
   }
 }
 
@@ -85,6 +152,7 @@ function renderAll() {
 function renderNav() {
   const nav = $("#mainNav");
   const menu = $(".menu-toggle");
+  const dockMenu = $(".dock-menu-trigger");
   if (!nav) return;
 
   nav.innerHTML = (hubData.nav || [])
@@ -96,11 +164,14 @@ function renderNav() {
     menu?.setAttribute("aria-expanded", "false");
   };
 
-  menu?.addEventListener("click", e => {
-    e.stopPropagation();
+  const toggleNav = e => {
+    e?.stopPropagation();
     const open = nav.classList.toggle("open");
-    menu.setAttribute("aria-expanded", open ? "true" : "false");
-  });
+    menu?.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+
+  menu?.addEventListener("click", toggleNav);
+  dockMenu?.addEventListener("click", toggleNav);
 
   nav.addEventListener("click", e => {
     const link = e.target.closest("a");
@@ -237,7 +308,6 @@ function renderFeaturedPanels() {
   const gHtml = g ? `<article class="gacherry-panel"><div class="gacherry-copy"><span class="panel-kicker">✦ Kiemelt projekt</span><h2>${g.title}</h2><p>${g.text}</p><div class="badge-row">${(g.badges || []).map(b => `<span>${b}</span>`).join("")}</div><a class="panel-button" href="${g.url}" target="_blank" rel="noreferrer">${g.button} →</a></div><a class="gacherry-image-frame" href="${g.url}" target="_blank" rel="noreferrer"><img src="${g.image}" alt="GaCherry banner" loading="lazy"></a></article>` : "";
   const mHtml = `<article class="music-panel"><div class="music-head"><span>♪</span><div><span class="panel-kicker">Cherry Music</span><h2>Cherry Zenéi</h2></div></div><div class="music-list">${music.slice(0, 4).map(t => `<a class="music-track" href="${t.url}" target="_blank" rel="noreferrer"><b>${t.title}</b><span>${t.type || "YouTube"} →</span></a>`).join("")}</div><div class="music-actions"><a class="panel-button" href="https://www.youtube.com/@happycherrychan" target="_blank" rel="noreferrer">YouTube csatorna →</a><button class="panel-button panel-button-ghost" type="button" data-open-music-list>Lista megnyitása →</button></div></article>`;
   wrap.innerHTML = gHtml + mHtml;
-  wrap.querySelector("[data-open-music-list]")?.addEventListener("click", openMusicListModal);
 }
 
 function openMusicListModal() {
@@ -282,7 +352,14 @@ function renderLinks() {
 function bindModal() {
   document.addEventListener("click", e => {
     const open = e.target.closest("[data-open-modal]");
-    if (open) openModal(open.dataset.openModal);
+    if (open) openModal(open.dataset.openModal, open.dataset.openTab || null);
+
+    const musicList = e.target.closest("[data-open-music-list]");
+    if (musicList) {
+      e.preventDefault();
+      openMusicListModal();
+    }
+
     if (e.target.closest("[data-close-modal]")) closeModal();
     const tab = e.target.closest("[data-tab]");
     if (tab) switchTab(tab.dataset.tab);
@@ -342,23 +419,47 @@ function switchTab(id) {
   const tab = tabs.find(t => t.id === id);
   if (!tab) return;
   $$(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === id));
-  let html = `<p>${tab.text || ""}</p>`;
-  if (tab.id === "schedule") html += renderScheduleShell(tab);
-  else if (tab.schedule) html += renderManualSchedule(tab);
-  if (tab.blocks) html += tab.blocks.map(b => `<section class="detail-block"><h3>${b.heading}</h3><ul>${(b.items || []).map(renderDetailItem).join("")}</ul></section>`).join("");
+
+  let html = tab.text ? `<p>${tab.text}</p>` : "";
+  if (tab.id === "schedule") html += renderScheduleShell();
+  else if (tab.type === "wallpapers") html += renderWallpaperGallery(tab.wallpaperType);
+
+  if (tab.blocks) {
+    html += tab.blocks
+      .map(b => `<section class="detail-block"><h3>${b.heading}</h3><ul>${(b.items || []).map(renderDetailItem).join("")}</ul></section>`)
+      .join("");
+  }
+
   $("#tabContent").innerHTML = html;
   if (tab.id === "schedule") loadTwitchSchedule();
 }
 
-function renderScheduleShell(tab) {
-  return `<section class="detail-block"><h3>Menetrend</h3><p class="schedule-status" id="twitchScheduleStatus">Menetrend betöltése...</p><div class="schedule-list" id="twitchScheduleList"></div></section><section class="detail-block"><h3>Kézi menetrend</h3>${renderManualSchedule(tab)}</section>`;
+function renderScheduleShell() {
+  return `<section class="detail-block schedule-only-block"><h3>Menetrend</h3><p class="schedule-status" id="twitchScheduleStatus">Menetrend betöltése...</p><div class="schedule-list" id="twitchScheduleList"></div></section>`;
 }
 
-function renderManualSchedule(tab) {
-  let html = "";
-  if (tab.schedule) html += `<div class="schedule-list">${tab.schedule.map(s => `<div class="schedule-item"><div class="schedule-day">${s.day}</div><div class="schedule-time">${s.time}</div><div class="schedule-title">${s.title}</div></div>`).join("")}</div>`;
-  if (tab.note) html += `<div class="schedule-note">${tab.note}</div>`;
-  return html;
+function renderWallpaperGallery(type) {
+  const items = hubData?.wallpapers?.[type] || [];
+  const label = type === "phone" ? "telefonos" : "PC";
+
+  if (!items.length) {
+    return `<div class="wallpaper-gallery wallpaper-gallery-empty"><div class="wallpaper-empty"><strong>Hamarosan érkeznek a ${label} hátterek.</strong><span>A galéria már készen áll — később csak a képeket és a letöltési linkeket kell hozzáadni.</span></div></div>`;
+  }
+
+  const entries = items.map((item, index) => {
+    const downloads = Array.isArray(item.downloads) ? item.downloads : [];
+    const downloadHtml = downloads.length
+      ? `<div class="wallpaper-downloads">${downloads.map(file => `<a class="wallpaper-download-link" href="${file.url}" target="_blank" rel="noreferrer">Download ${file.label}</a>`).join("")}</div>`
+      : `<div class="wallpaper-no-download">A letöltési link hamarosan érkezik.</div>`;
+
+    const preview = item.preview
+      ? `<div class="wallpaper-preview-wrap"><img class="wallpaper-preview" src="${item.preview}" alt="${item.title || "Cherry háttér"} előnézet" loading="lazy"></div>`
+      : `<div class="wallpaper-preview-wrap wallpaper-preview-placeholder">Preview hamarosan</div>`;
+
+    return `<article class="wallpaper-entry"><h3>${item.title || `Cherry háttér ${index + 1}`}</h3>${preview}${downloadHtml}</article>${index < items.length - 1 ? `<div class="wallpaper-divider" aria-hidden="true"></div>` : ""}`;
+  }).join("");
+
+  return `<div class="wallpaper-gallery">${entries}</div>`;
 }
 
 async function loadTwitchSchedule() {
@@ -368,7 +469,7 @@ async function loadTwitchSchedule() {
   try {
     const res = await fetch(TWITCH_SCHEDULE_ICS_URL, { cache: "no-store" });
     if (!res.ok) throw new Error();
-    const events = parseTwitchIcs(await res.text()).filter(ev => ev.start && ev.start >= new Date()).slice(0, 6);
+    const events = parseTwitchIcs(await res.text()).filter(ev => ev.start && ev.start >= new Date()).sort((a, b) => a.start - b.start).slice(0, 6);
     if (!events.length) {
       status.textContent = "Nincs heti stream kiírva. Hamarosan lesz...";
       return;
