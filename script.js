@@ -351,7 +351,7 @@ function switchTab(id) {
 }
 
 function renderScheduleShell(tab) {
-  return `<section class="detail-block"><h3>Automatikus Twitch menetrend</h3><p class="schedule-status" id="twitchScheduleStatus">Menetrend betöltése Twitchről...</p><div class="schedule-list" id="twitchScheduleList"></div></section><section class="detail-block"><h3>Kézi menetrend / tartalék</h3>${renderManualSchedule(tab)}</section>`;
+  return `<section class="detail-block"><h3>Menetrend</h3><p class="schedule-status" id="twitchScheduleStatus">Menetrend betöltése...</p><div class="schedule-list" id="twitchScheduleList"></div></section><section class="detail-block"><h3>Kézi menetrend</h3>${renderManualSchedule(tab)}</section>`;
 }
 
 function renderManualSchedule(tab) {
@@ -377,7 +377,7 @@ async function loadTwitchSchedule() {
     list.innerHTML = events.map(renderTwitchScheduleItem).join("");
   } catch (e) {
     console.warn(e);
-    status.textContent = "Jelenleg nincs Twitch menetrend.";
+    status.textContent = "Jelenleg nincs menetrend.";
   }
 }
 
