@@ -10,7 +10,9 @@
   <link rel="apple-touch-icon" href="./assets/profileico.png?v=4" />
   <link rel="stylesheet" href="style.css?v=20260911-neo" />
   <link rel="stylesheet" href="mobile-update.css?v=20260911-news1" />
+  <link rel="stylesheet" href="theme-logo-update.css?v=20260912-ui1" />
   <script defer src="script.js?v=20260911-news1"></script>
+  <script defer src="theme-polish.js?v=20260912-ui1"></script>
   <script defer src="news-live.js?v=20260912-webnews1"></script>
 </head>
 <body class="is-loading">
@@ -27,7 +29,7 @@
     <div class="top-actions">
       <a class="contact-btn" href="https://discord.gg/A8qZjkaFCy" target="_blank" rel="noreferrer">Csatlakozom ♡</a>
       <button class="menu-toggle" type="button" aria-label="Menü megnyitása" aria-expanded="false">☰</button>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Téma váltása">☀️ Light mode</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Dark Mode bekapcsolása">🌙 Dark Mode</button>
     </div>
   </header>
 
@@ -37,8 +39,9 @@
       <div class="hero-stage">
         <section class="hero-copy">
           <p class="eyebrow">STREAM · GAME · CHAOS · FUN</p>
-          <!-- Cherry eredeti PNG logója ide kerül. A három üres sor megtartja a jelenlegi hero helyét. -->
-          <h1 class="hero-logo-slot" aria-label="Cherry eredeti logó helye"><span>&nbsp;</span><span>&nbsp;</span><em>&nbsp;</em></h1>
+          <h1 class="hero-logo-slot">
+            <img class="hero-main-logo" src="./assets/HappyCherryChanLogo.png?v=1" alt="HappyCherryChan" />
+          </h1>
           <p class="lead" id="heroLead">Minden ami Cherry.</p>
           <p class="hero-note">Streamek, játékok, zenék, káosz, nyuszi. 🐰</p>
           <div class="hero-actions" id="heroActions"></div>
