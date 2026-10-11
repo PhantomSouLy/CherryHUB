@@ -7,6 +7,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
 const THEME_KEY = "cherryhub-theme";
+let modalTrigger = null;
 
 function readStoredTheme() {
   try { return localStorage.getItem(THEME_KEY); } catch { return null; }
@@ -179,7 +180,7 @@ function renderNav() {
     closeNav();
     if (link.dataset.navOpen) {
       e.preventDefault();
-      goToAndOpen(link.dataset.navOpen);
+      openModal(link.dataset.navOpen);
     }
   });
 
@@ -190,7 +191,7 @@ function renderNav() {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 1180) closeNav();
+    if (window.innerWidth > 1600) closeNav();
   });
 }
 
@@ -210,7 +211,7 @@ function renderHero() {
     const link = e.target.closest("[data-hero-open]");
     if (!link) return;
     e.preventDefault();
-    goToAndOpen(link.dataset.heroOpen, link.dataset.heroTab || null);
+    openModal(link.dataset.heroOpen, link.dataset.heroTab || null);
   });
 }
 
@@ -318,11 +319,6 @@ function openMusicListModal() {
   $("#modalContent").innerHTML = `<div class="music-modal-list">${tracks.map(t => `<article class="music-modal-track"><div><b>${t.title}</b><span>${t.type || "YouTube"}</span></div><a href="${t.url}" target="_blank" rel="noreferrer">Lejátszás YouTube-on →</a></article>`).join("")}</div>`;
   $("#modalActions").innerHTML = `<a href="https://www.youtube.com/@happycherrychan" target="_blank" rel="noreferrer">YouTube csatorna →</a>`;
   showModal();
-}
-
-function goToAndOpen(id, tab = null) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "center" });
-  setTimeout(() => openModal(id, tab), 360);
 }
 
 function escapeHtml(value = "") {
@@ -456,6 +452,20 @@ function bindModal() {
     if (tab) switchTab(tab.dataset.tab);
   });
   document.addEventListener("keydown", e => {
+    const modal = $("#infoModal");
+    if (e.key === "Tab" && modal?.classList.contains("show")) {
+      const focusable = $$("button, a[href], [tabindex='0']", modal)
+        .filter(element => element.getClientRects().length && !element.disabled);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !modal.contains(document.activeElement))) {
+        e.preventDefault();
+        last?.focus({ preventScroll: true });
+      } else if (!e.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+        e.preventDefault();
+        first?.focus({ preventScroll: true });
+      }
+    }
     if (e.key === "Escape") {
       closeModal();
       $("#mainNav")?.classList.remove("open");
@@ -467,13 +477,31 @@ function bindModal() {
 function showModal() {
   const m = $("#infoModal");
   if (!m) return;
+  if (!m.classList.contains("show")) modalTrigger = document.activeElement;
+  m.inert = false;
   m.classList.add("show");
   m.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  root.style.overflow = "hidden";
+  document.querySelectorAll("body > :not(#infoModal):not(script)").forEach(element => {
+    element.inert = true;
+  });
+  $(".modal-close", m)?.focus({ preventScroll: true });
 }
 
 function openModal(id, forceTab = null) {
   const d = hubData?.cards?.find(c => c.id === id);
+  const section = hubData?.wideSections?.find(item => item.id === id);
+  if (!d && section) {
+    $("#modalKicker").textContent = `${section.icon} ${section.title}`;
+    $("#modalTitle").textContent = section.title;
+    $("#modalText").textContent = section.text;
+    $("#modalContent").innerHTML = (section.items || []).map(item =>
+      `<section class="detail-block"><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p><a class="wide-link" href="${escapeHtml(item.url)}" target="${item.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${escapeHtml(item.button)} →</a></section>`
+    ).join("");
+    $("#modalActions").innerHTML = section.note ? `<div class="wide-note">${escapeHtml(section.note)}</div>` : "";
+    showModal();
+    return;
+  }
   if (!d) return;
   $("#modalKicker").textContent = `✿ ${d.title}`;
   $("#modalTitle").textContent = d.title;
@@ -486,9 +514,9 @@ function renderDetailItem(i) {
   if (i && typeof i === "object") {
     const title = i.title || i.label || "Elem";
     if (i.url) return `<li class="object-item"><span>${title}</span><a href="${i.url}" target="_blank" rel="noreferrer">🎧 Meghallgatom</a></li>`;
-    return `<li>${title}</li>`;
+    return `<li>${escapeHtml(title)}</li>`;
   }
-  return `<li>${i}</li>`;
+  return `<li>${escapeHtml(i)}</li>`;
 }
 
 function renderModalContent(d, forceTab = null) {
@@ -623,10 +651,17 @@ function formatDuration(start, end) {
 
 function closeModal() {
   const m = $("#infoModal");
-  if (!m) return;
+  if (!m?.classList.contains("show")) return;
   m.classList.remove("show");
   m.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+  m.inert = true;
+  root.style.overflow = "";
+  document.querySelectorAll("body > :not(#infoModal):not(script)").forEach(element => {
+    element.inert = false;
+  });
+  const trigger = modalTrigger?.getClientRects().length ? modalTrigger : $(".menu-toggle");
+  trigger?.focus({ preventScroll: true });
+  modalTrigger = null;
 }
 
 loadData();

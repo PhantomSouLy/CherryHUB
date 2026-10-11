@@ -17,6 +17,7 @@
       {
         "label": "❤️ Támogatás",
         "url": "#support",
+        "open": "support",
         "style": "secondary"
       }
     ]
@@ -105,7 +106,8 @@
     },
     {
       "label": "Támogatás",
-      "target": "#support"
+      "target": "#support",
+      "open": "support"
     }
   ],
   "petals": [
@@ -760,7 +762,7 @@
       "id": "support",
       "icon": "❤",
       "title": "Támogatás",
-      "text": "Támogasd Cherryt, ha szeretnéd segíteni a csatorna fejlődéét!.",
+      "text": "Támogasd Cherryt, ha szeretnéd segíteni a csatorna fejlődését!",
       "items": [
         {
           "title": "Ko-fi",
