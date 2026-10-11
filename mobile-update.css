@@ -120,6 +120,7 @@
   }
 
   .modal{
+    bottom:82px;
     box-sizing:border-box;
     padding:12px;
     align-items:flex-start;
@@ -130,7 +131,7 @@
     box-sizing:border-box;
     width:calc(100vw - 24px);
     max-width:calc(100vw - 24px);
-    max-height:calc(100dvh - 24px);
+    max-height:calc(100dvh - var(--header-height,64px) - 82px - 24px);
     margin:0;
     padding:28px 18px 24px;
     overflow-y:auto;

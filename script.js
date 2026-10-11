@@ -431,7 +431,14 @@ function renderLinks() {
 }
 
 function bindModal() {
+  const header = $(".topbar");
+  if (header) {
+    const updateHeaderHeight = () => root.style.setProperty("--header-height", `${header.offsetHeight}px`);
+    updateHeaderHeight();
+    new ResizeObserver(updateHeaderHeight).observe(header);
+  }
   document.addEventListener("click", e => {
+    if (e.target.closest('a[href="#home"]')) closeModal();
     const open = e.target.closest("[data-open-modal]");
     if (open) openModal(open.dataset.openModal, open.dataset.openTab || null);
 
@@ -454,14 +461,14 @@ function bindModal() {
   document.addEventListener("keydown", e => {
     const modal = $("#infoModal");
     if (e.key === "Tab" && modal?.classList.contains("show")) {
-      const focusable = $$("button, a[href], [tabindex='0']", modal)
+      const focusable = $$(".topbar button, .topbar a[href], .mobile-dock button, .mobile-dock a[href], #infoModal button, #infoModal a[href], #infoModal [tabindex='0']")
         .filter(element => element.getClientRects().length && !element.disabled);
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
-      if (e.shiftKey && (document.activeElement === first || !modal.contains(document.activeElement))) {
+      if (e.shiftKey && (document.activeElement === first || !focusable.includes(document.activeElement))) {
         e.preventDefault();
         last?.focus({ preventScroll: true });
-      } else if (!e.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+      } else if (!e.shiftKey && (document.activeElement === last || !focusable.includes(document.activeElement))) {
         e.preventDefault();
         first?.focus({ preventScroll: true });
       }
@@ -477,14 +484,18 @@ function bindModal() {
 function showModal() {
   const m = $("#infoModal");
   if (!m) return;
-  if (!m.classList.contains("show")) modalTrigger = document.activeElement;
+  if (!m.classList.contains("show") || document.activeElement?.closest(".topbar, .mobile-dock")) {
+    modalTrigger = document.activeElement;
+  }
   m.inert = false;
   m.classList.add("show");
+  document.body.classList.add("modal-open");
   m.setAttribute("aria-hidden", "false");
   root.style.overflow = "hidden";
-  document.querySelectorAll("body > :not(#infoModal):not(script)").forEach(element => {
+  $$("main, .site-footer").forEach(element => {
     element.inert = true;
   });
+  $(".modal-panel", m).scrollTop = 0;
   $(".modal-close", m)?.focus({ preventScroll: true });
 }
 
@@ -653,10 +664,11 @@ function closeModal() {
   const m = $("#infoModal");
   if (!m?.classList.contains("show")) return;
   m.classList.remove("show");
+  document.body.classList.remove("modal-open");
   m.setAttribute("aria-hidden", "true");
   m.inert = true;
   root.style.overflow = "";
-  document.querySelectorAll("body > :not(#infoModal):not(script)").forEach(element => {
+  $$("main, .site-footer").forEach(element => {
     element.inert = false;
   });
   const trigger = modalTrigger?.getClientRects().length ? modalTrigger : $(".menu-toggle");

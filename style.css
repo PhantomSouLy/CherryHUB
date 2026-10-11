@@ -904,7 +904,7 @@ html[data-theme="dark"] .news-zone{background:linear-gradient(90deg,rgba(50,25,3
 /* Modal / részletes tartalom */
 .modal{
   position:fixed;
-  inset:0;
+  inset:var(--header-height,72px) 0 0;
   z-index:200;
   display:grid;
   place-items:center;
@@ -923,7 +923,7 @@ html[data-theme="dark"] .news-zone{background:linear-gradient(90deg,rgba(50,25,3
 .modal-panel{
   position:relative;
   width:min(780px,100%);
-  max-height:min(84vh,820px);
+  max-height:min(calc(100dvh - var(--header-height,72px) - 48px),820px);
   overflow:auto;
   padding:28px;
   border-radius:32px 12px 32px 32px;
@@ -931,6 +931,8 @@ html[data-theme="dark"] .news-zone{background:linear-gradient(90deg,rgba(50,25,3
   border:1px solid var(--line-strong);
   box-shadow:0 40px 100px rgba(28,10,24,.32);
 }
+body.modal-open .topbar,
+body.modal-open .mobile-dock{z-index:220}
 .modal-close{
   position:sticky;
   top:0;
