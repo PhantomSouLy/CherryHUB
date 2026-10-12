@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root{
-  --bg:#fff9fc;
-  --bg-soft:#fff0f6;
-  --surface:rgba(255,255,255,.88);
-  --surface-strong:#fff;
-  --surface-soft:#fff6fa;
+  --bg:#d9d0dd;
+  --bg-soft:#e5d9e3;
+  --surface:rgba(241,234,240,.92);
+  --surface-strong:#f1eaf0;
+  --surface-soft:#eadfe8;
   --text:#211722;
-  --muted:#7f6f7a;
+  --muted:#65586a;
   --pink:#ef4f8a;
   --pink-strong:#dc2f72;
   --pink-soft:#ffd7e7;
   --rose:#a93065;
   --lav:#8b6ee8;
-  --line:rgba(91,49,76,.12);
-  --line-strong:rgba(91,49,76,.2);
+  --line:rgba(91,49,76,.18);
+  --line-strong:rgba(91,49,76,.26);
   --night:#17121f;
   --night-2:#241629;
   --shadow:0 18px 50px rgba(126,63,97,.13);
@@ -179,7 +179,7 @@ body.is-loaded{opacity:1;transition:opacity .35s ease}
   overflow:hidden;
   isolation:isolate;
   background:
-    linear-gradient(90deg,rgba(255,250,253,.97) 0%,rgba(255,250,253,.78) 28%,rgba(255,250,253,.12) 58%,rgba(255,250,253,.34) 100%),
+    linear-gradient(90deg,rgba(217,208,221,.96) 0%,rgba(217,208,221,.82) 28%,rgba(133,101,135,.22) 58%,rgba(160,122,149,.32) 100%),
     url("./assets/blossom_background.png") center 38% / cover no-repeat;
 }
 html[data-theme="dark"] .hero{
@@ -1057,7 +1057,7 @@ body.modal-open .mobile-dock{z-index:220}
   .social-flow-inner{grid-template-columns:220px 1fr}
 }
 
-@media (max-width:1600px){
+@media (max-width:1180px){
   .nav{
     position:absolute;
     top:calc(100% + 8px);
@@ -1098,7 +1098,7 @@ body.modal-open .mobile-dock{z-index:220}
   .hero{
     min-height:720px;
     background:
-      linear-gradient(180deg,rgba(255,249,252,.48) 0%,rgba(255,249,252,.12) 45%,rgba(255,249,252,.85) 78%,rgba(255,249,252,.96) 100%),
+      linear-gradient(180deg,rgba(217,208,221,.62) 0%,rgba(160,122,149,.24) 45%,rgba(217,208,221,.88) 78%,rgba(217,208,221,.98) 100%),
       url("./assets/blossom_background.png") 54% top / auto 100% no-repeat;
   }
   html[data-theme="dark"] .hero{

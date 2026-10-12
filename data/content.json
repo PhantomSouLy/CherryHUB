@@ -56,7 +56,7 @@
   ],
   "nav": [
     {
-      "label": "Főoldal",
+      "label": "Főmenü",
       "target": "#home"
     },
     {
@@ -70,26 +70,6 @@
       "open": "commands"
     },
     {
-      "label": "Feliratkozás",
-      "target": "#sub",
-      "open": "sub"
-    },
-    {
-      "label": "Twitch Gacha",
-      "target": "#gacha",
-      "open": "gacha"
-    },
-    {
-      "label": "Csatornapontok",
-      "target": "#points",
-      "open": "points"
-    },
-    {
-      "label": "Tárgy dobálás (T.I.T.S.)",
-      "target": "#tits",
-      "open": "tits"
-    },
-    {
       "label": "Bunny Pass",
       "target": "#pass",
       "open": "pass"
@@ -100,9 +80,9 @@
       "open": "music"
     },
     {
-      "label": "Közösség",
-      "target": "#community",
-      "open": "community"
+      "label": "Cherry Hátterek",
+      "target": "#wallpapers",
+      "open": "wallpapers"
     },
     {
       "label": "Támogatás",

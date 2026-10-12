@@ -31,7 +31,7 @@ function applyTheme(theme, persist = false) {
   if (persist) writeStoredTheme(safeTheme);
 
   const themeColor = document.querySelector('meta[name="theme-color"]');
-  if (themeColor) themeColor.setAttribute("content", safeTheme === "dark" ? "#140811" : "#fff1f7");
+  if (themeColor) themeColor.setAttribute("content", safeTheme === "dark" ? "#140811" : "#d9d0dd");
 
   const button = $("#themeToggle");
   if (button) {
@@ -191,7 +191,7 @@ function renderNav() {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 1600) closeNav();
+    if (window.innerWidth > 1180) closeNav();
   });
 }
 
