@@ -276,9 +276,12 @@ async function loadHomeSchedulePreview() {
     }
 
     const next = events[0];
-    const day = next.start.toLocaleDateString("hu-HU", { weekday: "long", month: "short", day: "numeric" });
+    const day = [
+      next.start.toLocaleDateString("hu-HU", { month: "short", day: "numeric" }),
+      next.start.toLocaleDateString("hu-HU", { weekday: "long" })
+    ].map(part => part.charAt(0).toLocaleUpperCase("hu-HU") + part.slice(1)).join(" - ");
     const time = next.start.toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit" });
-    sub.innerHTML = `<p class="next-stream-title"><span>Cím:</span> <strong>${escapeHtml(next.title || "Cherry stream")}</strong></p><time class="next-stream-date" datetime="${next.start.toISOString()}">${escapeHtml(day)} · ${time}</time>`;
+    sub.innerHTML = `<time class="next-stream-date" datetime="${next.start.toISOString()}">${escapeHtml(day)} · ${time}</time><p class="next-stream-title"><span>Cím:</span> <strong>${escapeHtml(next.title || "Cherry stream")}</strong></p>`;
     list.innerHTML = events.map(renderHomeScheduleItem).join("");
   } catch (e) {
     console.warn("Twitch menetrend nem tölthető be", e);
@@ -514,9 +517,13 @@ function openModal(id, forceTab = null) {
     return;
   }
   if (!d) return;
-  $("#modalKicker").textContent = `✿ ${d.title}`;
+  if (id === "stream") {
+    $("#modalKicker").innerHTML = '<span class="stream-ornament" aria-hidden="true">✦ ♡ ✦</span>';
+  } else {
+    $("#modalKicker").textContent = `✿ ${d.title}`;
+  }
   $("#modalTitle").textContent = d.title;
-  $("#modalText").textContent = d.details?.text || d.short;
+  $("#modalText").textContent = d.details?.text ?? d.short;
   renderModalContent(d, forceTab);
   showModal();
 }
