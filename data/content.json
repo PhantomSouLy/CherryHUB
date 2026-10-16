@@ -218,7 +218,6 @@
           {
             "id": "schedule",
             "label": "📅 Menetrend",
-            "text": "Heti menetrend.",
             "schedule": [
               {
                 "day": "Hétfő",

@@ -278,7 +278,7 @@ async function loadHomeSchedulePreview() {
     const next = events[0];
     const day = next.start.toLocaleDateString("hu-HU", { weekday: "long", month: "short", day: "numeric" });
     const time = next.start.toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit" });
-    sub.textContent = `Következő stream: ${day}, ${time} — ${next.title || "Cherry stream"}`;
+    sub.innerHTML = `<p class="next-stream-title"><span>Cím:</span> <strong>${escapeHtml(next.title || "Cherry stream")}</strong></p><time class="next-stream-date" datetime="${next.start.toISOString()}">${escapeHtml(day)} · ${time}</time>`;
     list.innerHTML = events.map(renderHomeScheduleItem).join("");
   } catch (e) {
     console.warn("Twitch menetrend nem tölthető be", e);
@@ -290,7 +290,7 @@ async function loadHomeSchedulePreview() {
 function renderHomeScheduleItem(event) {
   const date = event.start.toLocaleDateString("hu-HU", { month: "short", day: "numeric" });
   const time = event.start.toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit" });
-  return `<div class="home-schedule-item"><span>${date}</span><b>${event.title || "Cherry stream"}</b><time>${time}</time></div>`;
+  return `<div class="home-schedule-item"><span>${date}</span><b>${escapeHtml(event.title || "Cherry stream")}</b><time>${time}</time></div>`;
 }
 
 function renderSocials() {
@@ -565,7 +565,7 @@ function switchTab(id) {
 }
 
 function renderScheduleShell() {
-  return `<section class="detail-block schedule-only-block"><h3>Menetrend</h3><p class="schedule-status" id="twitchScheduleStatus">Menetrend betöltése...</p><div class="schedule-list" id="twitchScheduleList"></div></section>`;
+  return `<section class="detail-block schedule-only-block"><p class="schedule-status" id="twitchScheduleStatus" role="status">Menetrend betöltése...</p><div class="schedule-list" id="twitchScheduleList"></div></section>`;
 }
 
 function renderWallpaperGallery(type) {
@@ -604,7 +604,7 @@ async function loadTwitchSchedule() {
       status.textContent = "Nincs heti stream kiírva. Hamarosan lesz...";
       return;
     }
-    status.textContent = `A héten ${events.length} stream lesz.`;
+    status.hidden = true;
     list.innerHTML = events.map(renderTwitchScheduleItem).join("");
   } catch (e) {
     console.warn(e);
@@ -647,17 +647,7 @@ function renderTwitchScheduleItem(event) {
   const day = event.start.toLocaleDateString("hu-HU", { weekday: "long", month: "short", day: "numeric" });
   const time = event.start.toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit" });
   const title = event.title || "Cherry stream";
-  const duration = event.end ? ` • kb. ${formatDuration(event.start, event.end)}` : "";
-  return `<div class="schedule-item"><div class="schedule-day">${day}</div><div class="schedule-time">${time}</div><div class="schedule-title">${title}${duration}</div></div>`;
-}
-
-function formatDuration(start, end) {
-  const minutes = Math.max(0, Math.round((end - start) / 60000));
-  const h = Math.floor(minutes / 60);
-  const m = minutes % 60;
-  if (h && m) return `${h} óra ${m} perc`;
-  if (h) return `${h} óra`;
-  return `${m} perc`;
+  return `<div class="schedule-item"><div class="schedule-day">${day}</div><div class="schedule-time">${time}</div><div class="schedule-title">${escapeHtml(title)}</div></div>`;
 }
 
 function closeModal() {

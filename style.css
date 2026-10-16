@@ -375,6 +375,11 @@ html[data-theme="dark"] .hero-actions .secondary{background:rgba(27,18,28,.84)}
 .home-live-kicker{color:#ff8ab7;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 .home-live-copy h2{margin:4px 0 4px;font:400 24px/1 "DM Serif Display",serif}
 .home-live-copy p{margin:0;color:#d8cbd3;font-size:11px;line-height:1.5}
+.home-live-copy #liveSubText{margin-top:10px;color:#d8cbd3;font-size:11px;line-height:1.5}
+.home-live-copy .next-stream-title{font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.next-stream-title span{color:#d8cbd3;font-weight:500}
+.next-stream-title strong{color:#fff5fa;font-weight:700}
+.next-stream-date{display:block;margin-top:8px;color:#d8cbd3;font-size:12px;line-height:1.5}
 .live-actions{display:flex;gap:8px;position:relative;z-index:2}
 .home-live-cta,.live-schedule-btn{
   min-height:40px;
