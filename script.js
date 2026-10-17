@@ -328,9 +328,26 @@ function renderFeaturedPanels() {
   if (!wrap) return;
   const g = hubData.gacherryPanel;
   const music = hubData.musicTracks || [];
-  const gHtml = g ? `<article class="gacherry-panel"><div class="gacherry-copy"><span class="panel-kicker">✦ Kiemelt projekt</span><h2>${g.title}</h2><p>${g.text}</p><div class="badge-row">${(g.badges || []).map(b => `<span>${b}</span>`).join("")}</div><a class="panel-button" href="${g.url}" target="_blank" rel="noreferrer">${g.button} →</a></div><a class="gacherry-image-frame" href="${g.url}" target="_blank" rel="noreferrer"><img src="${g.image}" alt="GaCherry banner" loading="lazy"></a></article>` : "";
+  const gImage = g ? `<img src="${escapeHtml(g.image)}" alt="GaCherry banner" loading="lazy">` : "";
+  const gFrame = !g || g.paused || !g.url
+    ? `<div class="gacherry-image-frame">${gImage}</div>`
+    : `<a class="gacherry-image-frame" href="${escapeHtml(g.url)}" target="_blank" rel="noreferrer">${gImage}</a>`;
+  const gHtml = g ? `<article class="gacherry-panel"><div class="gacherry-copy"><span class="panel-kicker">✦ Kiemelt projekt</span><h2>${escapeHtml(g.title)}</h2>${renderProjectStatus(g)}<p>${escapeHtml(g.text)}</p><div class="badge-row">${(g.badges || []).map(b => `<span>${escapeHtml(b)}</span>`).join("")}</div>${renderModalAction({ label: g.button, url: g.url, disabled: g.paused }, "panel-button")}</div>${gFrame}</article>` : "";
   const mHtml = `<article class="music-panel"><div class="music-head"><span>♪</span><div><span class="panel-kicker">Cherry Music</span><h2>Cherry Zenéi</h2></div></div><div class="music-list">${music.slice(0, 4).map(t => `<a class="music-track" href="${t.url}" target="_blank" rel="noreferrer"><b>${t.title}</b><span>${t.type || "YouTube"} →</span></a>`).join("")}</div><div class="music-actions"><a class="panel-button" href="https://www.youtube.com/@happycherrychan" target="_blank" rel="noreferrer">YouTube csatorna →</a><button class="panel-button panel-button-ghost" type="button" data-open-music-list>Lista megnyitása →</button></div></article>`;
   wrap.innerHTML = gHtml + mHtml;
+}
+
+function renderProjectStatus(project) {
+  if (!project.paused) return "";
+  return `<div class="project-status" role="status"><strong>${escapeHtml(project.pauseMessage)}</strong><small>${escapeHtml(project.availability)}</small></div>`;
+}
+
+function renderModalAction(button, className = "") {
+  if (button.disabled || !button.url) {
+    return `<button class="modal-action-disabled ${className}" type="button" disabled>${escapeHtml(button.label)}</button>`;
+  }
+  const classes = [className, button.featured ? "modal-action-featured" : ""].filter(Boolean).join(" ");
+  return `<a${classes ? ` class="${classes}"` : ""} href="${escapeHtml(button.url)}" target="${button.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${escapeHtml(button.label)}</a>`;
 }
 
 function openMusicListModal() {
@@ -579,7 +596,7 @@ function bindModal() {
   document.addEventListener("keydown", e => {
     const modal = $("#infoModal");
     if (e.key === "Tab" && modal?.classList.contains("show")) {
-      const focusable = $$(".topbar button, .topbar a[href], .mobile-dock button, .mobile-dock a[href], #infoModal button, #infoModal a[href], #infoModal [tabindex='0']")
+    const focusable = $$(".topbar button, .topbar a[href], .mobile-dock button, .mobile-dock a[href], #infoModal button, #infoModal a[href], #infoModal summary, #infoModal [tabindex='0']")
         .filter(element => element.getClientRects().length && !element.disabled);
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -653,31 +670,67 @@ function renderDetailItem(i) {
   return `<li>${escapeHtml(i)}</li>`;
 }
 
+function platformIcon(platform) {
+  const paths = {
+    twitch: "M11.571 4.714h1.715v5.143h-1.715zM6.857 0 2.571 4.286v15.428h5.143V24L12 19.714h3.429L23.143 12V0Zm14.572 11.143L18 14.571h-5.143l-3 3v-3H5.143V1.714h16.286ZM16.286 4.714H18v5.143h-1.714z",
+    discord: "M19.7 5.3A18 18 0 0 0 15 3.8l-.6 1.2a16.3 16.3 0 0 0-4.8 0L9 3.8a18 18 0 0 0-4.7 1.5C1.4 9.6.7 13.8 1.1 18a18.2 18.2 0 0 0 5.7 2.9l1.2-2a12 12 0 0 1-1.8-.9l.4-.3a13.7 13.7 0 0 0 10.8 0l.4.3a12 12 0 0 1-1.8.9l1.2 2a18.2 18.2 0 0 0 5.7-2.9c.4-4.2-.3-8.4-3.2-12.7ZM8.5 10.4a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Zm7 0a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Z"
+  };
+  if (!Object.hasOwn(paths, platform)) return "";
+  return `<svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="${paths[platform]}"></path></svg>`;
+}
+
+function renderTabButton(tab, active) {
+  const icon = platformIcon(tab.platform);
+  const platform = icon ? ` data-platform="${tab.platform}"` : "";
+  return `<button class="tab-btn${icon ? " platform-tab" : ""}${active ? " active" : ""}" type="button" data-tab="${escapeHtml(tab.id)}"${platform} aria-pressed="${active}" aria-controls="tabContent">${icon}${escapeHtml(tab.label)}</button>`;
+}
+
+function rulesText(value = "") {
+  return escapeHtml(value).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+
+function renderRules(tab) {
+  const rules = tab.rules;
+  if (!rules) return "";
+  const platform = tab.platform === "discord" ? "discord" : "twitch";
+  const paragraphs = values => (values || []).map(value => `<p>${rulesText(value)}</p>`).join("");
+  const chapters = (rules.sections || []).map(section => `<details class="rules-section" name="rules-${platform}"><summary><span>${escapeHtml(section.title)}</span><span class="rules-chevron" aria-hidden="true">+</span></summary><div class="rules-section-body">${section.lead ? `<p><strong>${rulesText(section.lead)}</strong></p>` : ""}${section.intro ? `<p>${rulesText(section.intro)}</p>` : ""}<ul>${(section.items || []).map(item => `<li>${rulesText(item)}</li>`).join("")}</ul>${section.closing ? `<p>${rulesText(section.closing)}</p>` : ""}${section.emphasis ? `<p class="rules-emphasis"><strong>${rulesText(section.emphasis)}</strong></p>` : ""}</div></details>`).join("");
+  const footer = rules.footer;
+  return `<article class="rules-document" data-platform="${platform}"><header class="rules-intro"><h3>${escapeHtml(rules.title)}</h3><p><strong>${rulesText(rules.welcome)}</strong></p>${paragraphs(rules.intro)}</header><div class="rules-chapters">${chapters}</div>${footer ? `<footer class="rules-footer"><h3>${escapeHtml(footer.title)}</h3>${paragraphs(footer.paragraphs)}<p><strong>${rulesText(footer.emphasis)}</strong></p></footer>` : ""}</article>`;
+}
+
 function renderModalContent(d, forceTab = null) {
   const details = d.details || {};
   if (details.tabs?.length) {
     const defaultTab = forceTab || details.defaultTab || details.tabs[0].id;
-    $("#modalContent").innerHTML = `<div class="tab-row">${details.tabs.map(t => `<button class="tab-btn ${t.id === defaultTab ? "active" : ""}" type="button" data-tab="${t.id}">${t.label}</button>`).join("")}</div><div class="tab-content" id="tabContent"></div>`;
+    const rulesTabs = details.tabs.every(tab => tab.type === "rules");
+    $("#modalContent").innerHTML = `<div class="tab-row${rulesTabs ? " rules-tabs" : ""}" role="group" aria-label="Tartalomválasztó">${details.tabs.map(tab => renderTabButton(tab, tab.id === defaultTab)).join("")}</div><div class="tab-content" id="tabContent"></div>`;
     window.__currentTabs = details.tabs;
     window.__currentTabButtons = details.buttons || [];
     switchTab(defaultTab);
     return;
   }
   $("#modalContent").innerHTML = (details.blocks || []).map(b => `<section class="detail-block"><h3>${b.heading}</h3><ul>${(b.items || []).map(renderDetailItem).join("")}</ul></section>`).join("");
-  $("#modalActions").innerHTML = (details.buttons || []).map(b => `<a ${b.featured ? 'class="modal-action-featured"' : ""} href="${b.url}" target="${b.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${b.label}</a>`).join("");
+  $("#modalActions").innerHTML = (details.buttons || []).map(button => renderModalAction(button)).join("");
 }
 
 function switchTab(id) {
   const tabs = window.__currentTabs || [];
   const tab = tabs.find(t => t.id === id);
   if (!tab) return;
-  $$(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === id));
+  $$(".tab-btn").forEach(button => {
+    const active = button.dataset.tab === id;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
 
-  let html = tab.text ? `<p>${tab.text}</p>` : "";
+  let html = renderProjectStatus(tab);
+  html += tab.text ? `<p>${escapeHtml(tab.text)}</p>` : "";
   if (tab.id === "schedule") html += renderScheduleShell();
   else if (tab.type === "wallpapers") html += renderWallpaperGallery(tab.wallpaperType);
   else if (tab.type === "music") html += renderMusicAlbum(tab.albumId);
   else if (tab.type === "commands") html += renderCommandList(tab);
+  else if (tab.type === "rules") html += renderRules(tab);
 
   if (tab.blocks) {
     html += tab.blocks
@@ -687,7 +740,7 @@ function switchTab(id) {
 
   $("#tabContent").innerHTML = html;
   $("#modalActions").innerHTML = (tab.buttons ?? window.__currentTabButtons ?? [])
-    .map(button => `<a href="${escapeHtml(button.url)}" target="${button.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${escapeHtml(button.label)}</a>`).join("");
+    .map(button => renderModalAction(button)).join("");
   if (tab.id === "schedule") loadTwitchSchedule();
 }
 

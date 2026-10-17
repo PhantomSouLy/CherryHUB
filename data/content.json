@@ -70,6 +70,11 @@
       "open": "stream"
     },
     {
+      "label": "Szabályzat",
+      "target": "#rules",
+      "open": "rules"
+    },
+    {
       "label": "Parancsok",
       "target": "#commands",
       "open": "commands"
@@ -124,17 +129,19 @@
     }
   ],
   "gacherryPanel": {
-    "title": "GaCherry - Gacha Game",
+    "title": "GaCherry - Gacha Game [DISCORD]",
     "text": "Nyiss Cherry kártyákat, gyűjtsd ki az összeset és legyél te a gacha királya!",
     "button": "GaCherry megnyitása",
-    "url": "https://phantomsouly.github.io/GaCherry/",
     "image": "assets/gacherry-banner.png",
     "badges": [
       "Collection",
       "Battle",
       "Gacha",
       "Season"
-    ]
+    ],
+    "paused": true,
+    "pauseMessage": "Jelenleg szüneteltetve van!",
+    "availability": "Csak is Discordon elérhető!"
   },
   "musicTracks": [
     {
@@ -288,6 +295,234 @@
                 ]
               }
             ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "rules",
+      "icon": "🛡️",
+      "title": "Szabályzat",
+      "short": "Cherry Twitch- és Discord-közösségének szabályai.",
+      "details": {
+        "text": "",
+        "defaultTab": "rules-twitch",
+        "tabs": [
+          {
+            "id": "rules-twitch",
+            "label": "Twitch",
+            "platform": "twitch",
+            "type": "rules",
+            "rules": {
+              "title": "🍒 Cherry Twitch Szabályzata 🐰",
+              "welcome": "Üdvözöllek Cherry világában! 💗",
+              "intro": [
+                "Ez a csatorna a közös szórakozásról, játékokról, beszélgetésekről, mémekről és a jó hangulatról szól!",
+                "Nálunk lehet viccelődni, hülyéskedni és önmagadnak lenni. Nem célunk minden apróságot túlszabályozni, de az alapvető tiszteletet és kulturált viselkedést mindenkitől elvárjuk."
+              ],
+              "sections": [
+                {
+                  "title": "🌸 1. Alapvető viselkedés",
+                  "items": [
+                    "Tiszteld Cherryt, a moderátorokat és a többi nézőt!",
+                    "Tilos a zaklatás, fenyegetés, rasszizmus, gyűlöletbeszéd és bármilyen diszkrimináció.",
+                    "A baráti ugratás és poénkodás megengedett, de ne legyen sértő vagy megalázó.",
+                    "A mérsékelt káromkodás belefér, de a folyamatos trágárkodás és agresszív viselkedés nem.",
+                    "Politikai és vallási témákról kulturáltan lehet beszélgetni, amíg nem okoznak konfliktust.",
+                    "Minden néző egyenlő tiszteletet érdemel, függetlenül rangjától vagy támogatásától."
+                  ]
+                },
+                {
+                  "title": "💬 2. Chat és kommunikáció",
+                  "items": [
+                    "Ne spamelj, floodolj, vagy írj indokolatlanul csupa nagybetűkkel!",
+                    "Ne követelj folyamatos figyelmet vagy azonnali választ Cherrytől.",
+                    "Ne kérlelj moderátori rangot vagy különleges jogosultságokat.",
+                    "Kerüld a szándékos provokációt és a felesleges vitákat.",
+                    "A kéretlen reklámozás, önpromóció és más csatornák hirdetése nem megengedett.",
+                    "Nyugodtan kapcsolódj be a beszélgetésbe, de figyelj arra, hogy mások is szóhoz juthassanak!"
+                  ]
+                },
+                {
+                  "title": "🎮 3. Játékok és streamek",
+                  "items": [
+                    "Tilos a kéretlen spoilerezés.",
+                    "A backseat gaminget (kéretlen játékirányítást) mellőzd, hacsak Cherry nem kér segítséget.",
+                    "Ne kritizáld folyamatosan Cherry játékstílusát vagy döntéseit.",
+                    "A játék közbeni bénázások, vicces jelenetek és bakik a szórakozás részei.",
+                    "Ha Cherry valamire koncentrál, légy türelmes, nem biztos, hogy minden üzenetet észrevesz."
+                  ]
+                },
+                {
+                  "title": "🐰 4. Mémek és humor",
+                  "lead": "A mémek nálunk nem tiltólistásak! ♡",
+                  "items": [
+                    "A 67, aktuális trendmémek, belsős poénok és random agymenések teljesen megengedettek.",
+                    "A vicces emote-ok, reakciók és mémelések a közösség részei.",
+                    "Nem kell minden beszélgetésnek komolynak lennie!",
+                    "A humor viszont nem szolgálhat mások megalázására vagy zaklatására.",
+                    "A mémelés ne alakuljon át folyamatos spammé."
+                  ],
+                  "emphasis": "Mémelni szabad, másokat bántani nem! :3"
+                },
+                {
+                  "title": "💗 5. Más streamerek és VTuberek",
+                  "intro": "Cherry csatornája nyitott közösség, ahol más tartalomgyártók létezése nem számít tabunak.",
+                  "items": [
+                    "Magyar és külföldi VTuberek, streamerek megemlítése **NEM TILOS!**",
+                    "Más Twitch-csatornák emote-jait is nyugodtan használhatod.",
+                    "Beszélgethetsz más tartalomgyártókról kulturált keretek között.",
+                    "Nem kell kerülni más streamerek nevét vagy úgy tenni, mintha nem léteznének.",
+                    "A folyamatos reklámozás, nézőtoborzás és önpromóció viszont nem megengedett.",
+                    "Más közösségek konfliktusait és személyes drámáit ne hozd át ide."
+                  ],
+                  "emphasis": "A kölcsönös tisztelet fontosabb, mint az, hogy kit említesz meg!"
+                },
+                {
+                  "title": "🚫 6. Trash tartalmak és drámázás",
+                  "lead": "Ez a csatorna NEM trash csatorna, és nem is kíván azzá válni!",
+                  "items": [
+                    "Más streamerek, VTuberek és magánszemélyek szándékos lejáratása, megalázása és rendszeres kibeszélése nem része a csatornának.",
+                    "Tilos a szándékos botránykeltés, hergelés és rosszindulatú provokáció.",
+                    "Más közösségek drámáit ne próbáld itt tovább folytatni.",
+                    "A kulturált kritika és véleménynyilvánítás természetesen megengedett.",
+                    "Az internetes trendmémek és a vicces tartalmak önmagukban nem számítanak trash tartalomnak."
+                  ],
+                  "emphasis": "Cherry csatornáján a szórakozásé a főszerep, nem a másokon való csámcsogásé!"
+                },
+                {
+                  "title": "🔒 7. Magánélet és biztonság",
+                  "items": [
+                    "Tartsd tiszteletben Cherry és a közösség tagjainak magánéletét!",
+                    "Személyes adatok vagy privát információk engedély nélküli megosztása tilos.",
+                    "Ne kérdezősködj tolakodóan mások magánéletéről.",
+                    "Tilos a káros, adathalász és egyéb veszélyes linkek terjesztése.",
+                    "A Twitch szabályaiba ütköző, különösen pornográf vagy más tiltott tartalmak megosztása nem megengedett."
+                  ]
+                },
+                {
+                  "title": "🛡️ 8. Moderáció és szankciók",
+                  "lead": "A szabályok nem ismerete nem mentesít azok betartása alól!",
+                  "items": [
+                    "A moderátorok feladata a közösség nyugalmának és biztonságának megőrzése.",
+                    "Szabálysértés esetén figyelmeztetés, időszakos némítás (timeout) vagy kitiltás (BAN) alkalmazható.",
+                    "Az ismétlődő vagy szándékos szabálysértések súlyosabb következményekkel járhatnak.",
+                    "Súlyos esetekben előzetes figyelmeztetés nélkül is történhet kitiltás.",
+                    "A moderátori döntéseket kérjük tiszteletben tartani. Az esetleges problémákat kulturáltan, a megfelelő csatornán jelezd."
+                  ],
+                  "closing": "A Twitch közösségi irányelvei minden esetben érvényesek."
+                }
+              ],
+              "footer": {
+                "title": "🍒 Érezd jól magad!",
+                "paragraphs": [
+                  "Itt nem kell attól tartanod, hogy egy mém, egy másik VTuber említése vagy egy ártalmatlan poén miatt bajba kerülsz.",
+                  "Nevess, beszélgess, mémelj és élvezd a streameket!"
+                ],
+                "emphasis": "Tiszteljük egymást, kerüljük a felesleges drámákat, és érezzük jól magunkat együtt! 💗🐰"
+              }
+            }
+          },
+          {
+            "id": "rules-discord",
+            "label": "Discord",
+            "platform": "discord",
+            "type": "rules",
+            "rules": {
+              "title": "🍒 Cherry Discord Szabályzata 🐰",
+              "welcome": "Üdvözöllek Cherry közösségi Discord-szerverén! 💗",
+              "intro": [
+                "Ez a szerver azért jött létre, hogy a streameken kívül is együtt lehessünk, beszélgessünk, megosszuk élményeinket, mémeljünk és egy barátságos közösséget építsünk.",
+                "Kérjük, tartsd tiszteletben az alábbi szabályokat, hogy mindenki kellemesen és biztonságban érezhesse magát!"
+              ],
+              "sections": [
+                {
+                  "title": "🌸 1. Alapvető viselkedés és tisztelet",
+                  "items": [
+                    "Tiszteld a közösség valamennyi tagját, Cherryt és a moderátorokat!",
+                    "Tilos a zaklatás, rasszizmus, gyűlöletbeszéd, fenyegetés és bármilyen diszkrimináció.",
+                    "Tartsd tiszteletben mások véleményét és személyes határait.",
+                    "A mérsékelt káromkodás és baráti ugratás megengedett, de ne váljon sértővé.",
+                    "Politikai és vallási témákról kulturáltan lehet beszélgetni. Amennyiben konfliktus alakul ki, hagyjátok abba a témát.",
+                    "A szerveren mindenki egyenlő tiszteletet érdemel, rangtól függetlenül."
+                  ]
+                },
+                {
+                  "title": "💬 2. Kommunikáció és csatornahasználat",
+                  "items": [
+                    "A Discord-csatornákat a megadott témájuknak megfelelően használd.",
+                    "Tilos a spam, flood, indokolatlan tömeges megjelölés és a szándékos zavarás.",
+                    "Ne használj sértő, gyűlöletkeltő vagy NSFW profilképet és felhasználónevet.",
+                    "A mémek, vicces tartalmak és közösségi poénok megengedettek a megfelelő csatornákban.",
+                    "Kerüld a felesleges veszekedést, provokációt és mások kigúnyolását.",
+                    "Ne használd a szervert társkeresőként, és ne erőltess másokra nem kívánt közeledést."
+                  ]
+                },
+                {
+                  "title": "🔒 3. Privát üzenetek és személyes határok",
+                  "items": [
+                    "Ne zaklasd a közösség tagjait privát üzenetekkel vagy kéretlen barátfelkérésekkel.",
+                    "Tartsd tiszteletben, ha valaki nem szeretne veled privátban beszélgetni.",
+                    "Mások személyes adatait, képeit és privát beszélgetéseit ne oszd meg engedély nélkül.",
+                    "Cherry, a moderátorok és a szerver vezetői is rendelkeznek magánélettel és szabadidővel.",
+                    "A vezetőség tagjait ne jelöld vagy keresd fel indokolatlanul, ha az adott ügyre külön csatorna is rendelkezésre áll."
+                  ],
+                  "emphasis": "Egy közösségben a személyes határok tiszteletben tartása alapvető!"
+                },
+                {
+                  "title": "🎫 4. Cherry és a vezetőség felkeresése",
+                  "items": [
+                    "Ha Cherryt szeretnéd felkeresni valamilyen ügyben, először nyiss egy ticketet, vagy keresd a Lead Moderátort.",
+                    "Az általános, személyes jellegű kérdéseket a kijelölt kérdezőcsatornában tedd fel, amennyiben a téma odaillik.",
+                    "Ne jelöld meg folyamatosan Cherryt, SouLy-t vagy a Lead Moderátort felesleges ügyekkel.",
+                    "Légy türelmes, a vezetőség nem tud minden megkeresésre azonnal válaszolni."
+                  ]
+                },
+                {
+                  "title": "💗 5. Más közösségek és tartalomgyártók",
+                  "items": [
+                    "Más magyar és külföldi VTuberek, streamerek és tartalomgyártók említése természetesen megengedett.",
+                    "Más közösségekről kulturáltan lehet beszélgetni.",
+                    "Tilos más Discord-szerverek vagy Twitch-csatornák engedély nélküli reklámozása.",
+                    "Saját tartalmad, projekted vagy közösséged hirdetéséhez kérj előzetes engedélyt.",
+                    "Más streamerek vagy közösségek konfliktusait és drámáit ne hozd át a szerverre.",
+                    "Más közösségek tagjainak szándékos provokálása vagy zaklatása tilos."
+                  ],
+                  "emphasis": "Nálunk nem a más közösségektől való elszigetelődés a cél, hanem a kulturált együttélés!"
+                },
+                {
+                  "title": "🚫 6. Tiltott tartalmak és tevékenységek",
+                  "items": [
+                    "Tilos a pornográf, kifejezetten szexuális vagy más tiltott NSFW tartalmak megosztása.",
+                    "Tilos a káros, adathalász és megtévesztő linkek terjesztése.",
+                    "Tilos mások személyes adatainak nyilvánosságra hozatala.",
+                    "Tilos a rosszindulatú raid, szervezett zaklatás és más szerverek megtámadása.",
+                    "Nem megengedett a szándékos botránykeltés, mások lejáratása és a folyamatos trash jellegű viselkedés.",
+                    "A Discord szolgáltatási feltételeit és közösségi irányelveit minden esetben be kell tartani."
+                  ]
+                },
+                {
+                  "title": "🛡️ 7. Moderáció és szabálysértések",
+                  "lead": "A szabályok nem ismerete nem mentesít azok betartása alól!",
+                  "items": [
+                    "Szabálysértés esetén a moderátorok figyelmeztetést adhatnak.",
+                    "Ismételt szabálysértés esetén időszakos némítás, jogosultságkorlátozás vagy kitiltás alkalmazható.",
+                    "Súlyos esetekben a moderátorok előzetes figyelmeztetés nélkül is kitilthatnak.",
+                    "A moderátorokat és a vezetőséget indokolatlanul zaklatni, döntéseiket szándékosan kijátszani nem megengedett.",
+                    "Ha problémád van egy moderátori döntéssel, azt ticketen keresztül, kulturáltan jelezheted."
+                  ],
+                  "closing": "A szabályzat nem fedhet le minden elképzelhető helyzetet. A moderáció a józan ész, az arányosság és a közösség érdekei alapján jár el."
+                }
+              ],
+              "footer": {
+                "title": "🐰 Élvezd az itt töltött időt!",
+                "paragraphs": [
+                  "Cherry Discord-közössége egy barátságos hely, ahol lehet ismerkedni, beszélgetni, viccelődni, mémelni és közös élményeket szerezni.",
+                  "Nem célunk minden apróságot tiltani, de szeretnénk, ha mindenki jól érezné magát."
+                ],
+                "emphasis": "Légy kedves, tisztelj másokat, és érezd magad otthon Cherry világában! 💗🍒"
+              }
+            }
           }
         ]
       }
@@ -668,7 +903,7 @@
             "text": "Nyiss Cherry kártyákat, gyűjtsd ki az összeset és legyél te a gacha királya!",
             "blocks": [
               {
-                "heading": "GaCherry - Gacha Game",
+                "heading": "GaCherry - Gacha Game [DISCORD]",
                 "items": [
                   "Collection · Battle · Gacha · Season"
                 ]
@@ -676,10 +911,13 @@
             ],
             "buttons": [
               {
-                "label": "GaCherry megnyitása →",
-                "url": "https://phantomsouly.github.io/GaCherry/"
+                "label": "GaCherry megnyitása",
+                "disabled": true
               }
-            ]
+            ],
+            "paused": true,
+            "pauseMessage": "Jelenleg szüneteltetve van!",
+            "availability": "Csak is Discordon elérhető!"
           },
           {
             "id": "gacha-twitch",
