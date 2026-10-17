@@ -322,9 +322,9 @@ function openMusicListModal() {
   const albums = hubData.musicAlbums || [];
   renderModalContent({ details: {
     defaultTab: albums[0]?.id,
-    tabs: albums.map(album => ({ id: album.id, label: album.title, type: "music", albumId: album.id }))
+    tabs: albums.map(album => ({ id: album.id, label: album.title, type: "music", albumId: album.id })),
+    buttons: [{ label: "YouTube csatorna →", url: "https://www.youtube.com/@happycherrychan" }]
   }});
-  $("#modalActions").innerHTML = `<a href="https://www.youtube.com/@happycherrychan" target="_blank" rel="noreferrer">YouTube csatorna →</a>`;
   showModal();
 }
 
@@ -575,8 +575,8 @@ function renderModalContent(d, forceTab = null) {
     const defaultTab = forceTab || details.defaultTab || details.tabs[0].id;
     $("#modalContent").innerHTML = `<div class="tab-row">${details.tabs.map(t => `<button class="tab-btn ${t.id === defaultTab ? "active" : ""}" type="button" data-tab="${t.id}">${t.label}</button>`).join("")}</div><div class="tab-content" id="tabContent"></div>`;
     window.__currentTabs = details.tabs;
+    window.__currentTabButtons = details.buttons || [];
     switchTab(defaultTab);
-    $("#modalActions").innerHTML = (details.buttons || []).map(b => `<a href="${b.url}" target="${b.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${b.label}</a>`).join("");
     return;
   }
   $("#modalContent").innerHTML = (details.blocks || []).map(b => `<section class="detail-block"><h3>${b.heading}</h3><ul>${(b.items || []).map(renderDetailItem).join("")}</ul></section>`).join("");
@@ -602,6 +602,8 @@ function switchTab(id) {
   }
 
   $("#tabContent").innerHTML = html;
+  $("#modalActions").innerHTML = (tab.buttons ?? window.__currentTabButtons ?? [])
+    .map(button => `<a href="${escapeHtml(button.url)}" target="${button.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${escapeHtml(button.label)}</a>`).join("");
   if (tab.id === "schedule") loadTwitchSchedule();
 }
 

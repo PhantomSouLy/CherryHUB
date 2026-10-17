@@ -132,7 +132,7 @@
     "badges": [
       "Collection",
       "Battle",
-      "Rarity",
+      "Gacha",
       "Season"
     ]
   },
@@ -629,10 +629,10 @@
     {
       "id": "gacha",
       "icon": "◇",
-      "title": "Twitch Gacha",
-      "short": "Twitch Gacha rendszerhez alap infók.",
-      "floatingTitle": "Rövid infó a rendszerről",
-      "floatingText": "Ez a gacha kizárólag Cherry Twitch streamje alatt elérhető.",
+      "title": "Gacha",
+      "short": "Discord Gacha és Twitch Gacha egy helyen.",
+      "floatingTitle": "Discord és Twitch Gacha",
+      "floatingText": "Válassz a Discord Gacha és a Twitch Gacha fülek közül.",
       "floatingItems": [
         [
           "Nyitás",
@@ -644,28 +644,69 @@
         ]
       ],
       "details": {
-        "text": "Csatornapontból nyithatsz Cherry kártyákat.",
-        "blocks": [
+        "text": "",
+        "defaultTab": "gacha-twitch",
+        "tabs": [
           {
-            "heading": "Alap adatok",
-            "items": [
-              "Nyitás ára: <Látható az ikon alatt>",
-              "Cooldown: 2 perc",
-              "Season név: Summer Edition",
-              "Season időtartam: 4 hónap"
+            "id": "gacha-discord",
+            "label": "Discord Gacha",
+            "text": "Nyiss Cherry kártyákat, gyűjtsd ki az összeset és legyél te a gacha királya!",
+            "blocks": [
+              {
+                "heading": "GaCherry - Gacha Game",
+                "items": [
+                  "Collection · Battle · Gacha · Season"
+                ]
+              }
+            ],
+            "buttons": [
+              {
+                "label": "GaCherry megnyitása →",
+                "url": "https://phantomsouly.github.io/GaCherry/"
+              }
             ]
           },
           {
-            "heading": "Fontos infók",
-            "items": [
-              "A kártyák szezononként változnak."
-            ]
-          }
-        ],
-        "buttons": [
-          {
-            "label": "Discordon a 4 és az 5 csillagos nyitott kártyákat kiírja!",
-            "url": "#"
+            "id": "gacha-twitch",
+            "label": "Twitch Gacha",
+            "text": "Csatornapontból nyithatsz Cherry kártyákat! A kártyákkal harcolhatsz is: elnyerheted az ellenfeled lapját, de akár el is veszítheted a sajátodat.",
+            "blocks": [
+              {
+                "heading": "Szezonrendszer",
+                "items": [
+                  "Minden új szezon indulásakor teljes reset történik."
+                ]
+              },
+              {
+                "heading": "Alap adatok",
+                "items": [
+                  "Nyitás ára: 333 Cseresznyepont",
+                  "Cooldown: 1 perc",
+                  "Season név: Őszi + Halloween",
+                  "Season időtartam: 4 hónap"
+                ]
+              },
+              {
+                "heading": "Fontos infók",
+                "items": [
+                  "50 különböző kártyát gyűjthetsz össze.",
+                  "Ha már meglévő kártyát nyitottál, akkor az stackelődik a kollekciódban.",
+                  "Harcnál RNG (véletlen rendszer) választja ki, melyik lap kerül lerakásra.",
+                  "Azonos csillagszám esetén az RNG dönt.",
+                  "Alapesetben a magasabb csillagszám győz.",
+                  "Discordon a 4 és az 5 csillagos kártyák értesítésre kerülnek!"
+                ]
+              },
+              {
+                "heading": "Parancsok",
+                "items": [
+                  "!collection – Megmutatja a kártyáidat a képernyőn.",
+                  "!battle – Harcra hívod ki a chatet.",
+                  "!accept – Elfogadod az aktuális kihívást."
+                ]
+              }
+            ],
+            "buttons": []
           }
         ]
       }
