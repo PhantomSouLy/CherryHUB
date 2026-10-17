@@ -335,7 +335,11 @@ function renderMusicAlbum(albumId) {
 }
 
 function renderCommandList(tab) {
-  return `<dl class="command-list">${(tab.commands || []).map(item => `<div class="command-row"><dt><code>${escapeHtml(item.command)}</code>${item.permission === "Regular" ? '<span class="command-access">Regular</span>' : ""}</dt><dd>${escapeHtml(item.description)}</dd></div>`).join("")}</dl>${tab.note ? `<p class="command-note">${escapeHtml(tab.note)}</p>` : ""}`;
+  const renderRows = commands => `<dl class="command-list">${commands.map(item => `<div class="command-row"><dt><code>${escapeHtml(item.command)}</code>${item.permission === "Regular" ? '<span class="command-access">Regular</span>' : ""}</dt><dd>${escapeHtml(item.description)}</dd></div>`).join("")}</dl>`;
+  const content = tab.groups
+    ? tab.groups.map(group => `<section class="command-group"><h3>${escapeHtml(group.title)}</h3>${renderRows(group.commands || [])}</section>`).join("")
+    : renderRows(tab.commands || []);
+  return `${content}${tab.note ? `<p class="command-note">${escapeHtml(tab.note)}</p>` : ""}`;
 }
 
 function escapeHtml(value = "") {

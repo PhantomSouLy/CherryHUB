@@ -1078,6 +1078,9 @@ body.modal-open .mobile-dock{z-index:220}
 .album-empty>span{font-size:38px;color:var(--pink)}
 .album-empty p{font-size:14px;line-height:1.6}
 .command-list{display:grid;gap:8px;margin:0}
+.command-group + .command-group{margin-top:24px}
+.command-group h3{display:flex;align-items:center;gap:12px;margin:0 0 11px;color:var(--pink-strong);font-size:15px;font-weight:800}
+.command-group h3::after{content:"";height:1px;flex:1;background:var(--line-strong)}
 .command-row{display:grid;grid-template-columns:minmax(150px,.8fr) minmax(0,1.6fr);gap:10px 20px;align-items:center;padding:15px 16px;border:1px solid var(--line);border-radius:16px;background:var(--surface-soft)}
 .command-row dt{display:flex;flex-wrap:wrap;align-items:center;gap:7px;min-width:0}
 .command-row code{font-size:13px;font-weight:700;color:var(--pink-strong);overflow-wrap:anywhere}

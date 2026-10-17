@@ -479,17 +479,17 @@
               {
                 "command": "!blink",
                 "description": "Emlékezteti Cherryt a pislogásra.",
-                "permission": "Regular"
+                "permission": "Everyone"
               },
               {
                 "command": "!buff",
                 "description": "+10 gamer skill Cherrynek.",
-                "permission": "Regular"
+                "permission": "Everyone"
               },
               {
                 "command": "!hug",
                 "description": "Ölelést ad Cherrynek.",
-                "permission": "Regular"
+                "permission": "Everyone"
               }
             ]
           },
@@ -497,41 +497,56 @@
             "id": "cmd-bunny",
             "label": "Bunny Pass és Gacha",
             "type": "commands",
-            "commands": [
+            "groups": [
               {
-                "command": "!bunnypass",
-                "description": "Bunny Pass információk és link.",
-                "permission": "Everyone"
+                "title": "Bunny Pass",
+                "commands": [
+                  {
+                    "command": "!bunnypass",
+                    "description": "Bunny Pass információk és link.",
+                    "permission": "Everyone"
+                  },
+                  {
+                    "command": "!bp",
+                    "description": "Bunny Pass linkje.",
+                    "permission": "Everyone"
+                  }
+                ]
               },
               {
-                "command": "!bp",
-                "description": "Bunny Pass linkje.",
-                "permission": "Everyone"
+                "title": "Gacha",
+                "commands": [
+                  {
+                    "command": "!gacha",
+                    "description": "Információ a csatornapontból nyitható Gacháról.",
+                    "permission": "Everyone"
+                  },
+                  {
+                    "command": "!collection",
+                    "description": "Megmutatja a kártyáidat.",
+                    "permission": "Everyone"
+                  },
+                  {
+                    "command": "!battle",
+                    "description": "Harcra hívás.",
+                    "permission": "Everyone"
+                  },
+                  {
+                    "command": "!accept",
+                    "description": "Az aktuális kihívás elfogadása.",
+                    "permission": "Everyone"
+                  }
+                ]
               },
               {
-                "command": "!gacha",
-                "description": "Információ a csatornapontból nyitható Gacháról.",
-                "permission": "Everyone"
-              },
-              {
-                "command": "!collection",
-                "description": "Megmutatja a kártyáidat.",
-                "permission": "Everyone"
-              },
-              {
-                "command": "!battle",
-                "description": "Harcra hívás.",
-                "permission": "Everyone"
-              },
-              {
-                "command": "!accept",
-                "description": "Az aktuális kihívás elfogadása.",
-                "permission": "Everyone"
-              },
-              {
-                "command": "!nyuszik",
-                "description": "Nyusziparancsok. A !spawn előhívja a nyuszidat (feliratkozás szükséges).",
-                "permission": "Everyone"
+                "title": "Nyuszik",
+                "commands": [
+                  {
+                    "command": "!nyuszik",
+                    "description": "Nyusziparancsok. A !spawn előhívja a nyuszidat (feliratkozás szükséges).",
+                    "permission": "Everyone"
+                  }
+                ]
               }
             ]
           },
@@ -604,7 +619,7 @@
         ]
       ],
       "details": {
-        "text": "A sub közvetlen támogatás Cherrynek, és több rendszerben is szerepet kaphat.",
+        "text": "",
         "blocks": [
           {
             "heading": "Sub előnyök",
@@ -689,7 +704,7 @@
               {
                 "heading": "Fontos infók",
                 "items": [
-                  "50 különböző kártyát gyűjthetsz össze.",
+                  "50 különböző kártyát gyűjthetsz össze + 1 egyedi 6⭐ kártya.",
                   "Ha már meglévő kártyát nyitottál, akkor az stackelődik a kollekciódban.",
                   "Harcnál RNG (véletlen rendszer) választja ki, melyik lap kerül lerakásra.",
                   "Azonos csillagszám esetén az RNG dönt.",
