@@ -9,6 +9,8 @@ const root = document.documentElement;
 const THEME_KEY = "cherryhub-theme";
 let modalTrigger = null;
 let cardOpenRequest = 0;
+let liveStatusTimer = null;
+let liveStatusLoading = false;
 
 function readStoredTheme() {
   try { return localStorage.getItem(THEME_KEY); } catch { return null; }
@@ -221,40 +223,54 @@ function renderHero() {
 function renderLivePanel() {
   loadLiveStatus();
   loadHomeSchedulePreview();
+  if (liveStatusTimer === null) {
+    liveStatusTimer = window.setInterval(() => {
+      if (!document.hidden) loadLiveStatus();
+    }, 60000);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) loadLiveStatus();
+    });
+  }
 }
 
-async function loadLiveStatus() {
+function updateLiveStatus(state) {
+  const online = state === "live";
+  const label = online ? "Cherry Most élőben!" : state === "offline" ? "Cherry most Offline" : "Live státusz nem ellenőrizhető";
   const card = $("#homeLiveCard");
   const dot = $("#liveStatusDot");
   const text = $("#liveStatusText");
   const badge = $("#liveBadge");
-  if (!dot || !text) return;
+  dot?.classList.toggle("online", online);
+  dot?.classList.toggle("offline", !online);
+  card?.classList.toggle("is-live", online);
+  if (text) text.textContent = label;
+  if (badge) {
+    badge.textContent = online ? "LIVE" : state === "offline" ? "OFFLINE" : "STATUS";
+    badge.classList.toggle("offline", !online);
+  }
+  const scheduleStatus = $("#scheduleLiveStatus");
+  const scheduleText = $("#scheduleLiveText");
+  if (scheduleStatus) scheduleStatus.dataset.state = state;
+  if (scheduleText) scheduleText.textContent = label;
+}
 
+async function loadLiveStatus() {
+  if (liveStatusLoading) return;
+  liveStatusLoading = true;
   try {
-    const res = await fetch(TWITCH_UPTIME_URL, { cache: "no-store" });
+    const res = await fetch(TWITCH_UPTIME_URL, { cache: "no-store", signal: AbortSignal.timeout(12000) });
     if (!res.ok) throw new Error("uptime");
 
     const uptime = (await res.text()).trim();
     const offline = /offline|not live|not currently live/i.test(uptime);
-    dot.classList.toggle("online", !offline);
-    dot.classList.toggle("offline", offline);
-    card?.classList.toggle("is-live", !offline);
-    text.textContent = offline ? "Cherry most offline" : "Cherry most élőben van!";
-
-    if (badge) {
-      badge.textContent = offline ? "OFFLINE" : "LIVE";
-      badge.classList.toggle("offline", offline);
-    }
+    const validUptime = /\b\d+\s+(?:days?|hours?|minutes?|seconds?)\b/i.test(uptime);
+    if (!offline && !validUptime) throw new Error("Érvénytelen live státusz");
+    updateLiveStatus(offline ? "offline" : "live");
   } catch (e) {
     console.warn("Live státusz nem tölthető be", e);
-    dot.classList.remove("online");
-    dot.classList.add("offline");
-    card?.classList.remove("is-live");
-    text.textContent = "Live státusz nem ellenőrizhető";
-    if (badge) {
-      badge.textContent = "STATUS";
-      badge.classList.add("offline");
-    }
+    updateLiveStatus("unknown");
+  } finally {
+    liveStatusLoading = false;
   }
 }
 
@@ -684,7 +700,7 @@ function renderWallpaperGallery(type) {
   const label = type === "phone" ? "telefonos" : "PC";
 
   if (!items.length) {
-    return `<div class="wallpaper-gallery wallpaper-gallery-empty"><div class="wallpaper-empty"><strong>Hamarosan érkeznek a ${label} hátterek.</strong><span>A galéria már készen áll — később csak a képeket és a letöltési linkeket kell hozzáadni.</span></div></div>`;
+    return `<div class="wallpaper-gallery wallpaper-gallery-empty"><div class="wallpaper-empty"><strong>Hamarosan érkeznek a ${label} hátterek.</strong></div></div>`;
   }
 
   const entries = items.map((item, index) => {

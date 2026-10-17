@@ -8,10 +8,10 @@
   <meta name="description" content="HappyCherryChan honlapja – streamek, játékok, zenék, hírek és minden ami Cherry." />
   <link rel="icon" type="image/png" href="./assets/profileico.png?v=4" />
   <link rel="apple-touch-icon" href="./assets/profileico.png?v=4" />
-  <link rel="stylesheet" href="style.css?v=20261017-pc-setup" />
+  <link rel="stylesheet" href="style.css?v=20261017-live-status" />
   <link rel="stylesheet" href="mobile-update.css?v=20261017-panels" />
   <link rel="stylesheet" href="theme-logo-update.css?v=20260912-ui1" />
-  <script defer src="script.js?v=20261017-pc-setup"></script>
+  <script defer src="script.js?v=20261017-live-status"></script>
   <script defer src="theme-polish.js?v=20260912-ui1"></script>
   <script defer src="news-live.js?v=20260912-webnews1"></script>
 </head>
@@ -77,10 +77,14 @@
     </section>
 
     <section class="schedule-flow flow-section" aria-label="Stream menetrend">
+      <div class="schedule-live-status" id="scheduleLiveStatus" data-state="loading" role="status" aria-live="polite" aria-atomic="true">
+        <span class="schedule-live-dot" aria-hidden="true"></span>
+        <strong id="scheduleLiveText">Live státusz ellenőrzése...</strong>
+      </div>
       <article class="schedule-stage">
         <div class="schedule-stage-head">
           <div>
-            <span class="panel-kicker">LIVE •</span>
+            <span class="panel-kicker">STREAM</span>
             <h2>Menetrend</h2>
           </div>
           <button class="schedule-open" type="button" data-open-modal="stream">Teljes menetrend →</button>

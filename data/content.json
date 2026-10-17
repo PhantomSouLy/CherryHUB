@@ -812,13 +812,8 @@
         "text": "A TITS olyan stream interakció, ahol a nézők különböző tárgyakat dobhatnak be Cherryre.",
         "blocks": [
           {
-            "heading": "Mit tartalmaz?",
-            "items": [
-              "Dobható tárgyak listája",
-              "Árak",
-              "Cooldownok",
-              "Példák és szabályok"
-            ]
+            "heading": "Átmenetileg kikapcsolva, Warudo átdolgozása miatt.",
+            "items": []
           }
         ]
       }
@@ -967,7 +962,7 @@
             "items": [
               {
                 "label": "Kamera / Telefon",
-                "value": "Android"
+                "value": "iPhone 17"
               },
               {
                 "label": "Szoftverek",
