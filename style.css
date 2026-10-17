@@ -468,6 +468,9 @@ html[data-theme="dark"] .hero-actions .secondary{background:rgba(27,18,28,.84)}
   scrollbar-color:var(--pink-soft) transparent;
 }
 .section-card{
+  --card-accent:#ed77aa;
+  --card-secondary:#a392e3;
+  --glass-edge:rgba(255,255,255,.65);
   position:relative;
   display:flex;
   flex-direction:column;
@@ -483,18 +486,36 @@ html[data-theme="dark"] .hero-actions .secondary{background:rgba(27,18,28,.84)}
   color:var(--text);
   text-align:center;
   cursor:pointer;
-  background:linear-gradient(150deg,var(--surface-strong),var(--surface-soft));
-  border:1px solid var(--line-strong);
+  background:
+    radial-gradient(ellipse at 100% 0%,color-mix(in srgb,var(--card-accent) 30%,transparent),transparent 65%),
+    radial-gradient(ellipse at 0% 100%,color-mix(in srgb,var(--card-secondary) 27%,transparent),transparent 65%),
+    linear-gradient(145deg,color-mix(in srgb,var(--surface-strong) 78%,transparent),color-mix(in srgb,var(--surface-soft) 52%,transparent));
+  border:1px solid var(--glass-edge);
   border-radius:20px;
-  box-shadow:var(--shadow-soft);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:inset 0 1px 0 var(--glass-edge),inset 0 -1px 0 rgba(255,255,255,.12),var(--shadow-soft);
   transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
   isolation:isolate;
+}
+.section-card:nth-child(3n+2){--card-accent:#b899e9;--card-secondary:#e789b8}
+.section-card:nth-child(3n){--card-accent:#eaa0bf;--card-secondary:#8cbae5}
+html[data-theme="dark"] .section-card{--glass-edge:rgba(255,255,255,.16)}
+.section-card::before{
+  content:"";
+  position:absolute;
+  inset:-50% -80%;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.2) 49%,transparent 58%);
+  transform:translateX(-16%);
+  transition:transform .55s ease;
 }
 .section-card::after{
   content:"";
   position:absolute;
   inset:7px;
-  border:1px solid var(--line);
+  border:1px solid color-mix(in srgb,var(--card-accent) 22%,transparent);
   border-radius:14px;
   pointer-events:none;
 }
@@ -502,17 +523,21 @@ html[data-theme="dark"] .hero-actions .secondary{background:rgba(27,18,28,.84)}
 .section-card:active{transform:translateY(-3px) scale(.98)}
 @media (hover:hover){
   .section-card:hover{transform:translateY(-8px) rotate(-1.5deg);border-color:var(--pink);box-shadow:0 20px 32px rgba(110,43,81,.2)}
+  .section-card:hover::before{transform:translateX(16%)}
 }
-.card-corner{position:absolute;top:17px;left:19px;color:var(--pink-strong);font-size:10px;letter-spacing:.12em}
+.card-corner{position:absolute;top:17px;left:19px;color:var(--pink-strong);font-size:16px;opacity:.65}
 .card-suit{position:absolute;bottom:14px;right:18px;color:var(--pink-strong);font-size:22px}
-.card-title{font:400 27px/1.15 "DM Serif Display",serif;overflow-wrap:anywhere}
+.card-title{max-width:100%;font:400 27px/1.15 "DM Serif Display",serif;overflow-wrap:normal;word-break:normal;text-wrap:balance}
+#points .card-title{font-size:22px}
 .section-card .big-icon{
   width:58px;
   height:58px;
   display:grid;
   place-items:center;
   border-radius:50%;
-  background:var(--bg-soft);
+  background:linear-gradient(135deg,color-mix(in srgb,var(--card-accent) 28%,transparent),color-mix(in srgb,var(--card-secondary) 20%,transparent));
+  border:1px solid var(--glass-edge);
+  box-shadow:inset 0 1px 0 var(--glass-edge),0 6px 18px rgba(110,43,81,.08);
   color:var(--pink-strong);
   font-size:30px;
   font-weight:800;
@@ -1218,6 +1243,7 @@ body.modal-open .mobile-dock{z-index:220}
     padding:38px 18px;
   }
   .section-card .card-title{font-size:24px}
+  .section-card#points .card-title{font-size:20px}
 
   .showcase-flow{padding:0 0 22px}
   .showcase-ribbon{
@@ -1413,7 +1439,8 @@ body.modal-open .mobile-dock{z-index:220}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .section-card,.modal{transition:none}
+  .section-card,.section-card::before,.modal{transition:none}
   .section-card:hover,.section-card:active{transform:none}
+  .section-card:hover::before{transform:translateX(-16%)}
   .modal.show .modal-panel{animation:none}
 }

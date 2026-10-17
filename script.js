@@ -431,7 +431,7 @@ function openNewsModal(index) {
 function renderCards() {
   const grid = $("#cardsGrid");
   if (!grid) return;
-  grid.innerHTML = (hubData.cards || []).map((card, index) => `<button id="${card.id}" class="section-card" type="button" data-open-modal="${card.id}" aria-haspopup="dialog" aria-label="${escapeHtml(card.title)} megnyitása"><span class="card-corner" aria-hidden="true">${String(index + 1).padStart(2, "0")} ✦</span><span class="big-icon" aria-hidden="true">${escapeHtml(card.icon)}</span><span class="card-title">${escapeHtml(card.title)}</span><span class="card-suit" aria-hidden="true">♡</span></button>`).join("");
+  grid.innerHTML = (hubData.cards || []).map(card => `<button id="${card.id}" class="section-card" type="button" data-open-modal="${card.id}" aria-haspopup="dialog" aria-label="${escapeHtml(card.title)} megnyitása"><span class="card-corner" aria-hidden="true">✦</span><span class="big-icon" aria-hidden="true">${escapeHtml(card.icon)}</span><span class="card-title">${escapeHtml(card.title)}</span><span class="card-suit" aria-hidden="true">♡</span></button>`).join("");
 }
 
 async function pickUpCard(card) {
