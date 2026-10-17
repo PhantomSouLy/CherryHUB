@@ -314,7 +314,7 @@
         ]
       ],
       "details": {
-        "text": "A parancsok elé mindig ! jelet írj. A Regular jelölésű parancsok Regular jogosultságot igényelnek.",
+        "text": "A parancsok elé mindig ! jelet írj.",
         "defaultTab": "cmd-links",
         "tabs": [
           {
@@ -876,7 +876,8 @@
         ],
         "buttons": [
           {
-            "label": "Bunny Pass oldal",
+            "label": "Bunny Pass szintek",
+            "featured": true,
             "url": "https://streamelements.com/overlay/6a258474b617479b4475c105/7uaKj3E_mQaZmFV85J4tWreomp5NvjBc_80JQ5jiHkVuKV5N"
           }
         ]
@@ -900,43 +901,82 @@
       }
     },
     {
-      "id": "vtuber",
-      "icon": "♡",
-      "title": "VTuber",
-      "short": "Cherryről, a modelljéről és a VTuber setupjáról szóló információk.",
-      "floatingTitle": "VTuber infók",
-      "floatingText": "Cherry karaktere, modellje, outfitje.",
-      "floatingItems": [
-        [
-          "Karakter",
-          "Ki Cherry?"
-        ],
-        [
-          "Model",
-          "Outfit és kiegészítők."
-        ],
-        [
-          "Outfitek",
-          "-"
-        ]
-      ],
+      "id": "pc-setup",
+      "icon": "🖥️",
+      "title": "PC Setup",
+      "short": "Cherry gépe, perifériái és VTuber setupja.",
       "details": {
-        "text": "Cherry egy magyar gamer nyuszi VTuber, aki szeret játszani, nevetni és közösséget építeni.",
+        "text": "",
         "blocks": [
           {
-            "heading": "Tartalom",
+            "heading": "Cherry PC Setup",
             "items": [
-              "Cherry infók",
-              "Modell",
-              "Outfit",
-              "PC setup / VTuber setup"
+              {
+                "label": "Alaplap",
+                "value": "ASUS PRIME B760M-A WIFI"
+              },
+              {
+                "label": "Processzor",
+                "value": "Intel Core i5-14600K"
+              },
+              {
+                "label": "RAM",
+                "value": "32 GB KIT DDR5 6000 MHz CL36"
+              },
+              {
+                "label": "Videókártya",
+                "value": "NVIDIA GeForce RTX 5060 8 GB"
+              },
+              {
+                "label": "SSD",
+                "value": "Kingston KC3000 1 TB"
+              },
+              {
+                "label": "Tápegység",
+                "value": "FSP Fortron VITA BD 750W"
+              },
+              {
+                "label": "Monitor",
+                "value": "SAMSUNG C27JG50QQN WQHD – 2540 × 1440"
+              }
             ]
           },
           {
-            "heading": "Setup ötlet",
+            "heading": "Perifériák",
             "items": [
-              "PC setup",
-              "VTuber app / kamera / OBS"
+              {
+                "label": "Füles",
+                "value": "ONIKUMA K9 (PINK CICA)"
+              },
+              {
+                "label": "Mikrofon",
+                "value": "HyperX SoloCast (White)"
+              },
+              {
+                "label": "Billentyűzet",
+                "value": "ONIKUMA G25 (PINK)"
+              },
+              {
+                "label": "Egér",
+                "value": "ONIKUMA CW905 (PINK)"
+              }
+            ]
+          },
+          {
+            "heading": "VTuber setup",
+            "items": [
+              {
+                "label": "Kamera / Telefon",
+                "value": "Android"
+              },
+              {
+                "label": "Szoftverek",
+                "value": "OBS és VSeeFace"
+              },
+              {
+                "label": "Karakter",
+                "value": "VRM karakter (ArkBlendshape), Unityben szerkesztve"
+              }
             ]
           }
         ]

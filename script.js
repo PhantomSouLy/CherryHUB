@@ -145,6 +145,7 @@ function renderAll() {
   renderNews();
   renderFeaturedPanels();
   renderCards();
+  bindCardRail();
   renderWideSections();
   bindModal();
   activateIntroPolish();
@@ -438,6 +439,68 @@ function renderCards() {
   grid.innerHTML = (hubData.cards || []).map(card => `<button id="${card.id}" class="section-card" type="button" data-open-modal="${card.id}" aria-haspopup="dialog" aria-label="${escapeHtml(card.title)} megnyitása"><span class="card-corner" aria-hidden="true">✦</span><span class="big-icon" aria-hidden="true">${escapeHtml(card.icon)}</span><span class="card-title">${escapeHtml(card.title)}</span><span class="card-suit" aria-hidden="true">♡</span></button>`).join("");
 }
 
+function bindCardRail() {
+  const rail = $("#cardsGrid");
+  if (!rail || rail.dataset.dragBound) return;
+  rail.dataset.dragBound = "true";
+  let drag = null;
+  let suppressClick = false;
+
+  rail.addEventListener("wheel", event => {
+    if (event.ctrlKey || Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return;
+    const maxScroll = rail.scrollWidth - rail.clientWidth;
+    if (maxScroll <= 0) return;
+    const unit = event.deltaMode === 1 ? 24 : event.deltaMode === 2 ? rail.clientWidth : 1;
+    const next = Math.max(0, Math.min(maxScroll, rail.scrollLeft - event.deltaY * unit));
+    if (Math.abs(next - rail.scrollLeft) < 0.01) return;
+    event.preventDefault();
+    rail.scrollLeft = next;
+  }, { passive: false });
+
+  rail.addEventListener("pointerdown", event => {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    // Let the browser handle dragging the native scrollbar itself.
+    if (event.clientY >= rail.getBoundingClientRect().top + rail.clientHeight) return;
+    suppressClick = false;
+    drag = { pointerId: event.pointerId, x: event.clientX, left: rail.scrollLeft, moved: false };
+  });
+
+  rail.addEventListener("pointermove", event => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    const distance = event.clientX - drag.x;
+    if (!drag.moved) {
+      if (Math.abs(distance) < 6) return;
+      drag.moved = true;
+      suppressClick = true;
+      rail.classList.add("is-dragging");
+      rail.setPointerCapture(event.pointerId);
+    }
+    event.preventDefault();
+    rail.scrollLeft = drag.left - distance;
+  });
+
+  const finishDrag = event => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    const pointerId = drag.pointerId;
+    drag = null;
+    rail.classList.remove("is-dragging");
+    if (rail.hasPointerCapture(pointerId)) rail.releasePointerCapture(pointerId);
+  };
+  rail.addEventListener("pointerup", finishDrag);
+  rail.addEventListener("pointercancel", finishDrag);
+  rail.addEventListener("lostpointercapture", finishDrag);
+  rail.addEventListener("pointerleave", event => {
+    if (!drag?.moved) finishDrag(event);
+  });
+  rail.addEventListener("dragstart", event => event.preventDefault());
+  rail.addEventListener("click", event => {
+    if (!suppressClick || event.detail === 0) return;
+    suppressClick = false;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, { capture: true });
+}
+
 async function pickUpCard(card) {
   if (card.dataset.opening) return;
   const request = ++cardOpenRequest;
@@ -567,6 +630,7 @@ function openModal(id, forceTab = null) {
 function renderDetailItem(i) {
   if (i && typeof i === "object") {
     const title = i.title || i.label || "Elem";
+    if (i.value) return `<li class="detail-spec"><span>${escapeHtml(title)}</span><strong>${escapeHtml(i.value)}</strong></li>`;
     if (i.url) return `<li class="object-item"><span>${title}</span><a href="${i.url}" target="_blank" rel="noreferrer">🎧 Meghallgatom</a></li>`;
     return `<li>${escapeHtml(title)}</li>`;
   }
@@ -584,7 +648,7 @@ function renderModalContent(d, forceTab = null) {
     return;
   }
   $("#modalContent").innerHTML = (details.blocks || []).map(b => `<section class="detail-block"><h3>${b.heading}</h3><ul>${(b.items || []).map(renderDetailItem).join("")}</ul></section>`).join("");
-  $("#modalActions").innerHTML = (details.buttons || []).map(b => `<a href="${b.url}" target="${b.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${b.label}</a>`).join("");
+  $("#modalActions").innerHTML = (details.buttons || []).map(b => `<a ${b.featured ? 'class="modal-action-featured"' : ""} href="${b.url}" target="${b.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${b.label}</a>`).join("");
 }
 
 function switchTab(id) {
