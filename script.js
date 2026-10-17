@@ -8,6 +8,7 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
 const THEME_KEY = "cherryhub-theme";
 let modalTrigger = null;
+let cardOpenRequest = 0;
 
 function readStoredTheme() {
   try { return localStorage.getItem(THEME_KEY); } catch { return null; }
@@ -145,7 +146,6 @@ function renderAll() {
   renderFeaturedPanels();
   renderCards();
   renderWideSections();
-  renderLinks();
   bindModal();
   activateIntroPolish();
 }
@@ -157,7 +157,7 @@ function renderNav() {
   if (!nav) return;
 
   nav.innerHTML = (hubData.nav || [])
-    .map(i => `<a href="${i.target}" ${i.open ? `data-nav-open="${i.open}"` : ""}>${i.label}</a>`)
+    .map(i => `<a href="${i.target}" ${i.highlight ? 'class="nav-highlight"' : ""} ${i.open ? `data-nav-open="${i.open}"` : ""}>${i.label}</a>`)
     .join("");
 
   const closeNav = () => {
@@ -181,6 +181,8 @@ function renderNav() {
     if (link.dataset.navOpen) {
       e.preventDefault();
       openModal(link.dataset.navOpen);
+    } else {
+      closeModal();
     }
   });
 
@@ -315,13 +317,25 @@ function renderFeaturedPanels() {
 }
 
 function openMusicListModal() {
-  const tracks = hubData.musicTracks || [];
-  $("#modalKicker").textContent = "♪ Cherry Music";
-  $("#modalTitle").textContent = "Cherry Zenéi – Lista";
-  $("#modalText").textContent = "Itt megtalálod Cherry zenéit.";
-  $("#modalContent").innerHTML = `<div class="music-modal-list">${tracks.map(t => `<article class="music-modal-track"><div><b>${t.title}</b><span>${t.type || "YouTube"}</span></div><a href="${t.url}" target="_blank" rel="noreferrer">Lejátszás YouTube-on →</a></article>`).join("")}</div>`;
+  $("#modalTitle").textContent = "Cherry Zenéi";
+  $("#modalText").textContent = "";
+  const albums = hubData.musicAlbums || [];
+  renderModalContent({ details: {
+    defaultTab: albums[0]?.id,
+    tabs: albums.map(album => ({ id: album.id, label: album.title, type: "music", albumId: album.id }))
+  }});
   $("#modalActions").innerHTML = `<a href="https://www.youtube.com/@happycherrychan" target="_blank" rel="noreferrer">YouTube csatorna →</a>`;
   showModal();
+}
+
+function renderMusicAlbum(albumId) {
+  const tracks = (hubData.musicTracks || []).filter(track => track.album === albumId);
+  if (!tracks.length) return '<div class="album-empty"><span aria-hidden="true">♪</span><p>Az Album #2 dalai hamarosan érkeznek.</p></div>';
+  return `<div class="music-modal-list">${tracks.map(track => `<article class="music-modal-track"><div><b>${escapeHtml(track.title)}</b><span>${escapeHtml(track.type || "YouTube")}</span></div><a href="${escapeHtml(track.url)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(track.title)} lejátszása YouTube-on">Lejátszás YouTube-on →</a></article>`).join("")}</div>`;
+}
+
+function renderCommandList(tab) {
+  return `<dl class="command-list">${(tab.commands || []).map(item => `<div class="command-row"><dt><code>${escapeHtml(item.command)}</code>${item.permission === "Regular" ? '<span class="command-access">Regular</span>' : ""}</dt><dd>${escapeHtml(item.description)}</dd></div>`).join("")}</dl>${tab.note ? `<p class="command-note">${escapeHtml(tab.note)}</p>` : ""}`;
 }
 
 function escapeHtml(value = "") {
@@ -394,7 +408,6 @@ function openNewsModal(index) {
   const optionalText = String(item.optionalText || item.optional_text || item.extraText || item.extra_text || "").trim();
   const optionalUrl = safeNewsUrl(item.optionalUrl || item.optional_url || item.extraUrl || item.extra_url || item.url || "");
 
-  $("#modalKicker").textContent = "✦ CHERRY NEWS";
   $("#modalTitle").textContent = title;
   $("#modalText").textContent = date || "Hírek";
 
@@ -418,19 +431,37 @@ function openNewsModal(index) {
 function renderCards() {
   const grid = $("#cardsGrid");
   if (!grid) return;
-  grid.innerHTML = (hubData.cards || []).map(c => `<article id="${c.id}" class="section-card"><div class="big-icon">${c.icon}</div><h2>${c.title}</h2><p>${c.short}</p><button class="open-modal" type="button" data-open-modal="${c.id}">Több infó</button></article>`).join("");
+  grid.innerHTML = (hubData.cards || []).map((card, index) => `<button id="${card.id}" class="section-card" type="button" data-open-modal="${card.id}" aria-haspopup="dialog" aria-label="${escapeHtml(card.title)} megnyitása"><span class="card-corner" aria-hidden="true">${String(index + 1).padStart(2, "0")} ✦</span><span class="big-icon" aria-hidden="true">${escapeHtml(card.icon)}</span><span class="card-title">${escapeHtml(card.title)}</span><span class="card-suit" aria-hidden="true">♡</span></button>`).join("");
+}
+
+async function pickUpCard(card) {
+  if (card.dataset.opening) return;
+  const request = ++cardOpenRequest;
+  card.dataset.opening = "true";
+  card.setAttribute("aria-busy", "true");
+  let animation;
+  try {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      animation = card.animate([
+        { transform: getComputedStyle(card).transform, opacity: 1 },
+        { transform: "translateY(-22px) rotate(-5deg) scale(1.06)", opacity: 0.45 }
+      ], { duration: 260, easing: "cubic-bezier(.2,.7,.2,1)", fill: "forwards" });
+      await animation.finished;
+    }
+    if (request === cardOpenRequest) openModal(card.dataset.openModal);
+  } catch (error) {
+    if (error.name !== "AbortError") console.error(error);
+  } finally {
+    animation?.cancel();
+    delete card.dataset.opening;
+    card.removeAttribute("aria-busy");
+  }
 }
 
 function renderWideSections() {
   const wrap = $("#wideSections");
   if (!wrap) return;
-  wrap.innerHTML = (hubData.wideSections || []).map(s => `<article id="${s.id}" class="wide-card"><div class="wide-head"><span>${s.icon}</span><h2>${s.title}</h2></div><p>${s.text}</p>${(s.items || []).map(i => `<div class="wide-item"><b>${i.title}</b><p>${i.text}</p><a class="wide-link" href="${i.url}" target="${i.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${i.button} →</a></div>`).join("")}${s.note ? `<div class="wide-note">${s.note}</div>` : ""}</article>`).join("");
-}
-
-function renderLinks() {
-  const links = $("#links");
-  if (!links) return;
-  links.innerHTML = `<h2>Közösségi linkek</h2><div class="links-row">${(hubData.socials || []).map(s => `<a href="${s.url}" target="_blank" rel="noreferrer"><img src="${s.icon}" alt="" loading="lazy">${s.name}</a>`).join("")}</div>`;
+  wrap.innerHTML = (hubData.wideSections || []).map(s => `<article id="${s.id}" class="wide-card"><div class="wide-head"><span>${s.icon}</span><h2>${s.title}</h2></div>${s.text ? `<p>${escapeHtml(s.text)}</p>` : ""}${(s.items || []).map(i => `<div class="wide-item"><b>${i.title}</b><p>${i.text}</p><a class="wide-link" href="${i.url}" target="${i.url.startsWith("http") ? "_blank" : "_self"}" rel="noreferrer">${i.button} →</a></div>`).join("")}${s.note ? `<div class="wide-note">${escapeHtml(s.note)}${s.noteDetails ? `<span class="wide-note-details">${escapeHtml(s.noteDetails)}</span>` : ""}</div>` : ""}</article>`).join("");
 }
 
 function bindModal() {
@@ -443,7 +474,8 @@ function bindModal() {
   document.addEventListener("click", e => {
     if (e.target.closest('a[href="#home"]')) closeModal();
     const open = e.target.closest("[data-open-modal]");
-    if (open) openModal(open.dataset.openModal, open.dataset.openTab || null);
+    if (open?.classList.contains("section-card")) pickUpCard(open);
+    else if (open) openModal(open.dataset.openModal, open.dataset.openTab || null);
 
     const musicList = e.target.closest("[data-open-music-list]");
     if (musicList) {
@@ -485,8 +517,10 @@ function bindModal() {
 }
 
 function showModal() {
+  cardOpenRequest++;
   const m = $("#infoModal");
   if (!m) return;
+  $("#modalKicker").innerHTML = '<span class="stream-ornament" aria-hidden="true">✦ ♡ ✦</span>';
   if (!m.classList.contains("show") || document.activeElement?.closest(".topbar, .mobile-dock")) {
     modalTrigger = document.activeElement;
   }
@@ -503,10 +537,13 @@ function showModal() {
 }
 
 function openModal(id, forceTab = null) {
+  if (id === "music") {
+    openMusicListModal();
+    return;
+  }
   const d = hubData?.cards?.find(c => c.id === id);
   const section = hubData?.wideSections?.find(item => item.id === id);
   if (!d && section) {
-    $("#modalKicker").textContent = `${section.icon} ${section.title}`;
     $("#modalTitle").textContent = section.title;
     $("#modalText").textContent = section.text;
     $("#modalContent").innerHTML = (section.items || []).map(item =>
@@ -517,11 +554,6 @@ function openModal(id, forceTab = null) {
     return;
   }
   if (!d) return;
-  if (id === "stream") {
-    $("#modalKicker").innerHTML = '<span class="stream-ornament" aria-hidden="true">✦ ♡ ✦</span>';
-  } else {
-    $("#modalKicker").textContent = `✿ ${d.title}`;
-  }
   $("#modalTitle").textContent = d.title;
   $("#modalText").textContent = d.details?.text ?? d.short;
   renderModalContent(d, forceTab);
@@ -560,6 +592,8 @@ function switchTab(id) {
   let html = tab.text ? `<p>${tab.text}</p>` : "";
   if (tab.id === "schedule") html += renderScheduleShell();
   else if (tab.type === "wallpapers") html += renderWallpaperGallery(tab.wallpaperType);
+  else if (tab.type === "music") html += renderMusicAlbum(tab.albumId);
+  else if (tab.type === "commands") html += renderCommandList(tab);
 
   if (tab.blocks) {
     html += tab.blocks
@@ -658,6 +692,7 @@ function renderTwitchScheduleItem(event) {
 }
 
 function closeModal() {
+  cardOpenRequest++;
   const m = $("#infoModal");
   if (!m?.classList.contains("show")) return;
   m.classList.remove("show");

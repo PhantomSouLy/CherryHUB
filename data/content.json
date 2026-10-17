@@ -60,6 +60,11 @@
       "target": "#home"
     },
     {
+      "label": "Hírek",
+      "target": "#news",
+      "highlight": true
+    },
+    {
       "label": "Stream",
       "target": "#stream",
       "open": "stream"
@@ -135,62 +140,74 @@
     {
       "title": "Katt — indul a stream",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=YjW7lWx_fP8&pp=ygUjaGFwcHljaGVycnljaGFuIGthdHQgaW5kdWwgYSBzdHJlYW0%3D"
+      "url": "https://www.youtube.com/watch?v=YjW7lWx_fP8&pp=ygUjaGFwcHljaGVycnljaGFuIGthdHQgaW5kdWwgYSBzdHJlYW0%3D",
+      "album": "album-1"
     },
     {
       "title": "Üdv a pincében",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=quyWqtsdWLM&pp=ygUfaGFwcHljaGVycnljaGFuIMO8ZHYgYSBwaW5jw6liZdIHCQlMCwGHKiGM7w%3D%3D"
+      "url": "https://www.youtube.com/watch?v=quyWqtsdWLM&pp=ygUfaGFwcHljaGVycnljaGFuIMO8ZHYgYSBwaW5jw6liZdIHCQlMCwGHKiGM7w%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Give us a brain [Halloween Edition]",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=XQDO1meiUWk&pp=ygUfaGFwcHljaGVycnljaGFuIGdpdmUgdXMgYSBicmFpbg%3D%3D"
+      "url": "https://www.youtube.com/watch?v=XQDO1meiUWk&pp=ygUfaGFwcHljaGVycnljaGFuIGdpdmUgdXMgYSBicmFpbg%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Mosolyt rajzol rám a fény",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=Srf1pIvPGcU&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+      "url": "https://www.youtube.com/watch?v=Srf1pIvPGcU&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Lagg, Crash, Bug",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=eNVI8K9DmLg&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+      "url": "https://www.youtube.com/watch?v=eNVI8K9DmLg&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Let's gooo!",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=qZPbKOcClMY&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+      "url": "https://www.youtube.com/watch?v=qZPbKOcClMY&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "VTuberek világa",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=WM3Wflj2xgM&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpa9IHCQlMCwGHKiGM7w%3D%3D"
+      "url": "https://www.youtube.com/watch?v=WM3Wflj2xgM&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpa9IHCQlMCwGHKiGM7w%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Dobozba zárt érzések",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=LoByDMl6R_o&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+      "url": "https://www.youtube.com/watch?v=LoByDMl6R_o&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Ez lett a content",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=H1R-F0lpoDo&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpa9IHCQlMCwGHKiGM7w%3D%3D"
+      "url": "https://www.youtube.com/watch?v=H1R-F0lpoDo&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpa9IHCQlMCwGHKiGM7w%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Nem vagyok elég jó",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=9dYdEy7vyQs&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+      "url": "https://www.youtube.com/watch?v=9dYdEy7vyQs&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Love Love Love [Valentine's Day]",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=sbvQ_v5j4o8&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+      "url": "https://www.youtube.com/watch?v=sbvQ_v5j4o8&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D",
+      "album": "album-1"
     },
     {
       "title": "Cherry Kávézó [Valentine's Day]",
       "type": "HappyCherryChan",
-      "url": "https://www.youtube.com/watch?v=YrG02YVQiTE&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D"
+      "url": "https://www.youtube.com/watch?v=YrG02YVQiTE&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D",
+      "album": "album-1"
     }
   ],
   "cards": [
@@ -260,21 +277,14 @@
           {
             "id": "info",
             "label": "🌸 Információ",
-            "text": "Minden fontos stream információ röviden.",
             "blocks": [
               {
                 "heading": "Tartalom",
                 "items": [
-                  "Játékok",
-                  "Beszélgetős streamek",
-                  "Közösségi estek",
-                  "VOD-ok és klipek"
-                ]
-              },
-              {
-                "heading": "Hasznos",
-                "items": [
-                  "Heti menetrendet itt megtalálod mindig."
+                  "Játékok, Végigjátszások",
+                  "Komoly vagy akár vicces és humoros beszélgetések és hülyéskedések",
+                  "Közösségi játékok",
+                  "Szezonális események"
                 ]
               }
             ]
@@ -304,35 +314,270 @@
         ]
       ],
       "details": {
-        "text": "A parancsok beírásához mindig ! jelet írunk az elejére!",
-        "blocks": [
+        "text": "A parancsok elé mindig ! jelet írj. A Regular jelölésű parancsok Regular jogosultságot igényelnek.",
+        "defaultTab": "cmd-links",
+        "tabs": [
           {
-            "heading": "Általános parancsok",
-            "items": [
-              "!web - Hivatalos honlapja Cherrynek",
-              "!links - Cherry Carrd",
-              "!dc - Discord meghívó",
-              "!yt - YouTube",
-              "!tiktok - TikTok",
-              "!music - Cherry zenéi",
-              "!lurk / !unlurk - Lurk mód",
-              "!bp - Bunny Pass linkje"
+            "id": "cmd-links",
+            "label": "Linkek és infók",
+            "type": "commands",
+            "commands": [
+              {
+                "command": "!web",
+                "description": "Cherry hivatalos honlapja.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!links",
+                "description": "Cherry közösségi linkjei (Carrd).",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!dc",
+                "description": "Meghívó Cherry Discord-szerverére.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!yt",
+                "description": "Cherry YouTube-csatornája.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!tiktok",
+                "description": "Cherry TikTok-oldala.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!music",
+                "description": "Cherry zenéi.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!kofi",
+                "description": "Cherry Ko-fi támogatói oldala.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!menetrend",
+                "description": "A stream menetrendje.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!parancsok",
+                "description": "A parancsok és a Cheer-lista elérhetősége.",
+                "permission": "Everyone"
+              }
             ]
           },
           {
-            "heading": "Stream parancsok",
-            "items": [
-              "!game - Jelenlegi játék cím kiírása",
-              "!stream - Stream cím kiírása"
+            "id": "cmd-stream",
+            "label": "Stream és statisztikák",
+            "type": "commands",
+            "commands": [
+              {
+                "command": "!game",
+                "description": "Az aktuális játék címe.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!stream",
+                "description": "A stream címe és az aktuális játék.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!uptime",
+                "description": "Mióta tart az aktuális közvetítés.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!watchtime",
+                "description": "Mennyi időt töltöttél a stream nézésével.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!accountage",
+                "description": "A Twitch-fiókod kora.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!followage",
+                "description": "Mióta követed a csatornát.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!followers",
+                "description": "A csatorna követőinek száma.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!csavar",
+                "description": "Az aktuális csavaregyenleged.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!emotes",
+                "description": "A chaten használható aktív BTTV-emote-ok.",
+                "permission": "Everyone"
+              }
             ]
           },
           {
-            "heading": "Gacha parancsok",
-            "items": [
-              "!collection - Kártyáid megmutatása",
-              "!battle - Harc kihívás",
-              "!accept - Aktuális kihívás elfogadása"
+            "id": "cmd-fun",
+            "label": "Interakciók",
+            "type": "commands",
+            "commands": [
+              {
+                "command": "!bonk",
+                "description": "Bonk Cherrynek.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!cookie",
+                "description": "Sütit ad Cherrynek.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!csoki",
+                "description": "Csokit küld Cherrynek.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!headpatears",
+                "description": "Megsimogatja Cherry nyuszifüleit.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!hydrate",
+                "description": "Emlékezteti Cherryt, hogy igyon vizet.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!monster",
+                "description": "Monster energiaitalt ad Cherrynek.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!lurk",
+                "description": "Csendes megfigyelés a pince sarkából.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!unlurk",
+                "description": "Visszatérés a lurk módból.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!thanksmod",
+                "description": "Megköszöni a moderátorok munkáját.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!ai",
+                "description": "Válasz a feltett kérdésedre.",
+                "permission": "Regular"
+              },
+              {
+                "command": "!blink",
+                "description": "Emlékezteti Cherryt a pislogásra.",
+                "permission": "Regular"
+              },
+              {
+                "command": "!buff",
+                "description": "+10 gamer skill Cherrynek.",
+                "permission": "Regular"
+              },
+              {
+                "command": "!hug",
+                "description": "Ölelést ad Cherrynek.",
+                "permission": "Regular"
+              }
             ]
+          },
+          {
+            "id": "cmd-bunny",
+            "label": "Bunny Pass és Gacha",
+            "type": "commands",
+            "commands": [
+              {
+                "command": "!bunnypass",
+                "description": "Bunny Pass információk és link.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!bp",
+                "description": "Bunny Pass linkje.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!gacha",
+                "description": "Információ a csatornapontból nyitható Gacháról.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!collection",
+                "description": "Megmutatja a kártyáidat.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!battle",
+                "description": "Harcra hívás.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!accept",
+                "description": "Az aktuális kihívás elfogadása.",
+                "permission": "Everyone"
+              },
+              {
+                "command": "!nyuszik",
+                "description": "Nyusziparancsok. A !spawn előhívja a nyuszidat (feliratkozás szükséges).",
+                "permission": "Everyone"
+              }
+            ]
+          },
+          {
+            "id": "cmd-fishing",
+            "label": "Horgászos játék",
+            "type": "commands",
+            "commands": [
+              {
+                "command": "!fish",
+                "description": "Horgászat megkezdése."
+              },
+              {
+                "command": "!shop",
+                "description": "A bolt megnyitása."
+              },
+              {
+                "command": "!get <tárgy neve>",
+                "description": "Vásárlás a boltban."
+              },
+              {
+                "command": "!items",
+                "description": "A küldetések megnyitása."
+              },
+              {
+                "command": "!use <szám>",
+                "description": "A megadott számhoz tartozó tárgy használata."
+              },
+              {
+                "command": "!catalog",
+                "description": "Megnézheted, milyen halakat lehet fogni."
+              },
+              {
+                "command": "!quests",
+                "description": "Küldetések megtekintése."
+              },
+              {
+                "command": "!leaders",
+                "description": "Toplista."
+              },
+              {
+                "command": "!gofish",
+                "description": "Bármely aktív menü bezárása."
+              }
+            ],
+            "note": "A feliratkozók a képernyőn megjelenő gombokat is használhatják (ez a funkció még nem biztos, hogy működik). Sub, Cheer és Donate különleges interakciókat ad."
           }
         ]
       }
@@ -576,7 +821,7 @@
         "buttons": [
           {
             "label": "Bunny Pass oldal",
-            "url": "#"
+            "url": "https://streamelements.com/overlay/6a258474b617479b4475c105/7uaKj3E_mQaZmFV85J4tWreomp5NvjBc_80JQ5jiHkVuKV5N"
           }
         ]
       }
@@ -595,26 +840,7 @@
         ]
       ],
       "details": {
-        "text": "Cherry saját zenéit a YouTube csatornáján találod.",
-        "blocks": [
-          {
-            "heading": "Zene lista",
-            "items": [
-              "Katt — indul a stream",
-              "Üdv a pincében",
-              "Give us a brain [Halloween Edition]",
-              "Mosolyt rajzol rám a fény",
-              "Lagg, Crash, Bug",
-              "Let's gooo!",
-              "VTuberek világa",
-              "Dobozba zárt érzések",
-              "Ez lett a content",
-              "Nem vagyok elég jó",
-              "Love Love Love [Valentine's Day]",
-              "Cherry Kávézó [Valentine's Day]"
-            ]
-          }
-        ]
+        "text": ""
       }
     },
     {
@@ -721,21 +947,23 @@
       "id": "rankone",
       "icon": "🏆",
       "title": "RankOne.global",
-      "text": "Cherry játszott játékai és kívánságlistája egy helyen. Az oldalhoz Twitch bejelentkezés szükséges!",
+      "text": "",
       "items": [
         {
-          "title": "Játszott játékok",
+          "title": "Cherry Játék Profilja",
           "text": "Milyen játékokkal játszott Cherry?",
           "button": "Megnézem",
-          "url": "#"
+          "url": "https://www.rankone.global/happycherrychan"
         },
         {
-          "title": "Kívánságlista",
-          "text": "Milyen játékokat szeretne Cherry?",
-          "button": "Megnézem",
-          "url": "#"
+          "title": "Játék ajánló",
+          "text": "Ajánlj Cherrynek Játékot",
+          "button": "Ajánlok játékot",
+          "url": "https://www.rankone.global/happycherrychan/suggestions"
         }
-      ]
+      ],
+      "note": "Az oldalra Twitch profillal kell bejelentkezni!",
+      "noteDetails": "További részletek a Discord szerveren."
     },
     {
       "id": "support",
@@ -753,7 +981,7 @@
           "title": "Throne",
           "text": "Ajándékok és wishlist Cherrynek.",
           "button": "Throne megnyitása",
-          "url": "#"
+          "url": "https://throne.com/happycherrychan"
         }
       ],
       "note": "Fontos: Csak akkor támogass, ha ezt megengedheted magadnak! A támogatás önkéntes, nem visszatéríthető, és nem jár extra jogokkal."
@@ -777,6 +1005,16 @@
           "url": "#"
         }
       ]
+    }
+  ],
+  "musicAlbums": [
+    {
+      "id": "album-1",
+      "title": "Album #1"
+    },
+    {
+      "id": "album-2",
+      "title": "Album #2"
     }
   ]
 }

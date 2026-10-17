@@ -407,7 +407,7 @@
   place-items:center;
   background:
     linear-gradient(135deg,rgba(239,79,138,.72),rgba(139,110,232,.5)),
-    url("./assets/blossom_background.png") center / cover no-repeat;
+    var(--blossom-image) center / cover no-repeat;
 }
 .news-card-placeholder span{
   color:#fff;
