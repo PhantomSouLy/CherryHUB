@@ -708,19 +708,20 @@ html[data-theme="dark"] .schedule-live-status[data-state="live"]{color:#ff718b}
   backdrop-filter:blur(10px);
 }
 .home-schedule-item{
-  display:grid;
-  align-content:start;
-  gap:4px;
+  margin:0;
+  min-inline-size:0;
 }
-.home-schedule-item span{
+.home-schedule-item legend{
+  max-width:100%;
+  padding:0 7px;
   color:#ff8ab7;
   font-size:9px;
   font-weight:900;
   text-transform:uppercase;
   letter-spacing:.1em;
 }
-.home-schedule-item b{font-size:11px;line-height:1.35}
-.home-schedule-item time{color:#cdbec8;font-size:10px}
+.home-schedule-item b{display:block;font-size:11px;line-height:1.35}
+.home-schedule-item time{display:block;margin-top:4px;color:#cdbec8;font-size:10px}
 .home-schedule-empty{display:grid;place-items:center;grid-column:1/-1;color:#dbcdd6;font-size:12px}
 
 .featured-panels{
@@ -922,6 +923,8 @@ html[data-theme="dark"] .social-flow{
 .social-strip{
   display:flex;
   gap:8px;
+  padding-block:5px;
+  margin-block:-5px;
   overflow-x:auto;
   scrollbar-width:none;
 }
@@ -1571,6 +1574,20 @@ body.modal-open .mobile-dock{z-index:220}
 
 /* Short entrance and theme fades; no motion for reduced-motion users. */
 @media (prefers-reduced-motion:no-preference){
+  .hero-actions a,.panel-button:not(:disabled):not([aria-disabled="true"]),.social-link{
+    transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;
+  }
+  .social-link img{transition:transform .2s ease}
+  .hero-actions a:active,.panel-button:not(:disabled):not([aria-disabled="true"]):active,.social-link:active{transform:scale(.97)}
+  @media (hover:hover){
+    .hero-actions a:hover,.panel-button:not(:disabled):not([aria-disabled="true"]):hover,.social-link:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.07);
+      box-shadow:0 7px 18px rgba(239,79,138,.2);
+    }
+    .social-link:hover img{transform:rotate(-5deg) scale(1.05)}
+    .hero-actions a:active,.panel-button:not(:disabled):not([aria-disabled="true"]):active,.social-link:active{transform:scale(.97)}
+  }
   body.is-loaded .topbar{animation:intro-header .4s ease-out both}
   body.is-loaded .hero-copy{animation:intro-assemble .44s .02s ease-out both}
   body.is-loaded .home-live-card{animation:intro-assemble .44s .06s ease-out both}

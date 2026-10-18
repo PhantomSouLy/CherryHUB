@@ -300,7 +300,7 @@
   }
 
   .home-schedule-item b,
-  .home-schedule-item span,
+  .home-schedule-item legend,
   .home-schedule-item time{
     max-width:100%;
     overflow-wrap:anywhere;

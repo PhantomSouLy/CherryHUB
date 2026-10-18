@@ -90,6 +90,20 @@ function bindHeaderPolish() {
   });
 }
 
+function bindActionPolish() {
+  if (document.body.dataset.actionPolishBound) return;
+  document.body.dataset.actionPolishBound = "true";
+  document.addEventListener("click", event => {
+    const control = event.target.closest(".hero-actions a, .panel-button, .social-link");
+    if (!control || control.matches(":disabled, [aria-disabled='true']") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    control.animate?.([
+      { transform: "scale(1)" },
+      { transform: "scale(.97)", offset: 0.4 },
+      { transform: "scale(1)" }
+    ], { duration: 220, easing: "ease-out" });
+  });
+}
+
 function activateIntroPolish() {
   requestAnimationFrame(() => {
     document.body.classList.remove("is-loading");
@@ -182,6 +196,7 @@ function renderAll() {
 
   $("#themeToggle")?.addEventListener("click", toggleTheme);
   bindHeaderPolish();
+  bindActionPolish();
 
   renderNav();
   renderHero();
@@ -354,8 +369,9 @@ async function loadHomeSchedulePreview() {
 
 function renderHomeScheduleItem(event) {
   const date = event.start.toLocaleDateString("hu-HU", { month: "short", day: "numeric" });
+  const day = event.start.toLocaleDateString("hu-HU", { weekday: "long" });
   const time = event.start.toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit" });
-  return `<div class="home-schedule-item"><span>${date}</span><b>${escapeHtml(event.title || "Cherry stream")}</b><time>${time}</time></div>`;
+  return `<fieldset class="home-schedule-item"><legend>${date} · ${day}</legend><b>${escapeHtml(event.title || "Cherry stream")}</b><time datetime="${event.start.toISOString()}">${time}</time></fieldset>`;
 }
 
 function renderSocials() {
