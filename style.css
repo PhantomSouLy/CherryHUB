@@ -1220,6 +1220,7 @@ body.modal-open .mobile-dock{z-index:220}
 .modal-actions a.modal-action-featured:hover{filter:brightness(1.08)}
 .modal-actions a.modal-action-featured:focus-visible{outline:3px solid var(--pink);outline-offset:4px}
 .music-modal-list{display:grid;gap:7px}
+.music-album-playlist{justify-self:start;margin:0 0 6px;min-height:40px;font-size:11px}
 .music-modal-track{
   display:flex;
   justify-content:space-between;

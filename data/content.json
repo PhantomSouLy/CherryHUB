@@ -221,6 +221,42 @@
       "type": "HappyCherryChan",
       "url": "https://www.youtube.com/watch?v=YrG02YVQiTE&pp=ygUWaGFwcHljaGVycnljaGFuIHplbsOpaw%3D%3D",
       "album": "album-1"
+    },
+    {
+      "title": "HappyCherryChan - Én vagyok HappyCherryChan (Ver 2)",
+      "type": "HappyCherryChan",
+      "url": "https://www.youtube.com/watch?v=Yf6ldId_Dmk",
+      "album": "album-2"
+    },
+    {
+      "title": "HappyCherryChan - Fel jutok",
+      "type": "HappyCherryChan",
+      "url": "https://www.youtube.com/watch?v=g1c-HkaFu6k",
+      "album": "album-2"
+    },
+    {
+      "title": "HappyCherryChan - VTuberek Világa (Ver 2)",
+      "type": "HappyCherryChan",
+      "url": "https://www.youtube.com/watch?v=RMFhMwe6fpc",
+      "album": "album-2"
+    },
+    {
+      "title": "HappyCherryChan - Ez a generáció (Ver 2)",
+      "type": "HappyCherryChan",
+      "url": "https://www.youtube.com/watch?v=zbWwDHEwZbA",
+      "album": "album-2"
+    },
+    {
+      "title": "HappyCherryChan - Virággá válok",
+      "type": "HappyCherryChan",
+      "url": "https://www.youtube.com/watch?v=ajxArzbnNDM",
+      "album": "album-2"
+    },
+    {
+      "title": "HappyCherryChan - Együtt, együtt!",
+      "type": "HappyCherryChan",
+      "url": "https://www.youtube.com/watch?v=YVaFkzAeKDA",
+      "album": "album-2"
     }
   ],
   "cards": [
@@ -1343,11 +1379,12 @@
   "musicAlbums": [
     {
       "id": "album-1",
-      "title": "Album #1"
+      "title": "Katt - Indul a stream"
     },
     {
       "id": "album-2",
-      "title": "Album #2"
+      "title": "Cherry Világa",
+      "playlistUrl": "https://youtube.com/playlist?list=PLYnoAMQblErU&si=TL-gzaFs4TjPnJ36"
     }
   ]
 }

@@ -461,9 +461,11 @@ function openMusicListModal() {
 }
 
 function renderMusicAlbum(albumId) {
+  const album = (hubData.musicAlbums || []).find(item => item.id === albumId);
   const tracks = (hubData.musicTracks || []).filter(track => track.album === albumId);
-  if (!tracks.length) return '<div class="album-empty"><span aria-hidden="true">♪</span><p>Az Album #2 dalai hamarosan érkeznek.</p></div>';
-  return `<div class="music-modal-list">${tracks.map(track => `<article class="music-modal-track"><div><b>${escapeHtml(track.title)}</b><span>${escapeHtml(track.type || "YouTube")}</span></div><a href="${escapeHtml(track.url)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(track.title)} lejátszása YouTube-on">Lejátszás YouTube-on →</a></article>`).join("")}</div>`;
+  if (!tracks.length) return '<div class="album-empty"><span aria-hidden="true">♪</span><p>Az album dalai hamarosan érkeznek.</p></div>';
+  const playlist = album?.playlistUrl ? `<a class="panel-button music-album-playlist" href="${escapeHtml(album.playlistUrl)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(album.title)} lejátszási lista megnyitása YouTube-on">Teljes lejátszási lista →</a>` : "";
+  return `<div class="music-modal-list">${playlist}${tracks.map(track => `<article class="music-modal-track"><div><b>${escapeHtml(track.title)}</b><span>${escapeHtml(track.type || "YouTube")}</span></div><a href="${escapeHtml(track.url)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(track.title)} lejátszása YouTube-on">Lejátszás YouTube-on →</a></article>`).join("")}</div>`;
 }
 
 function renderCommandList(tab) {
