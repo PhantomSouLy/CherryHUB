@@ -11,6 +11,9 @@ let modalTrigger = null;
 let cardOpenRequest = 0;
 let liveStatusTimer = null;
 let liveStatusLoading = false;
+let themeTransition = null;
+let themeTarget = null;
+let themeSwitchVersion = 0;
 
 function readStoredTheme() {
   try { return localStorage.getItem(THEME_KEY); } catch { return null; }
@@ -45,6 +48,47 @@ function applyTheme(theme, persist = false) {
 }
 
 applyTheme(getInitialTheme());
+
+function toggleTheme() {
+  const next = (themeTarget || root.dataset.theme) === "dark" ? "light" : "dark";
+  const version = ++themeSwitchVersion;
+  themeTarget = next;
+  themeTransition?.skipTransition();
+  const update = () => {
+    if (version === themeSwitchVersion) applyTheme(next, true);
+  };
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reducedMotion && typeof document.startViewTransition === "function") {
+    try {
+      const transition = document.startViewTransition(update);
+      themeTransition = transition;
+      transition.finished.catch(() => {}).finally(() => {
+        if (themeTransition === transition) {
+          themeTransition = null;
+          themeTarget = null;
+        }
+      });
+      return;
+    } catch {
+      // Fall back to a short fade on browsers without a usable view transition.
+    }
+  }
+  update();
+  themeTransition = null;
+  themeTarget = null;
+  if (!reducedMotion) document.body.animate?.([{ opacity: 0.94 }, { opacity: 1 }], { duration: 240, easing: "ease-out" });
+}
+
+function bindHeaderPolish() {
+  const header = $(".topbar");
+  if (!header || header.dataset.polishBound) return;
+  header.dataset.polishBound = "true";
+  header.addEventListener("click", event => {
+    const control = event.target.closest("a, button");
+    if (!control || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    control.animate?.([{ transform: "scale(1)" }, { transform: "scale(.965)", offset: 0.4 }, { transform: "scale(1)" }], { duration: 220, easing: "ease-out" });
+  });
+}
 
 function activateIntroPolish() {
   requestAnimationFrame(() => {
@@ -136,9 +180,8 @@ function ensureWallpaperHubData() {
 function renderAll() {
   applyTheme(root.dataset.theme);
 
-  $("#themeToggle")?.addEventListener("click", () => {
-    applyTheme(root.dataset.theme === "light" ? "dark" : "light", true);
-  });
+  $("#themeToggle")?.addEventListener("click", toggleTheme);
+  bindHeaderPolish();
 
   renderNav();
   renderHero();
@@ -160,7 +203,7 @@ function renderNav() {
   if (!nav) return;
 
   nav.innerHTML = (hubData.nav || [])
-    .map(i => `<a href="${i.target}" ${i.highlight ? 'class="nav-highlight"' : ""} ${i.open ? `data-nav-open="${i.open}"` : ""}>${i.label}</a>`)
+    .map(i => `<a href="${i.target}" ${i.highlight ? 'class="nav-highlight"' : ""} ${i.open ? `data-nav-open="${i.open}"` : ""}><span class="nav-label">${i.label}</span></a>`)
     .join("");
 
   const closeNav = () => {
@@ -696,7 +739,7 @@ function renderRules(tab) {
   const paragraphs = values => (values || []).map(value => `<p>${rulesText(value)}</p>`).join("");
   const chapters = (rules.sections || []).map(section => `<details class="rules-section" name="rules-${platform}"><summary><span>${escapeHtml(section.title)}</span><span class="rules-chevron" aria-hidden="true">+</span></summary><div class="rules-section-body">${section.lead ? `<p><strong>${rulesText(section.lead)}</strong></p>` : ""}${section.intro ? `<p>${rulesText(section.intro)}</p>` : ""}<ul>${(section.items || []).map(item => `<li>${rulesText(item)}</li>`).join("")}</ul>${section.closing ? `<p>${rulesText(section.closing)}</p>` : ""}${section.emphasis ? `<p class="rules-emphasis"><strong>${rulesText(section.emphasis)}</strong></p>` : ""}</div></details>`).join("");
   const footer = rules.footer;
-  return `<article class="rules-document" data-platform="${platform}"><header class="rules-intro"><h3>${escapeHtml(rules.title)}</h3><p><strong>${rulesText(rules.welcome)}</strong></p>${paragraphs(rules.intro)}</header><div class="rules-chapters">${chapters}</div>${footer ? `<footer class="rules-footer"><h3>${escapeHtml(footer.title)}</h3>${paragraphs(footer.paragraphs)}<p><strong>${rulesText(footer.emphasis)}</strong></p></footer>` : ""}</article>`;
+  return `<article class="rules-document" data-platform="${platform}"><header class="rules-intro"><h3>${escapeHtml(rules.title)}</h3>${rules.welcome ? `<p><strong>${rulesText(rules.welcome)}</strong></p>` : ""}${paragraphs(rules.intro)}</header><div class="rules-chapters">${chapters}</div>${footer ? `<footer class="rules-footer"><h3>${escapeHtml(footer.title)}</h3>${paragraphs(footer.paragraphs)}<p><strong>${rulesText(footer.emphasis)}</strong></p></footer>` : ""}</article>`;
 }
 
 function renderModalContent(d, forceTab = null) {

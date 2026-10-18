@@ -314,8 +314,7 @@
             "platform": "twitch",
             "type": "rules",
             "rules": {
-              "title": "🍒 Cherry Twitch Szabályzata 🐰",
-              "welcome": "Üdvözöllek Cherry világában! 💗",
+              "title": "🐰 Cherry Twitch Szabályzata",
               "intro": [
                 "Ez a csatorna a közös szórakozásról, játékokról, beszélgetésekről, mémekről és a jó hangulatról szól!",
                 "Nálunk lehet viccelődni, hülyéskedni és önmagadnak lenni. Nem célunk minden apróságot túlszabályozni, de az alapvető tiszteletet és kulturált viselkedést mindenkitől elvárjuk."
@@ -414,7 +413,7 @@
                 }
               ],
               "footer": {
-                "title": "🍒 Érezd jól magad!",
+                "title": "Érezd jól magad!",
                 "paragraphs": [
                   "Itt nem kell attól tartanod, hogy egy mém, egy másik VTuber említése vagy egy ártalmatlan poén miatt bajba kerülsz.",
                   "Nevess, beszélgess, mémelj és élvezd a streameket!"
@@ -429,8 +428,7 @@
             "platform": "discord",
             "type": "rules",
             "rules": {
-              "title": "🍒 Cherry Discord Szabályzata 🐰",
-              "welcome": "Üdvözöllek Cherry közösségi Discord-szerverén! 💗",
+              "title": "🍒 Cherry Discord Szerver Szabályzata",
               "intro": [
                 "Ez a szerver azért jött létre, hogy a streameken kívül is együtt lehessünk, beszélgessünk, megosszuk élményeinket, mémeljünk és egy barátságos közösséget építsünk.",
                 "Kérjük, tartsd tiszteletben az alábbi szabályokat, hogy mindenki kellemesen és biztonságban érezhesse magát!"
@@ -515,12 +513,12 @@
                 }
               ],
               "footer": {
-                "title": "🐰 Élvezd az itt töltött időt!",
+                "title": "Élvezd az itt töltött időt!",
                 "paragraphs": [
-                  "Cherry Discord-közössége egy barátságos hely, ahol lehet ismerkedni, beszélgetni, viccelődni, mémelni és közös élményeket szerezni.",
+                  "Cherry közössége egy barátságos hely, ahol lehet ismerkedni, beszélgetni, viccelődni, mémelni és közös élményeket szerezni.",
                   "Nem célunk minden apróságot tiltani, de szeretnénk, ha mindenki jól érezné magát."
                 ],
-                "emphasis": "Légy kedves, tisztelj másokat, és érezd magad otthon Cherry világában! 💗🍒"
+                "emphasis": "Légy kedves, tisztelj másokat, és érezd magad otthon Cherry.... pincéjében! 💗"
               }
             }
           }

@@ -130,8 +130,8 @@ html[data-theme="dark"] .hero-main-logo{
   }
 
   .brand-icon-wrap img{
-    width:27px !important;
-    height:27px !important;
+    width:100% !important;
+    height:100% !important;
   }
 
   .brand-copy{
@@ -139,7 +139,7 @@ html[data-theme="dark"] .hero-main-logo{
   }
 
   .brand-copy strong{
-    font-size:20px !important;
+    font-size:clamp(19px,5.6vw,26px) !important;
     white-space:nowrap;
   }
 
@@ -203,12 +203,12 @@ html[data-theme="dark"] .hero-main-logo{
   }
 
   .brand-icon-wrap img{
-    width:25px !important;
-    height:25px !important;
+    width:100% !important;
+    height:100% !important;
   }
 
   .brand-copy strong{
-    font-size:18px !important;
+    font-size:clamp(17px,5.4vw,21px) !important;
   }
 
   .menu-toggle{

@@ -101,20 +101,26 @@ body.is-loaded{opacity:1;transition:opacity .35s ease}
   height:46px;
   display:grid;
   place-items:center;
-  border-radius:18px 18px 18px 8px;
+  border-radius:50%;
+  overflow:hidden;
   background:linear-gradient(145deg,#fff,var(--pink-soft));
   border:1px solid rgba(239,79,138,.18);
   box-shadow:var(--shadow-soft);
 }
-.brand-icon-wrap img{width:34px;height:34px;object-fit:contain}
+.brand-icon-wrap img{width:100%;height:100%;object-fit:cover}
 .brand-copy{display:grid;line-height:1}
 .brand-copy strong{
-  font-family:"DM Serif Display",serif;
-  font-size:28px;
-  font-weight:400;
-  letter-spacing:-.03em;
+  font-family:"Caveat",cursive;
+  font-size:36px;
+  font-weight:700;
+  letter-spacing:-.015em;
+  line-height:1.05;
+  transition:transform .18s ease,color .18s ease,text-shadow .18s ease;
 }
 .brand-copy strong span{color:var(--pink)}
+.brand-icon-wrap{transition:transform .2s ease,box-shadow .2s ease}
+.brand:hover .brand-icon-wrap{transform:rotate(-3deg) scale(1.035);box-shadow:0 5px 18px rgba(220,47,114,.22)}
+.brand:hover .brand-copy strong{transform:translateY(-1px);color:var(--rose);text-shadow:0 3px 12px rgba(239,79,138,.12)}
 .brand-copy small{margin-top:5px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 
 .nav{
@@ -127,6 +133,10 @@ body.is-loaded{opacity:1;transition:opacity .35s ease}
 }
 .nav::-webkit-scrollbar{display:none}
 .nav a{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
   flex:0 0 auto;
   padding:10px 12px;
   color:var(--muted);
@@ -134,13 +144,18 @@ body.is-loaded{opacity:1;transition:opacity .35s ease}
   font-size:12px;
   font-weight:700;
   border-radius:999px;
-  transition:.2s ease;
+  transition:transform .18s ease,color .18s ease,background .18s ease,box-shadow .18s ease;
 }
+.nav-label{display:inline-block;transition:transform .18s ease}
+.nav a::after{content:"✦";position:absolute;top:2px;right:6px;color:var(--pink);font-size:8px;opacity:0;transform:translateY(3px) scale(.7);transition:opacity .18s ease,transform .18s ease;pointer-events:none}
+.nav a:hover::after{opacity:.8;transform:translateY(0) scale(1)}
+.nav a:hover .nav-label{transform:translateY(-1px)}
 .nav a:hover{
   color:var(--pink-strong);
   background:rgba(239,79,138,.08);
-  transform:translateY(-1px);
+  transform:translateY(-2px) scale(1.015);
 }
+.nav a:active{transform:scale(.97)}
 .nav a:first-child{
   color:var(--pink-strong);
   background:rgba(239,79,138,.1);
@@ -1258,8 +1273,8 @@ body.modal-open .mobile-dock{z-index:220}
     padding:8px 14px;
     background:color-mix(in srgb,var(--bg) 89%,transparent);
   }
-  .brand-icon-wrap{width:39px;height:39px;border-radius:14px 14px 14px 6px}
-  .brand-icon-wrap img{width:29px;height:29px}
+  .brand-icon-wrap{width:39px;height:39px;border-radius:50%}
+  .brand-icon-wrap img{width:100%;height:100%}
   .brand-copy strong{font-size:23px}
   .brand-copy small{font-size:7px}
   .top-actions{gap:5px}
@@ -1551,4 +1566,26 @@ body.modal-open .mobile-dock{z-index:220}
   .section-card:hover,.section-card:active{transform:none}
   .section-card:hover::before{transform:translateX(-16%)}
   .modal.show .modal-panel{animation:none}
+}
+
+
+/* Short entrance and theme fades; no motion for reduced-motion users. */
+@media (prefers-reduced-motion:no-preference){
+  body.is-loaded .topbar{animation:intro-header .4s ease-out both}
+  body.is-loaded .hero-copy{animation:intro-assemble .44s .02s ease-out both}
+  body.is-loaded .home-live-card{animation:intro-assemble .44s .06s ease-out both}
+  body.is-loaded main > .flow-section{animation:intro-assemble .42s .08s ease-out both}
+  ::view-transition{pointer-events:none}
+  ::view-transition-group(root){animation-duration:.28s}
+  ::view-transition-old(root){animation:theme-fade-out .22s ease-out both;mix-blend-mode:normal}
+  ::view-transition-new(root){animation:theme-fade-in .28s .02s ease-out both;mix-blend-mode:normal}
+}
+@keyframes intro-header{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+@keyframes intro-assemble{from{opacity:0;transform:translateY(8px) scale(.995)}to{opacity:1;transform:none}}
+@keyframes theme-fade-out{from{opacity:1}to{opacity:0}}
+@keyframes theme-fade-in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  body.is-loaded{transition:none}
+  .nav a,.nav-label,.nav a::after,.brand-copy strong,.brand-icon-wrap{transition:none}
+  .nav a:hover,.nav a:active,.nav a:hover .nav-label,.brand:hover .brand-icon-wrap,.brand:hover .brand-copy strong{transform:none}
 }
