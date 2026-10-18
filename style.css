@@ -1611,6 +1611,24 @@ body.modal-open .mobile-dock{z-index:220}
 
 /* Short entrance and theme fades; no motion for reduced-motion users. */
 @media (prefers-reduced-motion:no-preference){
+  .home-live-thumb[data-state="offline"]{isolation:isolate}
+  .home-live-thumb[data-state="offline"]::after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    inset:-35%;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse at 25% 35%,rgba(255,112,179,.22),transparent 48%),
+      radial-gradient(ellipse at 75% 65%,rgba(170,129,255,.24),transparent 48%);
+    animation:offline-aurora 10s ease-in-out infinite alternate;
+  }
+  .home-live-thumb[data-state="offline"] .home-live-offline>span{
+    animation:offline-sparkles 4s ease-in-out infinite;
+  }
+  .home-live-thumb[data-state="offline"] .home-live-offline strong{
+    animation:offline-glow 5s ease-in-out infinite;
+  }
   .hero-actions a,.panel-button:not(:disabled):not([aria-disabled="true"]),.social-link{
     transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;
   }
@@ -1633,6 +1651,18 @@ body.modal-open .mobile-dock{z-index:220}
   ::view-transition-group(root){animation-duration:.28s}
   ::view-transition-old(root){animation:theme-fade-out .22s ease-out both;mix-blend-mode:normal}
   ::view-transition-new(root){animation:theme-fade-in .28s .02s ease-out both;mix-blend-mode:normal}
+}
+@keyframes offline-aurora{
+  from{transform:translate(-5%,-3%) rotate(-8deg);opacity:.55}
+  to{transform:translate(5%,3%) rotate(8deg);opacity:1}
+}
+@keyframes offline-sparkles{
+  0%,100%{transform:translateY(0);opacity:.7}
+  50%{transform:translateY(-3px);opacity:1}
+}
+@keyframes offline-glow{
+  0%,100%{text-shadow:0 2px 16px rgba(239,79,138,.2)}
+  50%{text-shadow:0 2px 24px rgba(255,143,198,.5)}
 }
 @keyframes intro-header{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
 @keyframes intro-assemble{from{opacity:0;transform:translateY(8px) scale(.995)}to{opacity:1;transform:none}}
