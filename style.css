@@ -1610,8 +1610,54 @@ body.modal-open .mobile-dock{z-index:220}
 }
 
 
+/* Cherry portrait: upper-body crop with a soft edge into the hero. */
+.hero-character{
+  grid-column:2;
+  grid-row:1;
+  position:relative;
+  z-index:2;
+  align-self:end;
+  justify-self:center;
+  width:clamp(300px,30vw,440px);
+  height:470px;
+  margin-bottom:-72px;
+  pointer-events:none;
+  user-select:none;
+  isolation:isolate;
+}
+.hero-character::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:12% -12% 0;
+  background:radial-gradient(ellipse,rgba(255,151,195,.42),rgba(239,131,190,.12) 45%,transparent 72%);
+  filter:blur(20px);
+}
+.hero-character img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  mask-image:linear-gradient(to bottom,#000 74%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 74%,transparent 100%);
+}
+.hero-copy,.home-live-card{grid-row:1}
+@media (min-width:761px) and (max-width:1080px){
+  .hero-stage{grid-template-columns:minmax(0,1fr) 280px;row-gap:24px;padding-bottom:80px}
+  .hero-character{width:300px;height:390px;margin-bottom:0}
+  .home-live-card{grid-column:1/-1;grid-row:2;justify-self:end;max-width:360px}
+}
+@media (max-width:760px){
+  .hero-stage{justify-content:flex-start;gap:20px}
+  .hero-copy{order:1}
+  .hero-character{order:2;flex:none;align-self:center;width:280px;height:330px;margin:-8px 0 -26px}
+  .home-live-card{order:3;align-self:center;margin-left:0}
+}
+
 /* Short entrance and theme fades; no motion for reduced-motion users. */
 @media (prefers-reduced-motion:no-preference){
+  body.is-loaded .hero-character{animation:intro-assemble .5s .05s ease-out both}
   .home-live-thumb[data-state="offline"]{isolation:isolate}
   .home-live-thumb[data-state="offline"]::after{
     content:"";
