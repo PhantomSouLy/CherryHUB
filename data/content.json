@@ -333,7 +333,9 @@
                   "Játékok, Végigjátszások",
                   "Komoly vagy akár vicces és humoros beszélgetések és hülyéskedések",
                   "Közösségi játékok",
-                  "Szezonális események"
+                  "Szezonális események",
+                  "Cukiság és őrület",
+                  "Nyuszi 🐰"
                 ]
               }
             ]
@@ -919,7 +921,7 @@
     {
       "id": "gacha",
       "icon": "◇",
-      "title": "Gacha",
+      "title": "Twitch Gacha",
       "short": "Discord Gacha és Twitch Gacha egy helyen.",
       "floatingTitle": "Discord és Twitch Gacha",
       "floatingText": "Válassz a Discord Gacha és a Twitch Gacha fülek közül.",
