@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root{
-  --blossom-image:url('./assets/blossom_background.png');
+  --blossom-image:url('./assets/blossom_background_light_optimized.webp');
   --bg:#d9d0dd;
   --bg-soft:#e5d9e3;
   --surface:rgba(241,234,240,.92);
@@ -27,7 +27,7 @@
 }
 
 html[data-theme="dark"]{
-  --blossom-image:url('./assets/blossom_background_dark.webp');
+  --blossom-image:url('./assets/blossom_background_dark_optimized.webp');
   --bg:#100b12;
   --bg-soft:#191019;
   --surface:rgba(31,20,31,.9);

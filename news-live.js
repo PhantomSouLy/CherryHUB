@@ -79,7 +79,9 @@ function renderWebNewsState() {
     return;
   }
 
-  if (hubData) hubData.news = webNewsState.items;
+  // The feed can arrive before the local page data. renderAll renders it once ready.
+  if (!hubData) return;
+  hubData.news = webNewsState.items;
   originalRenderNews();
 }
 
@@ -92,7 +94,7 @@ async function loadWebNews() {
   renderWebNewsState();
 
   try {
-    const response = await fetch(WEBNEWS_API_URL, { cache: "no-store" });
+    const response = await fetch(WEBNEWS_API_URL, { cache: "no-store", signal: AbortSignal.timeout(12000) });
     if (!response.ok) throw new Error(`WebNews API: ${response.status}`);
 
     const data = await response.json();
