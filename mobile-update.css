@@ -357,15 +357,26 @@
   overflow-x:auto;
   overflow-y:hidden;
   padding:4px 2px 14px;
-  scroll-snap-type:x proximity;
-  scrollbar-width:thin;
-  scrollbar-color:rgba(232,48,118,.48) transparent;
+  scroll-snap-type:none;
+  scrollbar-width:auto;
+  scrollbar-color:var(--pink) color-mix(in srgb,var(--line) 50%,transparent);
+  cursor:grab;
+  user-select:none;
 }
-.news-feed-section .news-strip::-webkit-scrollbar{height:7px}
+.news-feed-section .news-strip::-webkit-scrollbar{display:block;height:14px}
+.news-feed-section .news-strip::-webkit-scrollbar-track{background:var(--bg-soft);border-radius:999px}
 .news-feed-section .news-strip::-webkit-scrollbar-thumb{
-  background:rgba(232,48,118,.45);
+  background:linear-gradient(90deg,var(--pink),var(--lav));
+  border:3px solid var(--bg-soft);
   border-radius:999px;
+  min-width:48px;
 }
+.news-feed-section .news-strip:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.news-feed-section .news-strip .news-card{cursor:grab}
+.news-feed-section .news-strip.is-dragging,
+.news-feed-section .news-strip.is-dragging .news-card{cursor:grabbing}
+.news-feed-section .news-strip.is-dragging .news-card{transform:none;transition:none}
+.news-feed-section .news-strip img{-webkit-user-drag:none}
 
 .news-card{
   appearance:none;

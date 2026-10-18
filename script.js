@@ -205,7 +205,7 @@ function renderAll() {
   renderNews();
   renderFeaturedPanels();
   renderCards();
-  bindCardRail();
+  bindHorizontalRails();
   renderWideSections();
   bindModal();
   activateIntroPolish();
@@ -572,8 +572,12 @@ function renderCards() {
   grid.innerHTML = (hubData.cards || []).map(card => `<button id="${card.id}" class="section-card" type="button" data-open-modal="${card.id}" aria-haspopup="dialog" aria-label="${escapeHtml(card.title)} megnyitása"><span class="card-corner" aria-hidden="true">✦</span><span class="big-icon" aria-hidden="true">${escapeHtml(card.icon)}</span><span class="card-title">${escapeHtml(card.title)}</span><span class="card-suit" aria-hidden="true">♡</span></button>`).join("");
 }
 
-function bindCardRail() {
-  const rail = $("#cardsGrid");
+function bindHorizontalRails() {
+  bindHorizontalRail($("#cardsGrid"));
+  bindHorizontalRail($("#newsStrip"));
+}
+
+function bindHorizontalRail(rail) {
   if (!rail || rail.dataset.dragBound) return;
   rail.dataset.dragBound = "true";
   let drag = null;
@@ -592,6 +596,7 @@ function bindCardRail() {
 
   rail.addEventListener("pointerdown", event => {
     if (event.pointerType !== "mouse" || event.button !== 0) return;
+    if (rail.scrollWidth <= rail.clientWidth) return;
     // Let the browser handle dragging the native scrollbar itself.
     if (event.clientY >= rail.getBoundingClientRect().top + rail.clientHeight) return;
     suppressClick = false;
