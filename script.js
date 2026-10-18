@@ -306,10 +306,49 @@ function updateLiveStatus(state) {
     badge.textContent = online ? "LIVE" : state === "offline" ? "OFFLINE" : "STATUS";
     badge.classList.toggle("offline", !online);
   }
+  updateLivePreview(state);
   const scheduleStatus = $("#scheduleLiveStatus");
   const scheduleText = $("#scheduleLiveText");
   if (scheduleStatus) scheduleStatus.dataset.state = state;
   if (scheduleText) scheduleText.textContent = label;
+}
+
+function updateLivePreview(state) {
+  const preview = $("#livePreview");
+  const image = $("#livePreviewImage");
+  const placeholder = $("#livePreviewPlaceholder");
+  const label = $("#livePreviewLabel");
+  if (!preview || !image || !placeholder || !label) return;
+  const online = state === "live";
+  preview.dataset.state = state;
+  preview.setAttribute("aria-disabled", String(!online));
+  preview.tabIndex = online ? 0 : -1;
+  image.hidden = true;
+  placeholder.hidden = false;
+  label.textContent = online ? "Élő adás" : state === "offline" ? "Offline" : "Státusz nem elérhető";
+  if (online) {
+    preview.href = "https://www.twitch.tv/happycherrychan";
+    preview.target = "_blank";
+    preview.rel = "noreferrer";
+    preview.setAttribute("aria-label", "Cherry élő adásának megnyitása a Twitchen");
+    image.onload = () => {
+      if (preview.dataset.state !== "live") return;
+      image.hidden = false;
+      placeholder.hidden = true;
+    };
+    image.onerror = () => {
+      image.hidden = true;
+      placeholder.hidden = false;
+    };
+    image.src = `https://static-cdn.jtvnw.net/previews-ttv/live_user_happycherrychan-640x360.jpg?t=${Math.floor(Date.now() / 60000)}`;
+  } else {
+    preview.removeAttribute("href");
+    preview.removeAttribute("target");
+    preview.removeAttribute("aria-label");
+    image.onload = null;
+    image.onerror = null;
+    image.removeAttribute("src");
+  }
 }
 
 async function loadLiveStatus() {
