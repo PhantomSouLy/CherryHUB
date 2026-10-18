@@ -113,7 +113,7 @@ function activateIntroPolish() {
 
 async function loadData() {
   try {
-    const r = await fetch("data/content.json", { cache: "no-store" });
+    const r = await fetch("data/content.json", { cache: "no-store", signal: AbortSignal.timeout(12000) });
     if (!r.ok) throw new Error("content.json");
     hubData = await r.json();
     await loadWallpaperData();
@@ -129,7 +129,7 @@ async function loadData() {
 
 async function loadWallpaperData() {
   try {
-    const response = await fetch(WALLPAPERS_DATA_URL, { cache: "no-store" });
+    const response = await fetch(WALLPAPERS_DATA_URL, { cache: "no-store", signal: AbortSignal.timeout(5000) });
     if (!response.ok) throw new Error("wallpapers.json");
     const data = await response.json();
     hubData.wallpapers = {
@@ -377,7 +377,7 @@ async function loadHomeSchedulePreview() {
   if (!sub || !list) return;
 
   try {
-    const res = await fetch(TWITCH_SCHEDULE_ICS_URL, { cache: "no-store" });
+    const res = await fetch(TWITCH_SCHEDULE_ICS_URL, { cache: "no-store", signal: AbortSignal.timeout(12000) });
     if (!res.ok) throw new Error("schedule");
 
     const events = parseTwitchIcs(await res.text())
@@ -882,7 +882,7 @@ async function loadTwitchSchedule() {
   const list = $("#twitchScheduleList");
   if (!status || !list) return;
   try {
-    const res = await fetch(TWITCH_SCHEDULE_ICS_URL, { cache: "no-store" });
+    const res = await fetch(TWITCH_SCHEDULE_ICS_URL, { cache: "no-store", signal: AbortSignal.timeout(12000) });
     if (!res.ok) throw new Error();
     const events = parseTwitchIcs(await res.text()).filter(ev => ev.start && ev.start >= new Date()).sort((a, b) => a.start - b.start).slice(0, 6);
     if (!events.length) {
@@ -893,7 +893,7 @@ async function loadTwitchSchedule() {
     list.innerHTML = events.map(renderTwitchScheduleItem).join("");
   } catch (e) {
     console.warn(e);
-    status.textContent = "Jelenleg nincs menetrend.";
+    status.textContent = "A menetrend átmenetileg nem elérhető. Próbáld újra később.";
   }
 }
 
@@ -906,22 +906,42 @@ function parseTwitchIcs(ics) {
       const sep = line.indexOf(":");
       if (sep === -1) return;
       const key = line.slice(0, sep).split(";")[0];
+      const timeZone = line.slice(0, sep).match(/;TZID=([^;]+)/)?.[1].replace(/^\//, "");
       const value = decodeIcsText(line.slice(sep + 1));
       if (key === "SUMMARY") event.title = value;
       if (key === "DESCRIPTION") event.description = value;
-      if (key === "DTSTART") event.start = parseIcsDate(value);
-      if (key === "DTEND") event.end = parseIcsDate(value);
+      if (key === "DTSTART") event.start = parseIcsDate(value, timeZone);
+      if (key === "DTEND") event.end = parseIcsDate(value, timeZone);
     });
     return event;
   }).filter(event => event.title || event.start);
 }
 
-function parseIcsDate(value) {
+function parseIcsDate(value, timeZone) {
   if (!value) return null;
   const m = value.match(/^(\d{4})(\d{2})(\d{2})T?(\d{2})?(\d{2})?(\d{2})?(Z)?$/);
   if (!m) return null;
   const [, y, mo, d, h = "00", mi = "00", s = "00", z] = m;
-  return new Date(`${y}-${mo}-${d}T${h}:${mi}:${s}${z ? "Z" : ""}`);
+  if (z || !timeZone) return new Date(`${y}-${mo}-${d}T${h}:${mi}:${s}${z ? "Z" : ""}`);
+  // Twitch supplies Budapest wall-clock times, independent of the visitor's zone.
+  try {
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone, year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"
+    });
+    const wallTime = Date.UTC(+y, +mo - 1, +d, +h, +mi, +s);
+    let instant = wallTime;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const parts = Object.fromEntries(formatter.formatToParts(new Date(instant)).map(part => [part.type, part.value]));
+      const rendered = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute, +parts.second);
+      const correction = wallTime - rendered;
+      instant += correction;
+      if (!correction) return new Date(instant);
+    }
+    return null;
+  } catch {
+    return null;
+  }
 }
 
 function decodeIcsText(value) {

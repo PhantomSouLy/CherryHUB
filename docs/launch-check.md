@@ -1,4 +1,25 @@
-# Indulás előtti ellenőrzés – 2026. október 18.
+# Éles oldal és forráskód ellenőrzése – 2026. október 18.
+
+## Az éles ellenőrzés eredménye
+
+A `happycherrychan.hu` és a `www.happycherrychan.hu` HTTPS-kapcsolata az utolsó ellenőrzéskor tanúsítványnév-eltéréssel állt meg (`RemoteCertificateNameMismatch`, böngészőben `ERR_CERT_COMMON_NAME_INVALID`). Az ellenőrzés elején volt sikeres HTTPS-válasz is; a DNS-váltás utáni állapot ezért még nem tekinthető stabilnak. Tanúsítvány-ellenőrzést nem kapcsoltam ki, böngészős figyelmeztetést nem kerültem meg.
+
+A HTTP-cím HTTP 200 választ ad, HTTPS-re kényszerítés még nincs. A `www` a fődomainre irányít. Az ellenőrzött A-rekordok a GitHub Pages négy címére, a `www` CNAME a `phantomsouly.github.io` címre mutat; ütköző apex AAAA-címet nem találtam.
+
+Az éles HTML, a három CSS, a három JavaScript és a két JSON-adatfájl a vizsgálat kezdetén megegyezett a helyi verzióval (szövegnél a sorvégeket normalizálva). A két optimalizált háttér és a Cherry WebP karakter bájtra megegyezett. A logó, profilkép és az első hír képe HTTP 200 választ adott. A hírek API-ja egy hírt ad vissza; CORS-hozzáférése engedi a HTTPS fődomaint. A tényleges Twitch-menetrend és a live státusz végpontja is HTTP 200 választ adott, CORS-hozzáféréssel.
+
+**Még szükséges:** a GitHub Pages saját domaines tanúsítványának kiadása után mindkét HTTPS-cím újraellenőrzése, majd Settings → Pages → Enforce HTTPS bekapcsolása. [Hivatalos GitHub HTTPS-útmutató](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https). DNS-t és távoli tárhelybeállítást az audit nem módosított.
+
+## Az éles ellenőrzés során javított kód
+
+- A helyi tartalom, a háttérlista és a két Twitch-menetrend lekérése időkorlátot kapott. Az elakadt háttérlista korábban az egész oldal megjelenítését korlátlanul késleltethette. Tartalom/menetrend: 12 másodperc; háttérlista: 5 másodperc.
+- A Twitch ICS-ben szereplő `TZID=/Europe/Budapest` most feldolgozásra kerül. Korábban a budapesti időpontot a látogató saját helyi időpontjaként értelmezte az oldal; más időzónában elcsúszhatott az esemény. A megjelenítés továbbra is a látogató helyi idejét használja, de már a helyes időpillanatból számolva.
+- A menetrend hálózati hibája külön üzenetet kapott; nem állítja, hogy nincs menetrend.
+- A módosított szkript új gyorsítótár-verziót kapott. Ezek a módosítások helyiek, feltöltés után jelennek meg élesben.
+
+Újra lefutott DOM-ellenőrzés: 12 témakártya, 15 tartalomfül, 18 dal, 15 szabályzatfejezet, hírek megnyitása és szöveges escaping, tiltott hivatkozás elutasítása, témaváltás, online/offline előnézet, mindkét görgetősáv eseménykötése. A három CSS 669 szabálya szintaktikailag feldolgozható. Három elakadt hálózati forgatókönyv igazolta az időkorlátot és a felület hibaállapotait. Az időpontfeldolgozás öt UTC/nyári/téli/óraátállítási esete `America/New_York` környezetben is helyes eredményt adott. JavaScript-szintaxisellenőrzés és `git diff --check` rendben.
+
+**A vizuális ellenőrzés korlátja:** a natív böngészőablak hozzáférési kérése időtúllépéssel zárult; az elkülönített böngésző a fenti tanúsítványhibával megállt. Ezért valódi asztali/mobil tördelést, képernyőn megjelenő animációt és tényleges egérhúzást ezen az éles ellenőrzésen nem igazoltam. A DOM-tesztek nem helyettesítik ezt.
 
 ## Domain és tárhely
 
@@ -6,8 +27,8 @@ A honlap statikus HTML/CSS/JavaScript oldal; a jelenlegi GitHub Pages tárhelyr�
 
 Az ellenőrzött aktív névszerverek:
 
-- `shubhi.ns.cloudflare.com`
-- `plato.ns.cloudflare.com`
+- `rob.ns.cloudflare.com`
+- `tegan.ns.cloudflare.com`
 
 Ezért a DNS-rekordokat a Cloudflare DNS → Records felületén kell kezelni. A Rackhoston megjelenő másik DNS-zóna szerkesztése nem módosítja az aktív Cloudflare-zónát.
 
@@ -25,16 +46,16 @@ Az első beállításnál ezekhez DNS only, szürke felhő használható; a töb
 
 Hivatalos útmutatók: [GitHub Pages saját domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), [Cloudflare proxyállapot](https://developers.cloudflare.com/dns/proxy-status/).
 
-A vizsgálat idején a GitHub Pages cím HTTP 200 választ adott. A saját domain és a www változat HTTPS-en még 521 választ adott, ezért a saját domain indulása még DNS/GitHub-beállítást és utóellenőrzést igényel. Az audit során DNS-t, névszervert és GitHub Pages-beállítást nem módosítottam.
+A korábbi, DNS-váltás előtti ellenőrzéskor a saját domain HTTPS-en 521 választ adott. Az aktuális állapotot és a fennmaradó tanúsítványhibát a dokumentum eleje tartalmazza.
 
-## Javítások
+## Korábbi, már közzétett javítások
 
 - A hírek megérkezhettek az oldal helyi adatainak betöltése előtt. Ez null adaton történő renderelést és JavaScript-hibát okozott. A hírlista most megvárja a helyi adatokat.
 - A hírlekérés 12 másodperces időkorlátot kapott; hiba esetén az oldal érthető állapotüzenetet mutat.
 - A világos háttér eredetileg 21,38 MiB-os PNG volt. Az új, 2560×1435-ös WebP 335 624 bájt. A sötét háttér új WebP-változata 369 952 bájt. Az eredeti fájlok megmaradtak.
 - A módosított CSS és hírszkript verziózott hivatkozást kapott a gyorsítótár frissítéséhez.
 
-## Ellenőrzött működés
+## Korábbi ellenőrzések
 
 - 12 témakártya, 13 tartalomfül, megnyitás és bezárás.
 - Két zenei album, összesen 18 dal. Mind a 18 YouTube oEmbed-lekérés HTTP 200 választ adott, és a címek megfeleltek a megadott daloknak.
@@ -58,4 +79,4 @@ A háttérgaléria adatai még üresek; a felület ezt jelzi. A Discord GaCherry
 
 ## Következő ellenőrzés
 
-A módosításokat fel kell tölteni a GitHubra. A saját domain beállítása után ellenőrizni kell a fődomain és a www HTTPS-átirányítását, az új háttérfájlok elérhetőségét és a hírek/live adatok böngészős betöltését a saját domainen.
+A mostani kódjavításokat fel kell tölteni a GitHubra. A tanúsítványhiba rendezése után ellenőrizni kell mindkét HTTPS-címet, a HTTP → HTTPS átirányítást, az asztali és mobil tördelést, a panelek görgetését/bezárását, valamint a hírek és live adatok böngészős megjelenését a saját domainen.
