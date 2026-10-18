@@ -1,6 +1,19 @@
 /* HappyCherryChan official site – logo + theme switch polish
    Loaded after style.css and mobile-update.css. */
 
+/* Warm, readable brand colors for the light theme. */
+html[data-theme="light"] .brand-copy strong{
+  color:#a86f61;
+  text-shadow:0 1px 0 rgba(255,249,252,.55);
+}
+html[data-theme="light"] .brand-copy strong span{
+  color:#d93776;
+}
+html[data-theme="light"] .brand:hover .brand-copy strong{
+  color:#a86f61;
+  text-shadow:0 2px 12px rgba(177,104,146,.18);
+}
+
 /* Keep the action group anchored to the right edge on desktop/tablet. */
 .top-actions{
   justify-self:end;
