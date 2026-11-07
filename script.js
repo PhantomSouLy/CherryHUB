@@ -382,8 +382,7 @@ async function loadHomeSchedulePreview() {
 
     const events = parseTwitchIcs(await res.text())
       .filter(ev => ev.start && ev.start >= new Date())
-      .sort((a, b) => a.start - b.start)
-      .slice(0, 3);
+      .sort((a, b) => a.start - b.start);
 
     if (!events.length) {
       sub.textContent = "Nincs új menetrend kiírva.";

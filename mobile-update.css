@@ -288,7 +288,7 @@
   .schedule-open{flex:0 1 auto;max-width:48%;white-space:normal;text-align:center}
 
   .home-schedule-list{
-    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
     gap:8px;
     overflow-x:hidden !important;
   }
@@ -316,7 +316,7 @@
     padding-left:14px !important;
     padding-right:14px !important;
   }
-  .home-schedule-list{gap:6px}
+  .home-schedule-list{grid-template-columns:minmax(0,1fr) !important;gap:6px}
   .home-schedule-item{padding:11px 9px}
 }
 

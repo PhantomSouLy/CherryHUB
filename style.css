@@ -655,8 +655,8 @@ html[data-theme="dark"] .schedule-live-status[data-state="live"]{color:#ff718b}
 .schedule-stage{
   grid-column:1;
   position:relative;
-  min-height:370px;
-  padding:25px 25px 26px;
+  min-height:290px;
+  padding:25px 25px 65px;
   overflow:hidden;
   color:#fff;
   border-radius:34px 12px 34px 34px;
@@ -711,13 +711,13 @@ html[data-theme="dark"] .schedule-live-status[data-state="live"]{color:#ff718b}
   position:relative;
   z-index:3;
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));
   gap:9px;
-  margin-top:52px;
+  margin-top:26px;
 }
 .home-schedule-item,.home-schedule-empty{
-  min-height:86px;
-  padding:12px;
+  min-height:76px;
+  padding:10px 12px;
   border-radius:18px 18px 7px 18px;
   background:rgba(8,7,12,.52);
   border:1px solid rgba(255,255,255,.12);
@@ -736,8 +736,8 @@ html[data-theme="dark"] .schedule-live-status[data-state="live"]{color:#ff718b}
   text-transform:uppercase;
   letter-spacing:.1em;
 }
-.home-schedule-item b{display:block;font-size:11px;line-height:1.35}
-.home-schedule-item time{display:block;margin-top:4px;color:#cdbec8;font-size:10px}
+.home-schedule-item b{display:block;font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+.home-schedule-item time{display:block;margin-top:4px;color:#cdbec8;font-size:11px}
 .home-schedule-empty{display:grid;place-items:center;grid-column:1/-1;color:#dbcdd6;font-size:12px}
 
 .featured-panels{
@@ -1430,22 +1430,22 @@ body.modal-open .mobile-dock{z-index:220}
     padding:0 0 30px;
   }
   .schedule-stage{
-    min-height:330px;
+    min-height:0;
     border-radius:0 34px 34px 0;
-    padding:21px 18px 22px;
+    padding:21px 18px 60px;
     margin-right:18px;
   }
   .schedule-stage h2{font-size:29px}
   .schedule-open{font-size:8px;padding-inline:10px}
   .home-schedule-list{
-    grid-template-columns:repeat(3,minmax(112px,1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
     overflow-x:auto;
-    margin-top:44px;
+    margin-top:22px;
     padding-bottom:4px;
     scrollbar-width:none;
   }
   .home-schedule-list::-webkit-scrollbar{display:none}
-  .home-schedule-item{min-height:79px}
+  .home-schedule-item{min-height:72px}
   .schedule-skyline{left:auto;right:16px;font-size:18px;bottom:18px}
 
   .featured-panels{
