@@ -1,0 +1,51 @@
+name: CherryHUB - Deploy website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Keep this workflow separate from the built-in Pages workflow's queue.
+concurrency:
+  group: cherryhub-pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare static website
+        shell: bash
+        run: |
+          mkdir -p _site
+          cp index.html style.css mobile-update.css theme-logo-update.css script.js theme-polish.js news-live.js CNAME _site/
+          cp -R assets data _site/
+          test -f _site/index.html
+          test -f _site/data/content.json
+          du -sh _site
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v5
